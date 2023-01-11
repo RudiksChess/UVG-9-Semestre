@@ -1,0 +1,45 @@
+
+\section{Álgebra booleana}
+
+Clase: 05/07/2022
+
+\begin{definicion}
+    Sea $A$ un conjunto y $\operatorname{Rel}(A)\subseteq A\times A$ una relación binaria definida en $A$. La $\operatorname{Rel}(A)$ es de orden parcial: 
+    \begin{enumerate}
+        \item Reflexiva: $(x,x)\in \operatorname{Rel}(A), \forall x\in A$. 
+        \item Antisimetría: $(x,y)\in \operatorname{Rel(A)}\wedge(y,x)\in\operatorname{Rel}(A)\implies x=y$.
+        \item Transitiva: $(x,y)\in \operatorname{Rel}(A)\wedge (y,z)\in \operatorname{Rel}(A)\implies (x,z)\in\operatorname{Rel}(A),\forall x,y,z\in A$. 
+    \end{enumerate}
+\end{definicion}
+
+\begin{ejemplo}
+    En $\mathbb{Z}^+$, se define $(a,b)\in \operatorname{Z}^
+    + \iff a|b$.
+    \begin{sol}
+        Propiedades: 
+        \begin{itemize}
+            \item Reflexiva: Sea $a\in\mathbb{Z}^+$. Como $a=1\cdot a\implies a|a\implies (a,a)\in \operatorname{Rel}(\mathbb{Z}^+)$
+            \item Antisimetría: Sea $a,b\in\mathbb{Z}^+$. Si $(a,b)\in\operatorname{Rel}(A)$ y $(b,a)\in \operatorname{Rel}(A)\implies a|b$ y $b|a\implies \exists c$ y $b=ca$ y $\exists d\in \mathbb{Z}^+\ni a=db\implies b=(cd)b\implies cd=1\implies c=1\wedge d=1\implies b=ca=1\cdot a=a$.
+            \item Transitividad: Sea $a,b,c\in\mathbb{Z}^+$. Si $(a,b)\in\operatorname{Rel}(A)$ y $(b,c)\in \operatorname{Rel}(A)\implies a|b\wedge b|c\implies \exists e\in\mathbb{Z}^+\ni b=ea$ y $\exists f\in \mathbb{Z}^+$ y $c=fb$. $\implies c=fb=f(ea)=(fe)a\implies a|c$. 
+        \end{itemize}
+    \end{sol}
+\end{ejemplo}
+
+
+
+\begin{nota}
+    $(A,\leq)$. Conjunto ordenado y relación de orden.
+    $$a\leq b\iff (a,b)\in \operatorname{Rel}(A)$$
+\end{nota}
+
+\begin{ejemplo}
+    Sea $(P(A), \subseteq)$. 
+    \begin{itemize}
+        \item $A=\{1,2\}$ y $B=\{1,2,3\}$
+        \item $P(A)=\{\varnothing,\{1\},\{2\},\{1,2\}\}$ y $P(B)=\{\varnothing, \{1\},\{3\}\{1,2\},\{1,3\},\{2,3\},\{2,3\},\{1,2,3\}\}$. Nótese que en el potencia de $B$, $\{1\}\not\subseteq \{2,3\}$.
+    \end{itemize}
+\end{ejemplo}
+
+\begin{nota}
+    $a$ y $b$ de $A$ se dicen comparables si $a\leq b$ o $b\leq a$ (es lo mismo que $(a,b)\in\operatorname{Rel}(A)\vee (b,a)\in\operatorname{Rel}(A)$).
+\end{nota}
