@@ -1,45 +1,226 @@
 
-\section{Álgebra booleana}
-
-Clase: 05/07/2022
+\section{Topología}
 
 \begin{definicion}
-    Sea $A$ un conjunto y $\operatorname{Rel}(A)\subseteq A\times A$ una relación binaria definida en $A$. La $\operatorname{Rel}(A)$ es de orden parcial: 
+    Sea $X\neq \varnothing$. Una clase $\tau$ de subconjunto de $X$ es una topología sobre $X$, se cumple: 
     \begin{enumerate}
-        \item Reflexiva: $(x,x)\in \operatorname{Rel}(A), \forall x\in A$. 
-        \item Antisimetría: $(x,y)\in \operatorname{Rel(A)}\wedge(y,x)\in\operatorname{Rel}(A)\implies x=y$.
-        \item Transitiva: $(x,y)\in \operatorname{Rel}(A)\wedge (y,z)\in \operatorname{Rel}(A)\implies (x,z)\in\operatorname{Rel}(A),\forall x,y,z\in A$. 
+        \item $\varnothing,X\in \tau$
+        \item La unión de una clase arbitraria de conjuntos en $\tau$ es un miembro de $\tau$. 
+        \item La intersección de una clase finita de miembros de $\tau$ está en $\tau$. 
+    \end{enumerate}
+    Los miembros de $\tau$ son los abiertos de $X$. 
+\end{definicion}
+
+\begin{cajita}
+    \begin{enumerate}
+        \item El par $(X,\tau)\footnotetext{estructura topológica}$ es un espacio topológico. 
+        \item A los elementos de $X$ se les llama puntos. 
+    \end{enumerate}
+\end{cajita}
+
+\begin{ejemplo}
+    \begin{enumerate}
+        \item Sea $X\neq \varnothing\implies \tau=P(X)$ es una topología sobre $X$. A $\tau$ se le llama topología discreta de $X$, y $(X,\tau)$ es un espacio discreto. 
+
+        \item Sea $X\neq \varnothing\implies \tau =\{\varnothing,X\}$ es una topología sobre $X$. A $\tau$ se le llama topología indiscreta, y $(X,\tau)$ es un espacio indiscreto. 
+        \item $X=\mathbb{R}^2$ y $\tau$ es la colección de abiertos de $\mathbb{R}^2$ definido en términos de la métrica usual. A $\tau$ se le llama topología usual de $\mathbb{R}^2$. 
+        \item Sea $X=\{a,b,c,d,e\}$.
+        \begin{enumerate}
+            \item Sea $\tau_1=\{X,\varnothing,\{a\},\{c,d\},\{a,c,d\},\{b,c,d,e\}\}\implies \tau_1$ es una topología sobre $X$.
+            \item Sea $\tau_2=\{X,\varnothing,\{a\},\{c,d\},\{a,c,d\},\{b,c,d\}\}$. Note que $\{a\}\cup \{b,c,d\}=\{a,b,c,d\}\not\in \tau_2\implies \tau_2$ no es topología sobre $X$
+            \item Sea $X$ un conjunto infinito y sea $\tau$ el vacío junto con la colección de subconjunto de $X$ cuyos complementos son finitos. $\tau$ es una topología sobre $X$, y se llama topología cofinita sobre $X$. 
+        \end{enumerate}  
+    \end{enumerate}
+\end{ejemplo}
+
+\begin{cajita}
+    \begin{nota}
+        Un espacio metrizable es un espacio topológico $X$ con la propiedad que existe una métrica que genera los abiertos de la topología dada. 
+    \end{nota}
+    \begin{problema}
+        ¿Qué tipos de espacios topológicos son metrizables?
+    \end{problema}
+\end{cajita}
+
+\begin{prop}
+    Si $\tau_1$ y $\tau_2$ son topologías sobre $X$, entonces $\tau_1\cap \tau_2$ es topología sobre $X$.
+    \begin{dem}
+        \begin{enumerate}
+            \item Como $\tau_1$ y $\tau_2$ son topologías, etnonces: $X,\varnothing\in \tau_1$ y $X,\varnothing\in \tau_2\implies X\in \tau_1\cap \tau_2$ y $\varnothing\in \tau_1\cap \tau_2$. 
+            \item Sea $\{G_i\}_{i\in I}$ una subcolección de $\tau_1\cap \tau_2\implies G_i\in \tau_1,\forall i\in I \implies \bigcup_i G_i\in \tau_i$ y $G_i\in \tau_2,\forall i\in I\implies\bigcup_i G_i\in \tau_2$. Entonces $\bigcup_i G_i\in \tau_1\cap \tau_2$
+            \item Sea $G_1$ y $G_2\in \tau_1\cap \tau_2\implies G_1\in\tau_1$ y $G_1\in \tau_2$. $G_2\in \tau_1$ y $G_2\in \tau_2$. Entonces $G_1\cap G_2\in \tau_1$ y $G_1\cap G_2\in \tau_2\implies G_1\cap G_2\in \tau_1\cap\tau_2$. Entonces, $\tau_1\cap \tau_2$ es una topología sobre $X$. 
+        \end{enumerate}
+        
+    \end{dem}
+\end{prop}
+
+\begin{nota}
+    Sea $X=\{a,b,c\}$ y sean:
+    \begin{itemize}
+        \item $\tau_1=\{X,\varnothing,\{a\}\}$, $\tau_2=\{X,\varnothing, \{b\}\}$. Entonces, $\tau_1\cup \tau_2=\{X,\varnothing,\{a\},\{b\}\}$, pero $\{a,b\}\not\in \tau_1\cup\tau_2$. $\therefore\tau_1\cup\tau_2$ no es topología sobre $X$.
+    \end{itemize}
+\end{nota}
+
+\begin{ejemplo}
+    Sea $f:X\to Y$, donde $X$ es un conjunto no vacío y $Y$ es el espacio topológico de $(Y,\tau')$. Entonces $\tau=\{f^{-1}(G):G\in \tau'\}$ es una topología sobre $X$. En efecto:
+    \begin{enumerate}
+        \item $\varnothing\implies \tau'\implies f^{-1}(\varnothing)=\varnothing\in\tau$. $Y\in \tau'\implies f^{-1}(Y)=X\in\tau$
+        \item Sea $\{G_i\}$ una subclase de $\tau$. Como $G_i\in \tau,\forall \implies \exists H_i\in \tau'\ni G_i=f^{-1}(H_i)\implies \cup_i G_i=\cup_{i}f^{-1}(H_i)=f^{-1}(\underbrace{\bigcup_i H_i}_{\in \tau'})\in \tau $
+    \end{enumerate}
+\end{ejemplo}
+
+\begin{definicion}
+    Sean $X$ y $Y$ espacios topológicos y $f$ un mapeo de $X$ en $Y$. Se dice que $f$ es continua si $f^{-1}(G)$ es un abierto de $X$ para cada abierto de $G$ de $Y$. 
+\end{definicion}
+
+\begin{definicion}
+    Se dice que el mapeo es abierto si, para cada abierto $G$ de $X$, se cumple que $f(G)$ es abierto de $Y$. 
+\end{definicion}
+
+\begin{definicion}
+    Si $f$ es continuo, entonces $f(x)$ es la imagen continua de $X$ bajo $f$. 
+\end{definicion}
+
+\begin{definicion}[Homeomorfismo]
+    Un homeomorfismo es un mapeo biyectivo y bicontinuo (continuo y abierto) entre espacios topológicos. En este caso, los espacios son homeomorfos. 
+\end{definicion}
+
+\begin{cajita}
+    \begin{nota}
+        Una propiedad topológica es una propiedad que si la tiene el espacio topológico $X$, la tiene  también cualquier espacio homeomorfo a $X$
+    \end{nota}
+\end{cajita}
+
+
+%----
+
+\begin{nota}
+    Sea $A$ un subconjunto no vacío del espacio topológico $(X,\tau)$. Considerese la clase: 
+    $$\tau_A=\{A\cap G: G\in\tau \text{es abierto de $X$}\}$$
+    Entonces, $\tau_A$ es una topologia sobre $A$, la cual se llama topologia relativa sobre $A$.
+\end{nota}
+
+\begin{definicion}
+    El par $(A,\tau_A)$ es un espacio topologico y se dice es un subespacio de $X$, 
+    \begin{enumerate}
+        \item $\varnothing\in \tau\implies A\cap \varnothing=\varnothing\in\tau_A$ y $X\in \tau\implies A\cap X=A\in \tau_A$.
+        \item Sea $\{G_i\}_{i\in I}$ una colección de miembros de $\tau_A\implies \exists H_i\in \tau\ni G_i=A\cap H_i, \forall i\implies \bigcup_i G_i=\bigcup_i(A\cap H_i)= A\cap\left(\underbrace{\bigcup_{i}H_i}_{\in\tau}\right)\in\tau_A$
+        \item Sean $G_1,G_2\in \tau_A\implies\exists H_i\in\tau\ni G_i=A\cap H_i$, $i=1,2$. Entonces, $G_1\cap G_2=(A\cap H_1)\cap (A\cap H_2)=A\cap (\underbrace{H_1\cap H_2}_{\in\tau})\in\tau_A\implies \tau_A$ es topología sobre $A$. 
     \end{enumerate}
 \end{definicion}
 
 \begin{ejemplo}
-    En $\mathbb{Z}^+$, se define $(a,b)\in \operatorname{Z}^
-    + \iff a|b$.
-    \begin{sol}
-        Propiedades: 
-        \begin{itemize}
-            \item Reflexiva: Sea $a\in\mathbb{Z}^+$. Como $a=1\cdot a\implies a|a\implies (a,a)\in \operatorname{Rel}(\mathbb{Z}^+)$
-            \item Antisimetría: Sea $a,b\in\mathbb{Z}^+$. Si $(a,b)\in\operatorname{Rel}(A)$ y $(b,a)\in \operatorname{Rel}(A)\implies a|b$ y $b|a\implies \exists c$ y $b=ca$ y $\exists d\in \mathbb{Z}^+\ni a=db\implies b=(cd)b\implies cd=1\implies c=1\wedge d=1\implies b=ca=1\cdot a=a$.
-            \item Transitividad: Sea $a,b,c\in\mathbb{Z}^+$. Si $(a,b)\in\operatorname{Rel}(A)$ y $(b,c)\in \operatorname{Rel}(A)\implies a|b\wedge b|c\implies \exists e\in\mathbb{Z}^+\ni b=ea$ y $\exists f\in \mathbb{Z}^+$ y $c=fb$. $\implies c=fb=f(ea)=(fe)a\implies a|c$. 
+    Tenemos, 
+    \begin{enumerate}
+        \item Sea $\tau$ la topología usual de $\mathbb{R}$ y considere la topología relativa $\tau_{\mathbb{Z}^+}$ (en este caso, $\mathbb{Z}^+\subset \mathbb{R})$. Nótese que $\{n
+        _0\}$ es abierto, la unión de unitarios es abierto de $\tau_{\mathbb{Z}^+}\implies \tau_{\mathbb{Z}^+}$ es la topología discreta de $\mathbb{Z}^+$.
+        \item Considere $(\mathbb{R},\tau)$, donde $\tau$ es la topología usual de $\mathbb{R}$ y  sea $I=[0,1]$. Entonces, 
+        \begin{enumerate}
+            \item $(1/2,1]=[0,1]\cap (1/2,2)\in \tau_I$
+            \item $(1/2,2/3)=[0,1]\cap (1/2,2/3)\in \tau_I$
+            \item $(0,1/2]\not\in \tau_I$, ya que no existe un abierto $G\in \tau\ni (0,1/2]=I\cap G$.
+        \end{enumerate}
+        \item Sea $X=\{a,b,c,d,e\}$ y sea 
+        $$\tau=\{X,\varnothing,\{a\},\{a,b\},\{a,b,c,d\},\{a,b,e\}\}$$
+        \begin{cajita}
+            $\tau_A=\{A,\varnothing,\{a\},\{a,c\},\{a,e\}\}$
+        \end{cajita}
+        Considere $A=\{a,c,e\}$ entonces: \begin{itemize}
+            \item $A\cap X=A$
+            \item $A\cap\varnothing=\varnothing$
+            \item $A\cap\{a\}=\{a\}$
+            \item $A\cap\{a,b\}=\{a\}$
+            \item $A\cap\{a,c,d\}=\{a,c\}$
+            \item $A\cap \{a,b,c,d\}=\{a,c\}$
+            \item $A\cap\{a,b,e\}=\{a,e\}$
         \end{itemize}
-    \end{sol}
+    \end{enumerate}
 \end{ejemplo}
 
+%---------
+\subsubsection{Objeto de estudio de la topología}: Estudio de todas las propiedades topológicas de los espacios
 
-
-\begin{nota}
-    $(A,\leq)$. Conjunto ordenado y relación de orden.
-    $$a\leq b\iff (a,b)\in \operatorname{Rel}(A)$$
-\end{nota}
+\begin{definicion}
+    Sea $(X,\tau)$ un espacio topológico. Un subconjunto $A\subset X$ es cerrado si y solo si $A^c\in\tau $.
+\end{definicion}
 
 \begin{ejemplo}
-    Sea $(P(A), \subseteq)$. 
-    \begin{itemize}
-        \item $A=\{1,2\}$ y $B=\{1,2,3\}$
-        \item $P(A)=\{\varnothing,\{1\},\{2\},\{1,2\}\}$ y $P(B)=\{\varnothing, \{1\},\{3\}\{1,2\},\{1,3\},\{2,3\},\{2,3\},\{1,2,3\}\}$. Nótese que en el potencia de $B$, $\{1\}\not\subseteq \{2,3\}$.
-    \end{itemize}
+    Sea $(X,\tau)$ un espacio discreto. Sea $A\subset X\implies A\in\tau\implies A^c\subset X\implies A^c\in \tau\implies A$ es cerrado. Entonces, $A\subset X$ es abierto y cerrado en $X$. 
 \end{ejemplo}
 
-\begin{nota}
-    $a$ y $b$ de $A$ se dicen comparables si $a\leq b$ o $b\leq a$ (es lo mismo que $(a,b)\in\operatorname{Rel}(A)\vee (b,a)\in\operatorname{Rel}(A)$).
-\end{nota}
+\begin{cajita}
+    \begin{nota}
+        Sea $(X,\tau)$ un espacio topológico,
+        \begin{enumerate}
+            \item $\phi\in \tau\implies \phi^c=X$ es cerrado. $X\in\tau\implies X^c=\phi$ es cerrado.
+            \item Considere una familia arbitraria $\{F_i\}$ de cerrados en $\tau\implies \{F_i^c\}\subset \tau\implies \bigcup_i F_i^c\in \tau \implies \left(\bigcup_i F_i^c\right)^c=\bigcap_i F_i$ es cerrado. 
+            \item Sean $F_1$ y $F_2$ cerrados en $\tau\implies F_1^c$ y $F_2^c\in\tau\implies F_1^c\cap F_2^c\in \tau\implies (F_1^c\cap F_2^c)^c=F_1\cup F_2$ es cerrado.   
+        \end{enumerate}
+    \end{nota}
+\end{cajita}
+
+
+\begin{definicion}
+    Sea $X$ un espacio topológico: 
+    \begin{enumerate}
+        \item Una vecindad de un punto (o de un conjunto), es un abierto de $X$ que contiene al punto (o al conjunto).
+        \item Sea $A\subseteq X$. Un punto $x$ en $A$ es aislado si existe una vecindad de $x$ que no contiene ningún otro punto de $A$. 
+        \item Sea $A\subseteq X$. Un punto de $y\in X$ es un punto límite de $A$ si, $\forall G\in \tau\ni y\in G$, se tiene que $(G-\{y\})\cap A\neq\varnothing$. 
+        \begin{cajita}
+            EL conjunto de puntos límite de $A$ se llama derivado de $A$, $(A',D(A))$.  
+        \end{cajita}
+        \item Sea $A\subseteq X$. La cerradura de $A$, denotado $\overline{A}$, es el cerrado más pequeño que contiene a $A$. Es decir, si $F_i$ son los cerrados de $X$ que contiene a $A\implies \overline{A}=\bigcap_i F_i$. 
+        \begin{cajita}
+            Tenemos:
+            \begin{enumerate}
+                \item $A\subseteq \overline{A}$
+                \item Si $A$ es cerrado $\implies A=\overline{A}$.
+            \end{enumerate}
+        \end{cajita}
+        \item Un subconjunto $A$ de $X$ es denso (siempre denso), si $\overline{A}=X$.
+        \item El espacio topológico $X$ es separable si tiene un subconjunto separable contable y denso. 
+        \item Un punto de adherencia de $A\subseteq X$ es cualquier elemento de $\overline{A}$.
+    \end{enumerate}
+\end{definicion}
+
+\begin{prop}
+    Sea $A\subset B\implies A'\subset B'$.
+    \begin{prop}
+        Sea $A\subset B$ y sea $x\in A'\implies$ si $G$ es un abierto $\ni x\in G\implies (G-\{x\})\cap B\supset (G-\{x\})\cap A\neq \varnothing\implies x\in B'\implies A'\subset B'$.
+    \end{prop}
+\end{prop}
+
+\begin{prop}
+    Derivado de la unión $(A\cup B)'=A'\cup B' $
+    \begin{dem}
+        Por doble contención:
+        \begin{itemize}
+            \item $(\supseteq)$. A probar: $A'\cup B'\subset (A\cup B)'$. Sea $A\subseteq A\cup B$ y $B\subseteq A\cup B\implies A'\subseteq (A\cup B)'$ y $B'\subseteq (A\cup B)'\implies A'\cup B'\subseteq (A\cup B)'$
+            \item $(\subseteq)$. A probar $(A\cup B)'\subseteq A'\cup B'\iff x\in (A\cup B)'\implies x\in A'\cup B'\iff$ si $x\not\in A'\cup B'\implies x\not\in (A\cup B)'$.
+            \begin{itemize}
+                \item Suponemos que $x\not\in A'\cup B'\implies x\not\in A'$ y $x\not\in B'\implies$ existen $G,H$ abiertos de $X\ni x\in G$ y $x\in H$ y $(G-\{x\})\cap A=\varnothing$ y $(H-\{x\})\cap B=\varnothing $ ya que $x\in G$ y $x\in H\implies x\in G\cap H$. Además, $G\cap H\subseteq G$ y $G\cap H\subseteq H$. Entonces $(G\cap H-\{x\})\cap A=\varnothing$ y $(G\cap H-\{x\})\cap B =\varnothing$. Por lo tanto, $(G\cap H-\{x\})\cap (A\cup B)=\varnothing$. 
+            \end{itemize}
+        \end{itemize}
+    \end{dem}
+\end{prop}
+\begin{prop}
+    $A\subseteq X$ es cerrado ssi $A'\subseteq A$.
+    \begin{dem}
+        Sea
+        \begin{itemize}
+            \item $(\implies)$
+            \item $(\impliedby)$
+        \end{itemize}
+    \end{dem}
+\end{prop}
+
+\begin{prop}
+    Sea $F$ un superconjunto cerrado de $A$, entonces $A'\subset F$. 
+    \begin{dem}
+        Como $A\subset F\implies A'\subset F'$. Como $F$ es cerrado, $F'\subset F\implies A'\subset F$.
+    \end{dem}
+\end{prop}
+
+\begin{prop}
+    $A\cup A'$ es cerrado. 
+\end{prop}
