@@ -1,0 +1,735 @@
+\input{Configuraciones/paquetes}
+
+%--------------------------
+
+\begin{document}
+\input{Configuraciones/nombres}
+%--------------------------
+
+
+\begin{problema}
+
+
+$$
+\begin{aligned}
+& \mathbf{A}=2 \mathbf{a}_{x}+\mathbf{a}_{y}-3 \mathbf{a}_{z} \\
+& \mathbf{B}=\mathbf{a}_{y}-\mathbf{a}_{z} \\
+& \mathbf{C}=3 \mathbf{a}_{x}+5 \mathbf{a}_{y}+7 \mathbf{a}_{z}
+\end{aligned}
+$$
+
+Determinar:
+
+\begin{enumerate}
+    \item $\mathrm{A}-2 \mathrm{~B}+\mathrm{C}$
+    \begin{sol}
+        Sea 
+        \begin{align*}
+            \mathrm{A}-2 \mathrm{~B}+\mathrm{C} &= (2,1,-3) -2\cdot (0,1,-1)+(3,5,7)\\
+            &= (2,1,-3) - (0,2,-2)+(3,5,7)\\
+            &= (2,-1,-1) +(3,5,7)\\
+            &= (5,4,6)\\
+        \end{align*}
+    \end{sol}
+
+    \item $\mathrm{C}-4(\mathrm{A}+\mathrm{B})$
+    \begin{sol}
+        Sea 
+        \begin{align*}
+            \mathrm{C}-4(\mathrm{A}+\mathrm{B}) &=(3,5,7)-4((2,1,-3)+(0,1,-1))\\
+            &= (3,5,7)-4(2,2,-4)\\
+            &= (3,5,7)-(8,8,-16)\\
+            &= (-5,-3,23)\\
+        \end{align*}
+    \end{sol}
+    \item $\frac{2 \mathrm{A}-3 \mathrm{B}}{|\mathrm{C}|}$
+
+    \begin{sol}
+        Sea
+        \begin{align*}
+            \frac{2 \mathrm{A}-3 \mathrm{B}}{|\mathrm{C}|} &=\frac{2(2,1,-3)-3(0,1,-1)}{|(3,5,7)|}\\
+            &= \frac{(4,2,-6)-(0,3,-3)}{\sqrt{3^2+5^2+7^2}}\\
+            &= \frac{(4,-1,-3)}{\sqrt{9+25+49}}\\
+            &= \frac{(4,-1,-3)}{\sqrt{83}}\\
+        \end{align*}
+    \end{sol}
+
+    
+    \item $\mathrm{A} \cdot \mathrm{C}-|\mathrm{B}|^{2}$
+    \begin{sol}
+        Sea
+        \begin{align*}
+            \mathrm{A} \cdot \mathrm{C}-|\mathrm{B}|^{2}  &= (2,1,-3)\cdot(3,5,7)-(0,1,-1)\cdot(0,1,-1)\\
+            &= 2*3+1*5-3*7 - (0*0+1*1+(-1)*(-1))\\
+            &= 6+5-21-(0+1+1)\\
+            &= -10-2\\
+            &= -12
+        \end{align*}
+    \end{sol}
+
+    \item $\frac{1}{2} \mathrm{B} \times\left(\frac{1}{3} \mathrm{A}+\frac{1}{4} \mathrm{C}\right)$
+    \begin{sol}
+        Sea
+        \begin{align*}
+            \frac{1}{2} \mathrm{B} \times\left(\frac{1}{3} \mathrm{A}+\frac{1}{4} \mathrm{C}\right)  &= \frac{1}{2}\left(0,1,-1\right)\times \left(\frac{1}{3} (2,1,-3)+\frac{1}{4}(3,5,7)\right)\\
+            &= \frac{1}{2}\left(0,1,-1\right)\times \left(\frac{2}{3}+\frac{3}{4},\frac{1}{3}+\frac{5}{4},\frac{-3}{3}+\frac{7}{4}\right)\\
+            &= \frac{1}{2}\left(0,1,-1\right)\times \left(\frac{2}{3}+\frac{3}{4},\frac{1}{3}+\frac{5}{4},\frac{-3}{3}+\frac{7}{4}\right)\\
+            &= \frac{1}{2}\left(0,1,-1\right)\times \left(\frac{15}{12},\frac{19}{12},\frac{-3}{4}\right)\\
+            &= \frac{1}{2}\left(\frac{-3}{4}+\frac{19}{12},\frac{15}{12},\frac{15}{12}\right)\\
+            &= \frac{1}{2}\left(\frac{10}{12},\frac{15}{12},\frac{15}{12}\right)\\
+            &= \left(\frac{10}{24},\frac{15}{24},\frac{15}{24}\right)\\
+        \end{align*}
+    \end{sol}
+\end{enumerate}
+
+\end{problema}
+
+\begin{problema}
+Given that
+
+$$
+\begin{aligned}
+& \mathbf{P}=2 \mathbf{a}_{x}-\mathbf{a}_{y}-2 \mathbf{a}_{z} = (2,-1,-2) \\
+& \mathbf{Q}=4 \mathbf{a}_{x}+3 \mathbf{a}_{y}+2 \mathbf{a}_{z} = (4,3,2)\\
+& \mathbf{R}=-\mathbf{a}_{x}+\mathbf{a}_{y}+2 \mathbf{a}_{z} = (-1,1,2)
+\end{aligned}
+$$
+
+Find:
+\begin{enumerate}
+    \item $|\mathbf{P}+\mathbf{Q}-\mathbf{R}|$
+    \begin{sol}
+        Sea 
+        \begin{align*}
+            |\mathbf{P}+\mathbf{Q}-\mathbf{R}| &= |(2,-1,-2)+(4,3,2)-(-1,1,2)|\\
+            &= |(7,1,-2)|\\
+            &= \sqrt{7^2+1^2+2^2}\\
+            &= \sqrt{54}
+        \end{align*}
+    \end{sol}
+    \item $\mathbf{P} \cdot \mathbf{Q} \times \mathbf{R}$
+    \begin{sol}
+        Sea 
+        \begin{align*}
+            \mathbf{P} \cdot \mathbf{Q} \times \mathbf{R} &= (2,-1,-2)\cdot \left[(4,3,2)\times (-1,1,2)\right]\\
+            &= (2,-1,-2)\cdot (4,-10,7)\\
+            &= 4
+        \end{align*}
+    \end{sol}
+    \item $\mathbf{Q} \times \mathbf{P}  \cdot \mathbf{R}$
+    \begin{sol}
+        Sea 
+        \begin{align*}
+            \mathbf{Q} \times \mathbf{P}  \cdot \mathbf{R} &= \left[(4,3,2)\times (2,-1,-2)\right]\cdot(-1,1,2)\\
+            &=(-4,12,-10)\cdot(-1,1,2)\\
+            &= -4
+        \end{align*}
+    \end{sol}
+    \item $(\mathbf{P} \times \mathbf{Q}) \cdot(\mathbf{Q} \times \mathbf{R})$
+    \begin{sol}
+        Sea 
+        \begin{align*}
+            (\mathbf{P} \times \mathbf{Q}) \cdot(\mathbf{Q} \times \mathbf{R}) &= ((2,-1,-2)\times (4,3,2)) \cdot((4,3,2)\times (-1,1,2))\\
+            &= (4,-12,10) \cdot(4,-10,7)\\
+            &= 206
+        \end{align*}
+    \end{sol}
+    \item $(\mathbf{P} \times \mathbf{Q}) \times(\mathbf{Q} \times \mathbf{R})$
+    \begin{sol}
+        Sea 
+        \begin{align*}
+            (\mathbf{P} \times \mathbf{Q}) \cdot(\mathbf{Q} \times \mathbf{R}) &= ((2,-1,-2)\times (4,3,2)) \cdot((4,3,2)\times (-1,1,2))\\
+            &= (4,-12,10) \cdot(4,-10,7)\\
+            &= 206
+        \end{align*}
+    \end{sol}
+    \item $\cos \theta_{P R}$
+    \begin{sol}
+        Sea 
+        \begin{align*}
+            \cos \theta_{P R} &= \frac{P\cdot R}{|P||R|}\\
+            &= \frac{ (2,-1,-2)\cdot (-1,1,2)}{| (2,-1,-2)||(-1,1,2)|}\\
+            &= \frac{-7}{3\sqrt{6}}
+        \end{align*}
+    \end{sol}
+    \item $\sin \theta_{P Q}$
+    \begin{sol}
+        Sea 
+        \begin{align*}
+            \sin \theta_{P Q} &= \frac{P\times Q}{|P||Q|}\\
+            &= \frac{ (2,-1,-2)\times (4,3,2)}{| (2,-1,-2)||(4,3,2)|}\\
+            &=\frac{(4,-12,10)}{\sqrt{9}\sqrt{29}}\\
+            &=\frac{(4,-12,10)}{3\sqrt{29}}
+        \end{align*}
+    \end{sol}
+\end{enumerate}
+
+
+\end{problema}
+
+\begin{problema}
+    If $\mathbf{A}=-\mathbf{a}_{x}+6 \mathbf{a}_{y}+5 \mathbf{a}_{z}$ and $\mathbf{B}=\mathbf{a}_{x}+2 \mathbf{a}_{.}+3 \mathbf{a}_{x}$, find:
+    \begin{enumerate}
+        \item the scalar projections of $\mathrm{A}$ on $B$
+        \begin{sol}
+            Sea 
+            \begin{align*}
+                A_B &= A\cdot \mathbf{a}_B\\
+                &= (-1,6,5)\cdot \frac{(1,2,3)}{\sqrt{14}}\\
+                &= \frac{26}{\sqrt{14}}
+            \end{align*}
+        \end{sol} 
+        \item the vector projection of $B$ on $A$.
+        \begin{sol}
+            Sea 
+            \begin{align*}
+                B_A &= B_A\mathbf{a}_A\\
+                    &= (B\cdot\mathbf{a}_A)\mathbf{a}_A\\
+                    &= \left((1,2,3)\cdot \frac{(-1,6,5)}{\sqrt{1+36+25}}\right) \frac{(-1,6,5)}{\sqrt{1+36+25}}\\
+                    &= \left((1,2,3)\cdot \frac{(-1,6,5)}{\sqrt{62}}\right) \frac{(-1,6,5)}{\sqrt{62}}\\
+                    &= \left(\frac{26}{\sqrt{62}}\right)\frac{(-1,6,5)}{\sqrt{62}}\\
+                    &= \frac{26}{62}(-1,6,5)\\
+                    &= \frac{13}{31}(-1,6,5)
+            \end{align*}
+        \end{sol}
+    \end{enumerate}
+    
+\end{problema}
+
+\begin{problema}
+    Let 
+    \begin{enumerate}
+        \item If $V=x z-x y+y z$, express $V$ in cylindrical coordinates.
+        \begin{sol}
+            Sea 
+            \begin{align*}
+                x &= \rho \cos\phi\\
+                y &= \rho \sin \phi\\
+                z &= z
+            \end{align*}
+            Entonces, 
+            \begin{align*}
+                V &=x z-x y+y z\\
+                  &=(\rho \cos\phi)(z)-(\rho \cos\phi)(\rho \sin \phi)+(\rho \sin \phi)z\\
+                  &= z\rho\cos\phi -\rho^2\cos\phi \sin\phi +z\rho\sin \phi
+            \end{align*}
+        \end{sol}
+
+        \item If $U=x^{2}+2 y^{2}+3 z^{2}$, express $U$ in spherical coordinates.
+        \begin{sol}
+            Sea
+            \begin{align*}
+                x &= r\sin \theta \cos \phi \\
+                y &= r\sin \theta \sin\phi \\
+                z &= r \cos \theta
+            \end{align*}
+            Entonces, 
+            \begin{align*}
+                U &=x^{2}+2 y^{2}+3 z^{2}\\
+                &= \left(r\sin \theta \cos \phi\right)^2 + 2\left(r\sin \theta \sin\phi\right)^2 +3\left(r \cos \theta\right)^2\\
+                &= r^2\left[\sin^2\theta \cos^2\phi +2\sin^2\theta\sin^2 \phi +3\cos^2\theta\right]\\
+                &= r^2\left[\sin^2\theta\left(\cos^2\phi +2\sin^2\phi\right) +3\cos^2\theta\right]
+            \end{align*}
+        \end{sol}
+    \end{enumerate}
+\end{problema}
+
+\begin{problema}
+
+Express the following vectors in Cartesian coordinates:
+\begin{enumerate}
+    \item $\mathbf{A}=\rho\left(z^{2}+1\right) \mathbf{a}_{\rho}-\rho z \cos \phi \mathbf{a}_{\phi}$
+    \begin{sol}
+        Sea 
+        \begin{align*}
+            \begin{bmatrix}
+                A_x\\
+                A_y\\
+                A_z
+            \end{bmatrix} &= \begin{bmatrix}
+                \cos\phi &-\sin \phi  &0\\
+                \sin \phi & \cos \phi & 0\\
+                0 & 0 & 1
+            \end{bmatrix} \begin{bmatrix}
+                A_\rho\\
+                A_\phi\\
+                A_z
+            \end{bmatrix}= \begin{bmatrix}
+                \cos\phi &-\sin \phi  &0\\
+                \sin \phi & \cos \phi & 0\\
+                0 & 0 & 1
+            \end{bmatrix} \begin{bmatrix}
+                \rho (z^2+1)\\
+                \rho z\cos\phi\\
+                0
+            \end{bmatrix}\\
+            &=  \begin{bmatrix}
+                \rho (z^2+1)\cos\phi -\sin \phi \rho z\cos\phi\\
+                \sin\phi \rho(z^2+1)+\rho z\cos^2\phi\\
+                0
+            \end{bmatrix}=  \begin{bmatrix}
+                (z^2+1)x -\sin \phi z x\\
+                y(z^2+1)+xz\cos\phi\\
+                0
+            \end{bmatrix}\\
+            &= \begin{bmatrix}
+                (z^2+1)x -\frac{y}{\sqrt{x^2+y^2}}z x\\
+                y(z^2+1)+xz \frac{x}{\sqrt{x^2+y^2}}\\
+                0
+            \end{bmatrix} = \begin{bmatrix}
+                (z^2+1)x -\frac{yzx}{\sqrt{x^2+y^2}}\\
+                y(z^2+1)+\frac{x^2z}{\sqrt{x^2+y^2}}\\
+                0
+            \end{bmatrix}
+        \end{align*}
+    \end{sol}
+
+    \item $\mathbf{B}=2 r \sin \theta \cos \phi \mathbf{a}_{r}+r \cos \theta \cos \theta \mathbf{a}_{\theta}-r \sin \phi \mathbf{a}_{\phi}$
+    \begin{sol}
+        Sea 
+        \begin{align*}
+            \begin{bmatrix}
+                A_x\\
+                A_y\\
+                A_z
+            \end{bmatrix} &= \begin{bmatrix}
+                \sin \theta \cos\phi & \cos\theta \cos\phi &-\sin\phi\\
+                \sin\theta \sin\phi & \cos\theta \sin\phi &\cos \phi\\
+                \cos\theta & -\sin \theta & 0
+            \end{bmatrix}\begin{bmatrix}
+                A_r\\
+                A_\theta\\
+                A_\phi
+            \end{bmatrix}\\
+            &= \begin{bmatrix}
+                \sin \theta \cos\phi & \cos\theta \cos\phi &-\sin\phi\\
+                \sin\theta \sin\phi & \cos\theta \sin\phi &\cos \phi\\
+                \cos\theta & -\sin \theta & 0
+            \end{bmatrix}\begin{bmatrix}
+                2r\sin \theta \cos\phi\\
+                r\cos\theta\cos\theta\\
+                -r\sin\phi 
+            \end{bmatrix}\\
+            &= \begin{bmatrix}
+                \sin \theta \cos\phi & \cos\theta \cos\phi &-\sin\phi\\
+                \sin\theta \sin\phi & \cos\theta \sin\phi &\cos \phi\\
+                \cos\theta & -\sin \theta & 0
+            \end{bmatrix}\begin{bmatrix}
+                2x\\
+                r\cos^2\theta\\
+                -r\sin\phi 
+            \end{bmatrix}\\
+            &= \begin{bmatrix}
+                2x\sin\theta\cos\phi+r\cos^3\theta\cos\phi +r\sin^2 \phi \\
+                2x\sin\theta\sin \phi +r\cos^3\theta\sin\phi -r\cos\phi\sin \phi \\
+                2x\cos\theta -r\cos^2\theta \sin\theta
+            \end{bmatrix}\\
+            &= \begin{bmatrix}
+                \frac{r}{r}\cdot 2x\sin\theta\cos\phi+\frac{r^2}{r}\cdot r\cos^3\theta\cos\phi +r\sin^2 \phi \\
+                \frac{r}{r}\cdot 2x\sin\theta\sin \phi +\frac{r^2}{r}\cdot r\cos^3\theta\sin\phi -r\cos\phi\sin \phi \\
+                \frac{r}{r}\cdot 2x\cos\theta - \frac{r}{r}\cdot r\cos^2\theta \sin\theta
+            \end{bmatrix}\\
+            &= \begin{bmatrix}
+                \frac{2x^2}{r}+\frac{z^3\cos\phi}{r} +r\sin^2 \phi \\
+                \frac{2xy}{r}+\frac{ z^3\sin\phi}{r} -r\cos\phi\sin \phi \\
+                \frac{2xz}{r} - \frac{z^2\sin\theta}{r}
+            \end{bmatrix} = \begin{bmatrix}
+                \frac{2x^2}{r}+\frac{z^3}{r}\left(\frac{x}{\sqrt{x^2+y^2}}\right) +r\left(\frac{y}{x^2+y^2}\right)^2 \\
+                \frac{2xy}{r}+\frac{ z^3}{r}\left(\frac{y}{x^2+y^2}\right) -r\left(\frac{x}{x^2+y^2}\right)\left(\frac{y}{x^2+y^2}\right) \\
+                \frac{2xz}{r} - \frac{z^2}{r}\left(\frac{\sqrt{x^2+y^2}}{\sqrt{x^2+y^2+z^2}}\right)
+            \end{bmatrix}\\
+            &= \begin{bmatrix}
+                \frac{2x^2}{\sqrt{x^2+y^2+z^2}}+\frac{z^3}{\sqrt{x^2+y^2+z^2}}\left(\frac{x}{\sqrt{x^2+y^2}}\right) +\sqrt{x^2+y^2+z^2}\left(\frac{y}{x^2+y^2}\right)^2 \\
+                \frac{2xy}{\sqrt{x^2+y^2+z^2}}+\frac{ z^3}{\sqrt{x^2+y^2+z^2}}\left(\frac{y}{x^2+y^2}\right) -\sqrt{x^2+y^2+z^2}\left(\frac{x}{x^2+y^2}\right)\left(\frac{y}{x^2+y^2}\right) \\
+                \frac{2xz}{\sqrt{x^2+y^2+z^2}} - \frac{z^2}{\sqrt{x^2+y^2+z^2}}\left(\frac{\sqrt{x^2+y^2}}{\sqrt{x^2+y^2+z^2}}\right)
+            \end{bmatrix} 
+        \end{align*}
+    \end{sol}
+\end{enumerate}
+\end{problema}
+
+\begin{problema}
+    Let 
+    \begin{enumerate}
+        \item Express the vector field 
+
+        $$
+        \mathbf{H}=x y^{2} z \mathbf{a}_{x}+x^{2} y z \mathbf{a}_{y}+x y z^{2} \mathbf{a}_{z}
+        $$
+        
+        in cylindrical and spherical coordinates.
+
+        \begin{sol}
+            Sea 
+            \begin{itemize}
+                \item Cilíndricas. 
+                Sea 
+                \begin{align*}
+                    \begin{bmatrix}
+                        A_\rho\\
+                        A_\phi\\
+                        A_z
+                    \end{bmatrix} &= \begin{bmatrix}
+                        \cos\phi & \sin \phi & 0\\
+                        -\sin \phi & \cos\phi & 0\\
+                        0& 0&1 
+                    \end{bmatrix}\begin{bmatrix}
+                        A_x\\
+                        A_y\\
+                        A_z
+                    \end{bmatrix}= \begin{bmatrix}
+                        \cos\phi & \sin \phi & 0\\
+                        -\sin \phi & \cos\phi & 0\\
+                        0& 0&1 
+                    \end{bmatrix}\begin{bmatrix}
+                        xy^2z\\
+                        x^2yz\\
+                        xyz^2
+                    \end{bmatrix}\\
+                    &= \begin{bmatrix}
+                        \cos\phi(xy^2z)+ \sin \phi(x^2yz) + 0(xyz^2)\\
+                        -\sin \phi(xy^2z) + \cos\phi(x^2yz) + 0(xyz^2)\\
+                        0(xy^2z)+0(x^2yz)+1(xyz^2)
+                    \end{bmatrix}= \begin{bmatrix}
+                        \cos\phi(xy^2z)+ \sin \phi(x^2yz) \\
+                        -\sin \phi(xy^2z) + \cos\phi(x^2yz) \\
+                        xyz^2
+                    \end{bmatrix}\\
+                    &= \begin{bmatrix}
+                        \cos\phi((\rho\cos\phi)(\rho\sin\phi)^2z)+ \sin \phi((\rho\cos\phi)^2(\rho\sin \phi)z) \\
+                        -\sin \phi((\rho\cos\phi)(\rho\sin\phi)^2z)+ \cos\phi((\rho\cos\phi)^2(\rho\sin \phi)z) \\
+                        (\rho \cos\phi)(\rho\sin\phi)z^2
+                    \end{bmatrix}
+                \end{align*}
+                \item Esféricas. Sea 
+                \begin{align*}
+                    \begin{bmatrix}
+                        A_r\\
+                        A_\theta\\
+                        A_\phi
+                    \end{bmatrix} &= \begin{bmatrix}
+                        \sin\theta\cos\phi & \sin\theta\sin\phi & \cos\theta\\
+                        \cos \theta \cos\phi & \cos\theta \sin\phi & -\sin\theta\\
+                        -\sin \phi & \cos\phi & 0
+                    \end{bmatrix}\begin{bmatrix}
+                        A_x\\
+                        A_y\\
+                        A_z
+                    \end{bmatrix}\\
+                    &= \begin{bmatrix}
+                        \sin\theta\cos\phi & \sin\theta\sin\phi & \cos\theta\\
+                        \cos \theta \cos\phi & \cos\theta \sin\phi & -\sin\theta\\
+                        -\sin \phi & \cos\phi & 0
+                    \end{bmatrix}\begin{bmatrix}
+                        xy^2z\\
+                        x^2yz\\
+                        xyz^2
+                    \end{bmatrix}\\
+                    &= \begin{bmatrix}
+                        \sin\theta\cos\phi & \sin\theta\sin\phi & \cos\theta\\
+                        \cos \theta \cos\phi & \cos\theta \sin\phi & -\sin\theta\\
+                        -\sin \phi & \cos\phi & 0
+                    \end{bmatrix}\begin{bmatrix}
+                        (r\sin\theta\cos\phi)(r\sin\theta\sin\phi)^2(r\cos\theta)\\
+                        (r\sin\theta\cos\phi)^2(r\sin\theta\sin\phi)(r\cos\theta)\\
+                        (r\sin\theta\cos\phi)(r\sin\theta\sin\phi)(r\cos\theta)^2
+                    \end{bmatrix}\\
+                    &= \begin{bmatrix}
+                        \sin\theta\cos\phi & \sin\theta\sin\phi & \cos\theta\\
+                        \cos \theta \cos\phi & \cos\theta \sin\phi & -\sin\theta\\
+                        -\sin \phi & \cos\phi & 0
+                    \end{bmatrix}\begin{bmatrix}
+                        r^4(\sin^3\theta\cos\phi\sin^2\phi\cos\theta)\\
+                        r^4(\sin^3\theta\cos^2\phi\sin\phi\cos\theta)\\
+                        r^4(\sin^2\theta\cos\phi\sin\phi\cos^2\theta)
+                    \end{bmatrix}\\
+                    &= \begin{bmatrix}
+                        r^4\left(\sin^4\theta\cos^2\phi\sin^2\phi\cos\theta + \sin^4\theta\cos^2\phi\sin^2\phi\cos\theta+ \sin^2\theta\cos\phi\sin\phi\cos^3\theta\right)\\
+                        r^4\left(\sin^3\theta\cos^2\phi\sin^2\phi\cos^2\theta + \sin^3\theta\cos^2\phi\sin^2\phi\cos^2\theta-\sin^3\theta\cos\phi\sin\phi\cos^2\theta\right)\\
+                        r^4\left(-\sin^3\theta\cos\phi\sin^3\phi\cos\theta + \sin^3\theta\cos^3\phi\sin\phi\cos\theta\right)
+                    \end{bmatrix}
+                \end{align*}
+            \end{itemize}
+        \end{sol}
+        
+        \item In both cylindrical and spherical coordinates, determine $\mathrm{H}$ at $(3,-4,5)$.
+        \begin{sol}
+            Sea $x=3,y=-4,z=5$, 
+            \begin{itemize}
+                \item Cilíndricas, $H(\rho,\phi, z)$. Tenemos: 
+                \begin{itemize}
+                    \item $\rho=\sqrt{3^2+4^2}=\sqrt{25}=5$
+                    \item $\phi=\arctan\left(\frac{-4}{3}\right)=-0.927$
+                    \item $z=5$
+                \end{itemize}
+                Con eso, se evalúa en:
+                \begin{align*}
+                    \begin{bmatrix}
+                        A_\rho\\
+                        A_\phi\\
+                        A_z
+                    \end{bmatrix} 
+                    &= \begin{bmatrix}
+                        \cos\phi((\rho\cos\phi)(\rho\sin\phi)^2z)+ \sin \phi((\rho\cos\phi)^2(\rho\sin \phi)z) \\
+                        -\sin \phi((\rho\cos\phi)(\rho\sin\phi)^2z)+ \cos\phi((\rho\cos\phi)^2(\rho\sin \phi)z) \\
+                        (\rho \cos\phi)(\rho\sin\phi)z^2
+                    \end{bmatrix}
+                \end{align*}
+                \item Esféricas, $H(r,\theta, \phi)$. Tenemos: 
+                \begin{itemize}
+                    \item $r=\sqrt{3^2+4^2+5^2}=\sqrt{9+16+25}=\sqrt{50}$
+                    \item $\theta=\arctan\left(\frac{\sqrt{3^2+4^2}}{5}\right)=\arctan\left(\frac{\sqrt{25}}{5}\right)=\arctan(1)=\pi/4$
+                    \item $\phi=\arctan\left(\frac{-4}{3}\right)=-0.927$
+                \end{itemize}
+                Con eso, se evalúa en:
+                \begin{align*}
+                    \begin{bmatrix}
+                        A_r\\
+                        A_\theta\\
+                        A_\phi
+                    \end{bmatrix} 
+                    &= \begin{bmatrix}
+                        r^4\left(\sin^4\theta\cos^2\phi\sin^2\phi\cos\theta + \sin^4\theta\cos^2\phi\sin^2\phi\cos\theta+ \sin^2\theta\cos\phi\sin\phi\cos^3\theta\right)\\
+                        r^4\left(\sin^3\theta\cos^2\phi\sin^2\phi\cos^2\theta + \sin^3\theta\cos^2\phi\sin^2\phi\cos^2\theta-\sin^3\theta\cos\phi\sin\phi\cos^2\theta\right)\\
+                        r^4\left(-\sin^3\theta\cos\phi\sin^3\phi\cos\theta + \sin^3\theta\cos^3\phi\sin\phi\cos\theta\right)
+                    \end{bmatrix}
+                \end{align*}
+            \end{itemize}
+        \end{sol}
+    \end{enumerate}
+    
+\end{problema}
+
+\begin{problema}
+
+    Given vectors $\mathbf{A}=2 \mathbf{a}_{x}+4 \mathbf{a}_{y}+10 \mathbf{a}_{z}$ and $\mathbf{B}=-5 \mathbf{a}_{\rho}+\mathbf{a}_{\phi}-3 \mathbf{a}_{z}$,
+    find
+
+    \begin{enumerate}
+        \item $\mathbf{A}+\mathbf{B}$ at $P(0,2,-5)$
+        \begin{sol}
+            Sea
+        \begin{align*}\begin{bmatrix}
+            B_x\\
+            B_y\\
+            B_z
+        \end{bmatrix}
+             &= \begin{bmatrix}
+                \cos\phi & -\sin \phi & 0\\
+                \sin \phi & \cos\phi & 0\\
+                0& 0&1 
+            \end{bmatrix}\begin{bmatrix}
+                A_\rho\\
+                A_\phi\\
+                A_z
+            \end{bmatrix}= \begin{bmatrix}
+                \cos\phi & -\sin \phi & 0\\
+                \sin \phi & \cos\phi & 0\\
+                0& 0&1 
+            \end{bmatrix}\begin{bmatrix}
+                -5\\
+                1\\
+                -3
+            \end{bmatrix}\\
+            &=\begin{bmatrix}
+                -5\cos\phi -\sin \phi \\
+            -5\sin \phi + \cos\phi \\
+                -3
+            \end{bmatrix} =\begin{bmatrix}
+                -5\left(\frac{x}{\sqrt{x^2+y^2}}\right) -\left(\frac{y}{\sqrt{x^2+y^2}}\right) \\
+            -5\left(\frac{y}{\sqrt{x^2+y^2}}\right)+ \left(\frac{x}{\sqrt{x^2+y^2}}\right) \\
+                -3
+            \end{bmatrix}
+        \end{align*}
+        Entonces $A+B$ en $P(0,2,-5)$
+        \begin{align*}
+            A+B = \begin{bmatrix}
+                A_x\\
+                A_y\\
+                A_z
+            \end{bmatrix}+\begin{bmatrix}
+                B_x\\
+                B_y\\
+                B_z
+            \end{bmatrix} &= \begin{bmatrix}
+                2-5\left(\frac{x}{\sqrt{x^2+y^2}}\right) -\left(\frac{y}{\sqrt{x^2+y^2}}\right) \\
+            4-5\left(\frac{y}{\sqrt{x^2+y^2}}\right)+ \left(\frac{x}{\sqrt{x^2+y^2}}\right) \\
+                10-3
+            \end{bmatrix}\\
+            &= \begin{bmatrix}
+                2-\left(\frac{2}{\sqrt{4}}\right) \\
+            4-5\left(\frac{2}{\sqrt{4}}\right) \\
+                10-3
+            \end{bmatrix}=\begin{bmatrix}
+                1 \\
+            -1  \\
+                7
+            \end{bmatrix}
+        \end{align*}
+        \end{sol}
+
+        \item The angle between $\mathbf{A}$ and $\mathbf{B}$ at $P$
+        \begin{sol}
+            Por la propiedad: 
+            \begin{align*}
+                \mathbf{A}\cdot \mathbf{B} &= |A||B|\cos\theta_{AB}\\
+                \arccos\left(\frac{\mathbf{A}\cdot \mathbf{B}}{|A||B|}\right) &=\theta_{AB}
+            \end{align*}
+            Considerando, $B=(-1,-5,-3)$ tenemos: 
+            \begin{align*}
+                \theta_{AB} &= \arccos\left(\frac{\mathbf{A}\cdot \mathbf{B}}{|A||B|}\right)\\
+                &=\arccos\left(\frac{(2,4,10)\cdot (-1,-5,-3)}{|(2,4,10)||(-1,-5,-3)|}\right)\\
+                &= \arccos\left(\frac{-2-20-30}{\sqrt{2^2+4^2+10^2}\sqrt{1^2+5^2+3^2}}\right)\\
+                &= \arccos\left(\frac{-52}{\sqrt{120}\sqrt{35}}\right)\\
+                &= 143.4^\circ 
+            \end{align*}
+        \end{sol}
+        
+        \item The scalar component of $\mathbf{A}$ along $\mathbf{B}$ at $P$
+        \begin{sol}
+            Sea 
+            \begin{align*}
+                A_B &= A\cdot \mathbf{a}_B\\
+                 &= (2,4,10)\cdot\frac{(-1,-5,-3)}{|(-1,-5,-3)|}\\
+                  &= (2,4,10)\cdot\frac{(-1,-5,-3)}{\sqrt{35}}\\
+                  &= \frac{-2-20-30}{\sqrt{35}}\\
+                  &= \frac{-52}{\sqrt{35}}
+            \end{align*}
+        \end{sol}
+    \end{enumerate}
+
+\end{problema}
+
+
+\begin{problema}
+    Using the differential length $d l$, find the length of each of the following curves:
+
+    \begin{enumerate}
+        \item (a) $\rho=3, \pi / 4<\phi<\pi / 2, z=$ constant
+
+        \item (b) $r=1, \theta=30^{\circ}, 0<\phi<60^{\circ}$
+        
+        \item (c) $r=4,30^{\circ}<\theta<90^{\circ}, \phi=$ constant
+    \end{enumerate}
+
+        \end{problema}
+
+
+
+\begin{problema}
+    Calculate the areas of the following surfaces using the differential surface area $d S$ :
+
+    \begin{enumerate}
+        \item (a) $\rho=2,0<z<5, \pi / 3<\phi<\pi / 2$
+        \item (b) $z=1,1<\rho<3,0<\phi<\pi / 4$
+        \item (c) $r=10, \pi / 4<\theta<2 \pi / 3,0<\phi<2 \pi$
+        \item (d) $0<r<4,60^{\circ}<\theta<90^{\circ}$, $\phi=$ constant
+        
+    \end{enumerate}
+
+\end{problema}
+
+\begin{problema}
+    If
+
+$$
+\mathbf{H}=(x-y) \mathbf{a}_{x}+\left(x^{2}+z y\right) \mathrm{a}_{y}+5 y z \mathrm{a}_{z}
+$$
+
+evaluate $\int H \cdot d$ I along the contour of Figure $3.28$.
+\begin{center}
+    \includegraphics[scale=0.4]{Problemas/2023_02_02_45325701d3410451223eg-3.jpg}
+    \end{center}
+
+\end{problema}
+
+\begin{problema}
+    
+
+    Find the gradient of the these scalar fields:
+    \begin{enumerate}
+        \item (a) $U=4 x z^{2}+3 y z$
+        \item (b) $W=2 \rho\left(z^{2}+1\right) \cos \phi$
+        \item (c) $H=r^{2} \cos \theta \cos \phi$
+    \end{enumerate}
+
+\end{problema}
+
+\begin{problema}
+    The temperature in an auditorium is given by $T=x^{2}+y^{2}-z$. A mosquito located at $(1,1,2)$ in the auditorium desires to lly in such a direction that it will get warm as soon as possible. In what direction must it fly?
+\end{problema}
+
+\begin{problema}
+    Find the divergence and curl of the following vectors:
+    \begin{enumerate}
+        \item (a) $\mathbf{A}=e^{v y} \mathbf{a}_{x}+\sin x y \mathbf{a}_{y}+\cos ^{2} x z \mathbf{a}_{z}$
+        \item (b) $\mathbf{B}=\rho z^{2} \cos \phi \mathbf{a}_{p}+z \sin ^{2} \phi \mathbf{a}_{z}$
+        \item (c) $\mathbf{C}=r \cos \theta \mathrm{a}_{r}-\frac{1}{r} \sin \theta \mathrm{a}_{\theta}+2 r^{2} \sin \theta \mathrm{a}_{\phi}$ 
+    \end{enumerate}
+    
+\end{problema}
+
+\begin{problema}
+
+Verify the divergence theorem
+
+$$
+\oint_{S} \mathbf{A} \cdot d \mathbf{S}=\int_{v} \nabla \cdot \mathbf{A} d v
+$$
+
+for each of the following cases:
+
+\begin{enumerate}
+    \item (a) $\mathbf{A}=x y^{2} \mathbf{a}_{x}+y^{3} \mathbf{a}_{y}+y^{2} z \mathbf{a}_{z}$ and $S$ is the surface of the cuboid defined by $0<x<1$, $0<y<1,0<z<1$
+
+    \item (b) $\mathbf{A}=2 \rho z \mathbf{a}_{\rho}+3 z \sin \phi \mathbf{a}_{\phi}-4 \rho \cos \phi \mathbf{a}_{z}$ and $S$ is the surface of the wedge $0<\rho<2$, $0<\phi<45^{\circ}, 0<z<5$
+    
+    \item (c) $\mathbf{A}=r^{2} \mathbf{a}_{r}+r \sin \theta \cos \phi \mathbf{a}_{\theta}$ and $S$ is the surface of a quarter of a sphere defined by $0<r<3,0<\phi<\pi / 2,0<\theta<\pi / 2$
+    
+\end{enumerate}
+
+\end{problema}
+
+\begin{problema}
+    Given that $\mathbf{F}=x^{2} y \mathbf{a}_{x}-y \mathbf{a}_{y}$, find
+
+    \begin{enumerate}
+        \item (a) $\oint_{L} \mathrm{~F} \cdot d \mathrm{l}$ where $L$ is shown in Figure $3.29$.
+
+        \item (b) $\int_{S}(\nabla \times \mathbf{I}) \cdot d S$ where $S$ is the area bounded by $L$.
+        
+        \item (c) Is Stokes's theorem satisfied?
+    \end{enumerate}
+
+
+
+\begin{center}
+\includegraphics[scale=0.4]{Problemas/2023_02_02_45325701d3410451223eg-5}
+\end{center}
+\end{problema}
+
+\begin{problema}
+
+Given the vector field
+
+$$
+\mathbf{G}=(16 x y-z) \mathrm{a}_{x}+8 x^{2} \mathrm{a}_{y}-x \mathrm{a}_{z}
+$$
+Assume anticlockwise direction.
+
+\begin{enumerate}
+    \item (a) Is $\mathbf{G}$ irrotational (or conservative)?
+
+    \item (b) Find the net flux of $\mathbf{G}$ over the cube $0<x, y, z<1$.
+    
+    \item (c) Determine the circulation of $\mathbf{G}$ around the edge of the square $z=0,0<x, y<1$.
+\end{enumerate}
+
+
+
+\end{problema}
+%---------------------------
+%\bibliographystyle{apa}
+%\bibliography{referencias.bib}
+
+\end{document}

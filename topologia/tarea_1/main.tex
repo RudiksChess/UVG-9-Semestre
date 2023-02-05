@@ -1,0 +1,233 @@
+\input{Configuraciones/paquetes}
+
+%--------------------------
+
+\begin{document}
+\input{Configuraciones/nombres}
+%--------------------------
+
+\begin{problema}[Problema 1]
+    .
+    \begin{enumerate}
+        \item Si $A \subset X$, demuestre que la familia de todos los subconjuntos de $X$ que contienen a $A$, junto con el conjunto vacío $\varnothing$, es una topología sobre $X$.
+  
+        \begin{dem}
+            Sabemos que $A\subset X$. Sea $\tau$ la familia de todos los subconjuntos de $X$ que contienen a $A$, junto con el conjunto vacío $\varnothing$, definido como: 
+            $$\tau = \{G\subset X| A\subset G\}\cup \{\varnothing\}$$
+            Debemos comprobar que es una topología, entonces se deberán probar las tres propiedades, sea $i\in I$: 
+            \begin{itemize}
+                \item $\varnothing\in \tau$, por la definición de $\tau$. $X\in \tau$, ya que $A\subset X$.
+                \item Como $A\subset G_i\implies A\subset \bigcup G_i$, como $G_i\subset X\implies \bigcup_i G_i\in \tau$.
+                \item Como $A\subset G_i\implies A\subset \bigcap G_i$, como $G_i\subset X\implies \bigcap_i G_i\in \tau$.
+            \end{itemize}
+            Por lo tanto, $\tau$ es una topología.
+        \end{dem}
+        \item ¿Qué topología resulta cuando $A=\varnothing$ ?
+        \begin{sol}
+            Es decir que todos los subconjuntos de $X$ pertenecen a $\tau$, es decir el potencia. Por lo tanto, sería la topología discreta. 
+        \end{sol}      
+        \item ¿Y cuando $A=X$ ?
+        \begin{sol}
+            Sería la topología indiscreta, ya que el conjunto sería $\{X,\varnothing\}$.
+        \end{sol} 
+    \end{enumerate}
+\end{problema}
+
+\begin{problema}
+    \begin{enumerate}
+        \item Pruebe la operación $A \mapsto A^0$, en un espacio topológico $X$ tiene las propiedades siguientes:
+        \begin{enumerate}
+            \item $A^0 \subset A$
+            \begin{dem}
+                Sea $x\in A^0\implies \exists G\ni x\in G\subseteq A\implies x\in A$. Por lo tanto, $A^0\subset A$.
+            \end{dem}
+            \item $\left(A^0\right)^0=A^0$
+            \begin{dem}
+                Por doble contención: 
+                \begin{itemize}
+                    \item Sea $x\in \left(A^0\right)^0\implies \exists G\ni G\subseteq A^0\implies x\in A^0$. Por lo tanto, $\left(A^0\right)^0\subseteq A^0$.
+                    \item Sea $A^0\subset A^0\implies A^0\subseteq (A^0)^0$.
+                \end{itemize}
+                Por lo tanto, $\left(A^0\right)^0=A^0$.
+            \end{dem}
+            \item $A^0 \cap B^0=(A \cap B)^0$
+            \begin{dem}
+                Por doble contención: 
+                \begin{itemize}
+                    \item Sea $(A\subseteq A\cap B\implies A^0\subseteq (A\cap B)^0)\wedge (B\subseteq A\cap B\implies B^0\subseteq (A\cap B)^0)$. Por lo tanto, $A^0 \cap B^0\subseteq(A \cap B)^0$.
+                    \item Sea $x\in (A \cap B)^0\implies \exists G\ni x\in G\subseteq A\cap B\implies (\exists G\ni x\in G\subseteq A)\wedge(\exists G\ni x\in G\subseteq B)\implies x\in A^0\cap B^0$. Por lo tanto, $A^0 \cap B^0\supseteq (A \cap B)^0$.
+                \end{itemize}
+                Por lo tanto, $A^0 \cap B^0=(A \cap B)^0$.
+            \end{dem}
+            \item $X^0=X$
+            \begin{dem}
+                Por doble contención: 
+                \begin{itemize}
+                    \item Sea $x\in X^0\implies \exists G\ni x\in G\subseteq X\implies x\in X\implies X^0\subseteq X$.
+                    \item Sea $x\in X\implies \exists X\ni x\in X\subseteq X\implies x\in X^0\implies X\subseteq X^0$.
+                \end{itemize}
+                Por lo tanto, $X^0=X$.
+            \end{dem}
+            \item $G$ es abierto ssi $G^0=G$
+            \begin{dem}
+                Por doble contención: 
+                \begin{itemize}
+                    \item Si $G$ es abierto $\implies G\in \tau \ni$
+                    \begin{itemize}
+                        \item $x\in G^0\implies \exists H\ni x\in H\subseteq G\implies x\in G\implies G^0\subseteq G$.
+                        \item $x\in G\implies\exists G\ni x\in G\subseteq G\implies x\in G^0$. 
+                    \end{itemize}
+                    \item Como $G^0=G$, $G$ debe ser abierto por definición de interior. 
+                \end{itemize}
+                Por lo tanto, $G$ es abierto ssi $G^0=G$.
+            \end{dem}
+        \end{enumerate}
+
+        \item Conversamente, demuestre que si $X$ es un conjunto, cualquier mapeo de $\mathcal{P}(X)$ en $\mathcal{P}(X)$, tal que $A \mapsto A^0$ y que satisface de las propiedades a), b), c) y d), y si los conjuntos abiertos se definen en $X$ mediante e), entonces el resultado es una topología sobre $X$ en la cual el interior de un conjunto $A \subset X$ es $A^0$.
+        \begin{dem}
+            Sea $^0:\mathcal{P}(X)\to \mathcal{P}(X)\ni A^0=A$. Dicha función cumple con las propiedades a,b,c,d y los conjuntos abiertos en $X$ se definen por e. Sea entonces 
+            $$\tau=\{A\subset X| A^0=A\}$$
+
+            A probar: Las 3 propiedades para que $\tau$ sea topología. Sea $i\in I$, tal que:
+
+            \begin{itemize}
+                \item Por la propiedad d, $X\in \tau$. Por la propiedad a, $\varnothing^0\subseteq\varnothing$ y el vacío siempre está contenido en cualquier conjunto, entonces $\varnothing^0=\varnothing$, entonces $\varnothing\in \tau$.
+                \item Sean $A_1,A_2\in \tau$. A probar: $A_1\cap A_2 \in \tau $. Sea
+                \begin{align*}
+                    (A_1\cap A_2)^0 = (A_1)^0\cap (A_2)^0 = A_1\cap A_2\in \tau
+                \end{align*}
+                
+                \item A probar: $\left(\bigcup A_i\right)^0 = \bigcup A_i\implies\bigcup A_i\in \tau $. Por doble contención: 
+                \begin{itemize}
+                    \item Por propiedad a, 
+                    $$\left(\bigcup A_i\right)^0 \subseteq \bigcup A_i$$
+                    \item Sea 
+                    \begin{align*}
+                        \bigcup A_i\subseteq \bigcup (A_i)^0\subseteq \left(\bigcup A_i\right)^0 
+                    \end{align*}
+                    Por lo tanto, $\left(\bigcup A_i\right)^0 = \bigcup A_i$
+                \end{itemize}
+                Por lo tanto, $\tau$ es topología. 
+            \end{itemize}
+        \end{dem}
+    \end{enumerate}
+
+
+\end{problema}
+
+\begin{problema}
+    Pruebe que las topologías sobre un conjunto fijo $X$, parcialmente ordenadas por la inclusión, forman un retículo.
+(Ayuda: Ver problema $3 \mathrm{G}$ de Willard).
+\begin{dem}
+    A probar: dadas las topologías sobre un conjunto fijo $X$ ordenadas por $\subseteq$ forman un retículo. Ya que un retículo se caracteriza como cada conjunto de dos elementos tiene un supremo y un ínfimo, debemos comprobar ambas propiedades. Por hipótesis, sabemos que la inclusión define una relación de orden parcial sobre $M$ el conjunto de las topologías sobre un conjunto fijo $X$, tal que: 
+    \begin{itemize}
+        \item Sea $\tau\subseteq \tau,\forall \tau\in M$
+        \item Sea $\tau_1\subseteq \tau_2\wedge \tau_2\subseteq \tau_1\implies \tau_1=\tau_2$.
+        \item Sea $\tau_1\subseteq\tau_2\wedge \tau_2\subseteq\tau_3\implies \tau_1\subseteq \tau_3$.
+    \end{itemize}
+    Ahora, debemos comprobar las propiedades de ínfimo y supremo,
+    
+    \begin{itemize}
+        \item El supremo se define como el elemento más pequeño de $\{m\in M|b\subseteq m, \forall b\in B\}$. A probar: cada dos elementos de $M$ tiene un supremo. Sea $B=\{\tau_{b_1},\tau_{b_2}\}\in M$, en este caso, por el ejemplo de Willard sabemos que la unión de topologías no es topología, entonces, el supremo sería el potencia $\mathcal{X}$. 
+        
+        \item El ínfimo se define como el elemento más grande de $\{m\in M|m\subseteq b, \forall b\in B\}$. A probar: cada dos elementos de $M$ tiene ínfimo. Sea $B=\{\tau_{b_1},\tau_{b_2}\}\in M$, nótese que $\tau_{b_1}\subseteq \tau_{b_1}\cap \tau_{b_2}$ y $\tau_{b_2}\subseteq \tau_{b_1}\cap \tau_{b_2}$. Por lo tanto, $\tau_{b_2}\subseteq \tau_{b_1}\cap \tau_{b_2}$ es el ínfimo para cada dos elementos de $M$. 
+    \end{itemize}
+    Por lo tanto, $M$ es un retículo. 
+\end{dem}
+\end{problema}
+
+\begin{problema}
+    Un subconjunto abierto $G$ en un espacio topológico es regularmente abierto ssi $G$ es el interior de su cerradura. Un subconjunto cerrado es regularmente cerrado ssi es la cerradura de su interior. 
+    \begin{cajita}
+        Tenemos: 
+        \begin{itemize}
+            \item $A$ es regularmente abierto $\iff A= (\overline{A})^\circ$
+            \item $A$ es regularmente cerrado $\iff A= \overline{(A^\circ)}$
+        \end{itemize}
+    \end{cajita}
+    
+    Pruebe que:
+    \begin{enumerate}
+        \item El complemento de un conjunto regularmente abierto es regularmente cerrado y viceversa.
+        \begin{dem}
+            Tenemos: 
+            \begin{itemize}
+                \item Sea $A$ un conjunto regularmente abierto ($A=(\overline{A})^\circ$), sea $A^c$ el complemento. A probar: $A^c$ es regularmente cerrado ($A^c=\overline{(A^c)^0}$). Sea, 
+                \begin{align*}
+                    A^c = X-A = X-(\overline{A})^0=\overline{X-\overline{A}}=\overline{(X-A)^0}=\overline{(A^c)^\circ}.
+                \end{align*}
+                \item Sea $A$ un conjunto regularmente cerrado ($A= \overline{(A^\circ)}$), sea $A^c$ el complemento. A probar: $A^c$ es regularmente abierto ($A^c= (\overline{A^c})^\circ$). Sea, 
+                \begin{align*}
+                    A^c=X-A=X-\overline{(A^\circ)} =(X-A^0)^0=(\overline{X-A})^0= (\overline{A^c})^0.
+                \end{align*}
+            \end{itemize}
+        \end{dem}
+        \item Si $A$ es un subconjunto cualquiera de un espacio topológico, entonces $(\bar{A})^0$ es regularmente abierto.
+        \begin{dem}
+            A probar: $(\overline{A})^0=(\overline{(\overline{A})^0})^0$.  Por doble contención: 
+            \begin{itemize}
+                \item Sea $(\overline{A})^0\subseteq \overline{(\overline{A})^0} \implies((\overline{A})^0)^0\subseteq (\overline{(\overline{A})^0})^0$. Por lo tanto, $(\overline{A})^0\subseteq (\overline{(\overline{A})^0})^0$. 
+                \item Sea $\left(\overline{A}\right)^0\subseteq \overline{A}\implies (\overline{(\overline{A})^0})\subseteq \overline{\left(\overline{A}\right)}=\overline{A}$. Por lo tanto, $(\overline{(\overline{A})^0})^0 \subseteq (\overline{A})^0$.
+            \end{itemize}
+            Por lo tanto, $(\overline{A})^0=(\overline{(\overline{A})^0})^0$.
+        \end{dem}
+        \item La intersección de dos conjuntos regularmente abiertos es regularmente abierto. ¿Se cumple esta propiedad en el caso de la unión?
+        \begin{dem}
+            Sea $A$ y $B$ conjuntos regularmente abiertos. A probar: $A\cap B=\left(\overline{A\cap B}\right)^0$. Sea por doble contención, 
+            \begin{itemize}
+                \item Sea
+                \begin{align*}
+                    A\cap B &= (\overline{A})^\circ\cap (\overline{B})^\circ\\
+                            &= (\overline{A}\cap \overline{B})^0\\
+                            &= \left((\overline{A}\cap \overline{B})^0\right)^0\\
+                            &= \left((\overline{A})^0\cap (\overline{B})^0\right)^0\\
+                            &= \left(A\cap B\right)^0\\
+                            &\subseteq \left(\overline{A\cap B}\right)^0
+                \end{align*}
+                \item Sea
+                \begin{align*}
+                    \left(\overline{A\cap B}\right)^0 &\subseteq \left(\overline{A}\cap\overline{B}\right)^0\\
+                    &= (\overline{A})^0\cap (\overline{B})^0\\
+                    &= A\cap B
+                \end{align*}
+            \end{itemize}
+            Por lo tanto, $A\cap B=\left(\overline{A\cap B}\right)^0$.\bigbreak 
+            \begin{cajita}
+                Para el caso de la unión, se procede por contraejemplo: sean los abiertos $A=(2,72)$ y $B=(72,100)$ con la topología usual en $\mathbb{R}$. Para que cumpla la unión, debe cumplir: $A\cup B=\left(\overline{A\cup B}\right)^0$. Sea 
+            \begin{align*}
+                A\cup B = (2,100)/(72)
+            \end{align*}
+            Pero, 
+            \begin{align*}
+                \left(\overline{A\cup B}\right)^0 = \left([2,100]\right)^0 =(2,100)
+            \end{align*}
+
+            \end{cajita}
+            
+        \end{dem}
+    \end{enumerate}
+
+
+\end{problema}
+
+\begin{problema}
+    Demuestre que si $\mathcal{B}$ es una base para una topología sobre $X$, entonces la topología generada por $\mathcal{B}$ es igual a la intersección de todas las topologías sobre $X$ que contienen a $\mathcal{B}$.
+    \begin{dem}
+        Sea $F= \{\tau\text{ sobre } X |\mathcal{B}\subseteq \tau\}$. A probar: $\tau_\mathcal{B}=\bigcap_{i\in I} F_i$. Por doble contención: 
+        \begin{itemize}
+            \item A probar: $\bigcap_{i\in I} F_i\subseteq \tau_\mathcal{B}$. Tenemos que $\mathcal{B}\subseteq \tau_{\mathcal{B}}\implies \tau_{\mathcal{B}}\in F\implies \bigcap_{i\in I} F_i \subseteq \tau_\mathcal{B}$.
+            \item A probar: $\tau_\mathcal{B}\subseteq \bigcap_{i\in I} F_i$. Sea $A\in \tau_\mathcal{B}\implies $ por caracterización de base $A=\bigcup_k \mathcal{B}_k\implies A\subseteq \tau$. Entonces, tenemos que $\tau_\mathcal{B}\subseteq \tau\subseteq \bigcap_{i\in I} F_i\subseteq \tau_\mathcal{B}$.
+        \end{itemize}
+        Por lo tanto, $\tau_\mathcal{B}=\bigcap_{i\in I} F_i$.
+    \end{dem}
+\end{problema}
+
+
+
+
+
+%---------------------------
+%\bibliographystyle{apa}
+%\bibliography{referencias.bib}
+
+\end{document}

@@ -222,5 +222,183 @@
 \end{prop}
 
 \begin{prop}
-    $A\cup A'$ es cerrado. 
+    $A\cup A'$ es cerrado.
+    \begin{dem}
+        A probar: $(A\cup A')^c$ es abierto. Sea $x\in (A\cup A')^c\implies x\not\in A$ y $x\not\in A'\implies \exists G$ abierto $\ni G\cap A=\varnothing$. 
+        \begin{cajita}
+            Sea $G\cap A'=\varnothing$. Supóngase que $y\in G\cap A'\implies y \in G$ y $y\in A'\implies (G-\{y\})\cap A\neq 0(\to\gets)$
+        \end{cajita}
+        Por otra parte, $G\cap A'=\varnothing$. Entonces, 
+        \begin{align*}
+            G\cap (A\cup A') &= (G\cap A)\cup (G\cap A')\\
+            &= \varnothing \cup \varnothing\\
+            &= \varnothing
+        \end{align*}
+        $\implies G\subset (A\cup A')^c\implies (A\cup A')^c$ es abierto $\implies A\cup A'$ es cerrado. 
+    \end{dem}
 \end{prop}
+
+
+\begin{prop}
+    $\overline{A}=A\cup A'$
+    \begin{dem}
+        Sea \begin{itemize}
+            \item A probar $\overline{A}\subset A\cup A'\implies A\subset \underbrace{A}_{cerrado}\cup A'\implies A\subset \overline{A}\subset A\cup \overline{A}$.
+            \item A probar: $A\cup A'\subset \overline{A}$. Entonces $A\subset \overline{A}$, $A'\subset (\overline{A})'\subset \overline{A}$. Entonces $A\subset\overline{A}$ y $\overline{A}\subset \overline{A}$, entonces $A\cup A'\subset \overline{A}$.
+        \end{itemize}
+    \end{dem}
+\end{prop}
+
+
+\begin{prop}
+    Si $A\subset B\implies \overline{A}\subset \overline{B}$.
+    \begin{dem}
+        $A\subset B\implies A'\subset B'\implies A\cup A'\subset B\cup B'\implies \overline{A}\subset \overline{B}$. 
+    \end{dem}
+\end{prop}
+
+\begin{prop}
+    $\overline{A\cup B}=\underbrace{\overline{A}\cup \overline{B}}_{cerrado}$
+    \begin{dem}
+        \begin{itemize}
+            \item Sabemos que $A\cup B\subset \overline{A}\cup \overline{B}\implies A\cup \subset \overline{A\cup B}\subset \overline{A}\cup \overline{B}.$
+            \item $A\subset A\cup B\implies \overline{A}\subset \overline{A\cup B}$ y $B\subset A\cup B\implies \overline{B}\subset \overline{A\cup B}$. Entones $\overline{A}\cup\overline{B}\subset \overline{A\cup B}$
+        \end{itemize}
+    \end{dem}
+\end{prop}
+
+\begin{teorema}
+    Sea \begin{enumerate}
+        \item $\overline{\varnothing}=\varnothing$
+        \item $A\subset \overline{A}$
+        \item $\overline{A\cup B}=\overline{A}\cup \overline{B}$
+        \item $\overline{\overline{A}}=\overline{A}$
+    \end{enumerate}
+
+
+    \begin{dem}
+        \begin{enumerate}
+            \item Como $\varnothing$ es cerraddo entonces $\overline{\varnothing}=\varnothing$
+            \item $A\subset \overline{A}$, por la cerradura. 
+            \item $\overline{A\cup B}=\overline{A}\cup \overline{B}$, por propiedad anterior. 
+            \item Como $\overline{A}$ es cerrado, entonces $\overline{\overline{A}}=\overline{A}$.
+        \end{enumerate}
+    \end{dem}
+    
+\end{teorema}
+
+\begin{definicion}
+    \begin{enumerate}
+        \item Un punto $P$ de $X$ es interior de $A\subseteq X$, si existe un abierto $G\ni$
+        $$p\in G\subset A$$
+        \item El interior de $A$, denotado $\int(A)$ o $A^{\circ}$, es el conjunto de todos los puntos interiores de $A$. 
+    \end{enumerate}
+    
+\end{definicion}
+\begin{definicion}
+    Un punto frontera de $A\subset X$ es un punto tal que, cada vecindad del punto intersecta a $A$ y $A^c$.
+\end{definicion}
+
+ 
+\section{Bases y subases de una topología}
+
+\begin{definicion}
+    Una base $\beta$ (abierta) para el espacio topológico $(X,\tau)$ es una clase de abiertos de $X$ tal que cada abierto en $\tau$ puede escribirse como uniones de los miembros de la clase. 
+\end{definicion}
+
+\begin{ejemplo}
+    Sea $(X,\tau)$ un espacio discreto. Entonces $\beta = \{\{x\}:x\in X\}$ es una base para $\tau$
+\end{ejemplo}
+
+\begin{cajita}
+    \begin{nota}
+        \begin{enumerate}
+            \item Si cada $G\in \tau$ puede representarse como $G=\bigcup_iB_i$, donde $B_i\in \beta\implies$ para cada $x\in G\implies x\in B_{i_0},$ (miembro de la unión) para algún $i_0$. $\implies x\in B_{i_0}\subseteq \bigcup_i B_i=G$
+        \end{enumerate}
+    \end{nota}
+\end{cajita}
+
+\begin{definicion}
+    Sea $(X,\tau)$ un espacio topológico. Una subclase $S$ de abiertos en $\tau$ es una subbase de la topología $\tau$, si las intersecciones finitas de miembros de $S$ producen una base $\tau$. 
+\end{definicion}
+
+\begin{ejemplo}
+    \begin{enumerate}
+        \item Sean $a,b\in\mathbb{R}\ni a<b$. Nótese que 
+        $$(a,b)\subseteq \mathbb{R}$$
+        \item ejemplo 2
+        \item Sea $a=\{\{a\}\}$, entonces $\beta=\{\{a\},X\}\implies \tau=\{X,\varnothing,\{a\}\}$
+        \item $a=\{\varnothing\}\implies \beta=\{X,\varnothing\}\implies \tau=\{X,\varnothing\}$
+    \end{enumerate}
+    
+\end{ejemplo}
+
+
+\begin{ejemplo}
+    Sean $(a_1,b_1)$ y $(a_2,b_2)$ intervalos abiertos y acotados de $\mathbb{R}\implies$
+
+    \begin{align}
+        (a_1,b_1)\times (a_2,b_2)\left\{(x,y)\in \mathbb{R}^2,a_1<x<b_1,a_2<y<b_2\right\}
+    \end{align}
+\end{ejemplo}
+
+\begin{teorema}
+    Sea $X$ cualquier conjunto no vacío y sea $S$ una clase arbitraria de subconjuntos de $X$. Entonces, $S$ puede constituirse en la subbase para una topología abierta para una topología sobre $X$ en el sentido que las intersecciones finitas de los miembros de $S$ producen una base para dicha topología. 
+\end{teorema}
+
+\begin{teorema}
+    Sea $X\neq \varnothing$ y sea $S$ una clase arbitraria de subconjunto de $X$. Entonces, $S$ puede servir como subbase abierta de una topología sobre $X$ en el sentido que la clase $\tau$ de todas las uniones de intersecciones finitas en $S$ es una topogía. 
+    \begin{dem}
+        Tenemos:
+        \begin{enumerate}
+            \item $S=\varnothing\implies \beta =\{X\}\implies \tau=\{X,\varnothing\}$ es la topología indiscreta.
+            \item $S\neq \varnothing$l. A probar: $\tau$ es topología. 
+            \begin{enumerate}
+                \item $\varnothing, X\in \tau $
+                \item $\{G_i\}_{i\in I}$ una subclase arbitraria de $\tau$. A probar: $\bigcup_i G_i\in \tau$. Cada $G_i$ es unión de intersecciones finitas de miembros de $S$. Entonces, $\bigcup_i G_i$ es unión de uniones de intersecciones finitas de miembros de $S \implies \bigcup_i G_i\in \tau$. 
+                \item Sea $G_1,G_2\in \tau$. A probar $G_1\cap G_2\in \tau$. $G_1\cap G_2$ es unión de intersecciones finitas de miembros de $S$. 
+            \end{enumerate}
+        \end{enumerate}
+    \end{dem}
+    \begin{lema}
+        Si $S$ es subbase de las topologías $\tau$ y $\tau^*$ sobre $X$ $\implies \tau = \tau^*$ 
+        \begin{dem}
+            A probar: $\tau\subseteq \tau^*$. Sea $G\in \tau\implies$ Como $S$ es subbase de $\tau\implies$ 
+            $$G=\bigcup_i\left(S_{i_1}\cap S_{i_2}\cdots \cap S_{i_{n_i}}\right), S_{i_k}\in S$$ 
+            Sabemos que $S$ genera a $\tau^* (S\subset \tau^*)\implies S_{i_1}\cap S_{i_2}\cdots \cap S_{i_{n_i}}\in \tau^*\implies G=\bigcup_i\left(S_{i_1}\cap S_{i_2}\cdots \cap S_{i_{n_i}}\right)\in \tau^*\implies \tau\subset \tau^* $. De forma similar, se tiene que $\tau^*\subset \tau$. 
+        \end{dem}
+    \end{lema}
+\end{teorema}
+
+\begin{teorema}
+    Sea $X$ un subconjunto no vacío y sea $S$ una clase de subconjuntos de $X$. La topología $\tau$ sobre $X$, generada por $S$, es la intersección de todas las topologías sobre $X$ que contienen a $S$. 
+    \begin{dem}
+        Sea $\tau^*=\bigcap_i\tau_i$, donde cada $\tau_i$ es una topología sobre $X$ que contiene a $S$. A probar: $\tau=\tau^*$
+
+        \begin{itemize}
+            \item $(\supseteq)$ Como $S$ genera a $\tau\implies S\subset \tau\implies \tau^*\subset\tau $
+            \item $(\subseteq)$. Sea $G\in\tau\implies G=\bigcup_i\left(S_{i_1}\cap S_{i_2}\cdots \cap S_{i_{n_i}}\right), S_{i_k}\in S$. Como $S\subseteq \tau^*\implies S_{i_k}\in\tau^*\implies G\in \tau^*$ 
+        \end{itemize}
+    \end{dem}
+\end{teorema}
+\begin{cajita}
+    ¿Cuándo es útil una base para una topología?
+    \begin{itemize}
+        \item Simplificación en cardinalidad.
+    \end{itemize}
+\end{cajita}
+
+\begin{definicion}
+    Un espacio topológico que tiene una base contable es un espacio segundo contable. 
+\end{definicion}
+
+\begin{teorema}[de Lindelof]
+    Sea $X$ un espacio vacío no contable. Si un abierto de $G$ de $X$ se puede representar como unión de una clase $\{G_i\}$ de abierto de $X\implies G$ puede representarse como unión contable de los $G_i$. 
+    \begin{dem}
+        \begin{enumerate}
+            \item Sea $G$ un abierto no vació de $X\ni G=\bigcup_i G_i$. Como $X$ es segundo contable, entonces $X$ tiene una base contable $\beta\implies $ cada $G_i$ es unión contable de los elementos de $\beta\implies G$  falla. 
+            \item Sea $G=\bigcup_i G_i,G\in\tau,G\neq \varnothing$. Como $X$ es segundo contable $\implies G$ es unión contable de miembros de $\beta=\{\beta_j\}$ además los $G_i$, por ser abiertos, son únicos de $\beta_j\implies$ como por cada $\beta_i\exists G_i^*\ni B_i\subseteq G_i^*\implies G=\bigcup_i \beta_i=\bigcup_i G_i^*\subseteq$. 
+        \end{enumerate}
+        
+    \end{dem}
+\end{teorema}
