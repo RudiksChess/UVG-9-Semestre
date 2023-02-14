@@ -605,11 +605,33 @@ Express the following vectors in Cartesian coordinates:
     Using the differential length $d l$, find the length of each of the following curves:
 
     \begin{enumerate}
-        \item (a) $\rho=3, \pi / 4<\phi<\pi / 2, z=$ constant
+        \item $\rho=3, \pi / 4<\phi<\pi / 2, z=$ constant
+        \begin{sol}
+            Sea 
+            \begin{align*}
+                dl &= \rho d\phi\\
+                l & = 3\int_{\pi/4}^{\pi/2}d\phi = 3\left[\frac{\pi}{2}-\frac{\pi}{4}\right]=\frac{3\pi}{4}
+            \end{align*}
+        \end{sol}
 
-        \item (b) $r=1, \theta=30^{\circ}, 0<\phi<60^{\circ}$
+        \item $r=1, \theta=30^{\circ}, 0<\phi<60^{\circ}$
+        \begin{sol}
+            Sea
+            \begin{align*}
+                dl &= r\sin\theta d\phi\\
+                l &= r\sin\theta \int_0^{60^\circ}d\phi = r\sin\theta(60^\circ - 0)=1\sin 30^\circ(60^\circ)=
+                \frac{1}{2}\left(\frac{\pi}{3}\right)=\frac{\pi}{6}
+            \end{align*}
+        \end{sol}
         
-        \item (c) $r=4,30^{\circ}<\theta<90^{\circ}, \phi=$ constant
+        \item $r=4,30^{\circ}<\theta<90^{\circ}, \phi=$ constant
+        \begin{sol}
+            Sea 
+            \begin{align*}
+                dl &= rd\theta\\
+                l &= 4\int_{30^\circ}^{90^\circ}d\theta=4(90^\circ -30^\circ)=4(60^\circ)= \frac{4\pi}{3}
+            \end{align*}
+        \end{sol}
     \end{enumerate}
 
         \end{problema}
@@ -620,11 +642,44 @@ Express the following vectors in Cartesian coordinates:
     Calculate the areas of the following surfaces using the differential surface area $d S$ :
 
     \begin{enumerate}
-        \item (a) $\rho=2,0<z<5, \pi / 3<\phi<\pi / 2$
-        \item (b) $z=1,1<\rho<3,0<\phi<\pi / 4$
-        \item (c) $r=10, \pi / 4<\theta<2 \pi / 3,0<\phi<2 \pi$
-        \item (d) $0<r<4,60^{\circ}<\theta<90^{\circ}$, $\phi=$ constant
-        
+        \item $\rho=2,0<z<5, \pi / 3<\phi<\pi / 2$
+        \begin{sol}
+            Sea 
+            \begin{align*}
+                dS &= \rho d\phi dz\\
+                S &= 2 \int_{\pi/3}^{\pi/2}d\phi \int_0^5dz = 2\left(\pi/2-\pi/3\right)(5-0)=\frac{10\pi}{6}
+            \end{align*}
+        \end{sol}
+        \item $z=1,1<\rho<3,0<\phi<\pi / 4$
+        \begin{sol}
+            Sea
+            \begin{align*}
+                dS &= \rho d\phi d\rho\\
+                S &= \int_1^3\rho d\rho\int_0^{\pi/4} d\phi= \frac{\rho^2}{2}\Big|_1^3(\pi/4)= \left(\frac{9}{2}-\frac{1}{2}\right)\frac{\pi}{4}=\pi 
+            \end{align*}
+        \end{sol}
+        \item $r=10, \pi / 4<\theta<2 \pi / 3,0<\phi<2 \pi$
+        \begin{sol}
+            Sea 
+            \begin{align*}
+                dS &= r^2\sin\theta d\theta d\phi\\
+                    &= r^2 \int_{\pi/4}^{2\pi/3}\sin \theta d\theta\int_0^{2\pi}d\phi\\
+                    &= -100(\cos\left(2\pi/3\right)-\cos\left(\pi/4\right))(2\pi -0)\\
+                    &= -200\pi\left(-\frac{1}{2}(1+\sqrt{2})\right)\\
+                    &=100\pi(1+\sqrt{2})
+            \end{align*}
+        \end{sol}
+        \item  $0<r<4,60^{\circ}<\theta<90^{\circ}$, $\phi=$ constant
+        \begin{sol}
+            Sea
+            \begin{align*}
+                dS &= rdrd\theta\\
+                    &=\int_0^4 r dr \int_{60^\circ}^{90^\circ}d\theta\\
+                    &= \frac{1}{2}(4^2-0^2)(30^\circ)\\
+                    &= 8\left(\frac{\pi}{6}\right)\\
+                    &= \frac{4\pi}{3}
+            \end{align*}
+        \end{sol}
     \end{enumerate}
 
 \end{problema}
@@ -636,11 +691,29 @@ $$
 \mathbf{H}=(x-y) \mathbf{a}_{x}+\left(x^{2}+z y\right) \mathrm{a}_{y}+5 y z \mathrm{a}_{z}
 $$
 
-evaluate $\int H \cdot d$ I along the contour of Figure $3.28$.
+evaluate $\int H \cdot d l$ along the contour of Figure $3.28$.
 \begin{center}
     \includegraphics[scale=0.4]{Problemas/2023_02_02_45325701d3410451223eg-3.jpg}
     \end{center}
-
+    \begin{sol}
+        Sea
+        \begin{align*}
+            \int \mathbf{H}\cdot d l &=\left(\int_1+\int_2+\int_3\right)(x-y, x^2+zy,5yz)\cdot dl\\
+            \begin{split}
+                & = \int_1(x-y, x^2+zy,5yz)\cdot (dx,0,0)+\int_2(x-y, x^2+zy,5yz)\cdot (0,0,dz)+\\
+                &+\int_3(x-y, x^2+zy,5yz)\cdot (0,dy,dz)
+            \end{split}\\
+            \begin{split}
+                & = \int_1(x-y)dx+\int_2(5yz)dz+\int_3( (x^2+zy)dy+5yz dz)
+            \end{split}\\
+            &= \int_1^0(x-y)dx+5y\int_0^1zdz+\int_0^2( (x^2+zy)dy+5yz dz)\\
+            &= \int_1^0(x-0)dx+5*0\int_0^1zdz+\int_0^2( (0^2+zy)dy+5yz dz)\\
+            &=\int_1^0xdx+\int_0^2\left(-\frac{y}{2}+1\right)ydy+5\int_{0}^2(y)\left(-\frac{y}{2}+1\right) \left(-\frac{dy}{2}\right)\\
+            &= \int_1^0xdx+\int_0^2\left(-\frac{y^2}{2}+y\right)dy-\frac{5}{2}\int\left(-\frac{y^2}{2}+y\right) dy\\
+            &= 1/2 -2/3 -5/2(-2/3)\\
+            &= 3/2
+        \end{align*}
+    \end{sol}
 \end{problema}
 
 \begin{problema}
@@ -648,23 +721,106 @@ evaluate $\int H \cdot d$ I along the contour of Figure $3.28$.
 
     Find the gradient of the these scalar fields:
     \begin{enumerate}
-        \item (a) $U=4 x z^{2}+3 y z$
-        \item (b) $W=2 \rho\left(z^{2}+1\right) \cos \phi$
-        \item (c) $H=r^{2} \cos \theta \cos \phi$
+        \item $U=4 x z^{2}+3 y z$
+        \begin{sol}
+            Sea
+            \begin{align*}
+                \nabla &= \left(\frac{\partial U}{\partial x},\frac{\partial U}{\partial y},\frac{\partial U}{\partial z}\right)\\
+                &= \left(4z^2, 3z,8xz+3y\right)
+            \end{align*}
+        \end{sol}
+        \item $W=2 \rho\left(z^{2}+1\right) \cos \phi$
+        \begin{sol}
+            Sea
+            \begin{align*}
+                \nabla &= \left(\frac{\partial W}{\partial \rho},\frac{1}{\rho }\frac{\partial W}{\partial \phi },\frac{\partial W}{\partial z}\right)\\
+                &= \left(2\left(z^{2}+1\right) \cos \phi, -2 \left(z^{2}+1\right) \sin\phi,z\right)
+            \end{align*}
+        \end{sol}
+        \item $H=r^{2} \cos \theta \cos \phi$
+        \begin{sol}
+            Sea
+            \begin{align*}
+                \nabla &= \left(\frac{\partial H}{\partial r},\frac{1}{r}\frac{\partial H}{\partial \theta},\frac{1}{r\sin \theta}\frac{\partial H}{\partial \phi}\right)\\
+                &= \left(2r \cos \theta \cos \phi,-r \sin \theta \cos \phi,-r \cot \theta \sin \phi\right)
+            \end{align*}
+        \end{sol}
     \end{enumerate}
 
 \end{problema}
 
 \begin{problema}
-    The temperature in an auditorium is given by $T=x^{2}+y^{2}-z$. A mosquito located at $(1,1,2)$ in the auditorium desires to lly in such a direction that it will get warm as soon as possible. In what direction must it fly?
+    The temperature in an auditorium is given by $T=x^{2}+y^{2}-z$. A mosquito located at $(1,1,2)$ in the auditorium desires to fly in such a direction that it will get warm as soon as possible. In what direction must it fly?
+    \begin{sol}
+        Sea
+        \begin{align*}
+            \nabla &= \left(\frac{\partial T}{\partial x},\frac{\partial T}{\partial y},\frac{\partial T}{\partial z}\right)\\
+            &= \left(2x,2y,-1\right)
+        \end{align*}
+        Entonces, en el punto $(1,1,2)$, debe seguir el vector: 
+        $$\left(2,2,-1\right)$$
+    \end{sol}
 \end{problema}
 
 \begin{problema}
     Find the divergence and curl of the following vectors:
     \begin{enumerate}
-        \item (a) $\mathbf{A}=e^{v y} \mathbf{a}_{x}+\sin x y \mathbf{a}_{y}+\cos ^{2} x z \mathbf{a}_{z}$
-        \item (b) $\mathbf{B}=\rho z^{2} \cos \phi \mathbf{a}_{p}+z \sin ^{2} \phi \mathbf{a}_{z}$
-        \item (c) $\mathbf{C}=r \cos \theta \mathrm{a}_{r}-\frac{1}{r} \sin \theta \mathrm{a}_{\theta}+2 r^{2} \sin \theta \mathrm{a}_{\phi}$ 
+        \item $\mathbf{A}=e^{x y} \mathbf{a}_{x}+\sin x y \mathbf{a}_{y}+\cos ^{2} x z \mathbf{a}_{z}$
+        \begin{sol}
+            Sea  5
+            \begin{itemize}
+                \item Divergencia
+                \begin{align*}
+                    \nabla\cdot A &= \frac{\partial A_x}{\partial x}+\frac{\partial A_y}{\partial y}+\frac{\partial A_z}{\partial z}\\
+                    &= ye^{xy}+x\cos xy-2x\cos zx\sin zxs
+                \end{align*}
+                \item Rotor
+                \begin{align*}
+                    \nabla\times A &= \begin{aligned}
+                        {\left[\frac{\partial A_z}{\partial y}-\frac{\partial \mathrm{A}_y}{\partial z}\right] \mathbf{a}_x+\left[\frac{\partial A_x}{\partial z}-\frac{\partial \mathrm{A}_z}{\partial x}\right] \mathbf{a}_y}
+                        +\left[\frac{\partial A_y}{\partial x}-\frac{\partial \mathrm{A}_x}{\partial y}\right] \mathbf{a}_z
+                        \end{aligned}\\
+                        &= (0,z2\sin xz,y\cos xy-xe^{xy})
+                \end{align*}
+            \end{itemize}
+        \end{sol}
+        \item $\mathbf{B}=\rho z^{2} \cos \phi \mathbf{a}_{p}+z \sin ^{2} \phi \mathbf{a}_{z}$
+        \begin{sol}
+            Sea 
+            \begin{itemize}
+                \item Divergencia
+                \begin{align*}
+                    \nabla\cdot B &= \frac{1}{\rho} \frac{\partial}{\partial \rho}\left(\rho A_\rho\right)+\frac{1}{\rho} \frac{\partial A_\phi}{\partial \phi}+\frac{\partial A_z}{\partial z}\\
+                    &=2z^2\cos\phi +\sin^2\phi
+                \end{align*}
+                \item Rotor
+                \begin{align*}
+                    \nabla\times B &= \begin{aligned}
+                         {\left[\frac{1}{\rho} \frac{\partial A_z}{\partial \phi}-\frac{\partial A_\phi}{\partial z}\right] \mathbf{a}_\rho+\left[\frac{\partial A_\rho}{\partial z}-\frac{\partial A_z}{\partial \rho}\right] \mathbf{a}_\phi}
+                         +\frac{1}{\rho}\left[\frac{\partial\left(\rho A_\phi\right)}{\partial \rho}-\frac{\partial A_\rho}{\partial \phi}\right] \mathbf{a}_z
+                        \end{aligned}\\
+                        &= \left(\frac{z\sin 2\phi}{\rho},2\rho z\cos\phi,z^2\sin \phi\right)
+                \end{align*}
+            \end{itemize}
+        \end{sol}
+        \item $\mathbf{C}=r \cos \theta \mathbf{a}_{r}-\frac{1}{r} \sin \theta \mathbf{a}_{\theta}+2 r^{2} \sin \theta \mathbf{a}_{\phi}$ 
+        \begin{sol}
+            Sea 
+            \begin{itemize}
+                \item Divergencia
+                \begin{align*}
+                    \nabla\cdot C &= \frac{1}{r^2} \frac{\partial}{\partial r}\left(r^2 A_r\right)+\frac{1}{r \sin \theta} \frac{\partial}{\partial \theta}\left(A_\theta \sin \theta\right)+\frac{1}{r \sin \theta} \frac{\partial \mathrm{A}_\phi}{\partial \phi}\\
+                    &= 3\cos\theta-\frac{2\cos\theta}{r^2}
+                \end{align*}
+                \item Rotor
+                \begin{align*}
+                     \nabla\times C &=
+                         \frac{1}{r \sin \theta}\left[\frac{\partial\left(A_\phi \sin \theta\right)}{\partial \theta}-\frac{\partial A_\theta}{\partial \phi}\right] \mathbf{a}_r \\
+                        & +\frac{1}{r}\left[\frac{1}{\sin \theta} \frac{\partial A_r}{\partial \phi}-\frac{\partial\left(r A_\phi\right)}{\partial r}\right] \mathbf{a}_\theta+\frac{1}{r}\left[\frac{\partial\left(r A_\theta\right)}{\partial r}-\frac{\partial A_r}{\partial \theta}\right] \mathbf{a}_\phi\\
+                        &=\left(r\cos\theta,-6r\sin \theta,\sin\theta\right)
+                \end{align*}
+            \end{itemize}
+        \end{sol}
     \end{enumerate}
     
 \end{problema}
@@ -680,12 +836,88 @@ $$
 for each of the following cases:
 
 \begin{enumerate}
-    \item (a) $\mathbf{A}=x y^{2} \mathbf{a}_{x}+y^{3} \mathbf{a}_{y}+y^{2} z \mathbf{a}_{z}$ and $S$ is the surface of the cuboid defined by $0<x<1$, $0<y<1,0<z<1$
-
-    \item (b) $\mathbf{A}=2 \rho z \mathbf{a}_{\rho}+3 z \sin \phi \mathbf{a}_{\phi}-4 \rho \cos \phi \mathbf{a}_{z}$ and $S$ is the surface of the wedge $0<\rho<2$, $0<\phi<45^{\circ}, 0<z<5$
-    
-    \item (c) $\mathbf{A}=r^{2} \mathbf{a}_{r}+r \sin \theta \cos \phi \mathbf{a}_{\theta}$ and $S$ is the surface of a quarter of a sphere defined by $0<r<3,0<\phi<\pi / 2,0<\theta<\pi / 2$
-    
+    \item $\mathbf{A}=x y^{2} \mathbf{a}_{x}+y^{3} \mathbf{a}_{y}+y^{2} z \mathbf{a}_{z}$ and $S$ is the surface of the cuboid defined by $0<x<1$, $0<y<1,0<z<1$
+    \begin{sol}
+        Debemos comprobar los dos lados de la igualdad 
+        \begin{itemize}
+            \item Sea
+            \begin{align*}
+                \oint_{S} \mathbf{A} \cdot d \mathbf{S} &= \oint_{S}\left(xy^2,y^3,y^2z\right)\cdot\left(dydz,dxdz,dxdy\right)\\
+                &= \oint_{S}\left(xy^2dydz+y^3dxdz+y^2zdxdy\right)\\
+                &= \left(\iint_{x=0}+\iint_{x=1}+\iint_{y=0}+\iint_{y=1}+\iint_{z=0}+\iint_{z=1}\right)\\
+                &\ \ \ \  \left(xy^2dydz+y^3dxdz+y^2zdxdy\right)\\
+                &=x\int_0^1y^2dy \int_{0}^{1}dz+y^3\int_{0}^{1}dx\int_{0}^{1}dz+z\int_0^1y^2dy \int_{0}^{1}dx\\
+                &=(1)\left(\frac{(1)^3}{3}\right)+(1)^3+(1)\left(\frac{(1)^3}{3}\right)\\
+                &= \frac{1}{3}+1^3+\frac{1}{3} = \frac{5}{3}
+            \end{align*}
+            \item Sea 
+            \begin{align*}
+                \int_{v} \nabla \cdot \mathbf{A} d v &=\int_{v} \left(\frac{\partial A_x}{\partial x}+\frac{\partial A_y}{\partial y}+\frac{\partial A_z}{\partial z}\right)dv\\
+                &=\int_{v} \left(y^2+3y^2+y^2\right)dxdydz\\
+                &=\int_v\left(5y^2\right)dxdydz\\
+                &=\int_0^1\int_0^1\int_{0}^{1}\left(5y^2\right)dxdydz\\
+                &=\frac{5}{3}(1)^3=\frac{5}{3}
+            \end{align*}
+        \end{itemize}
+        Por lo tanto, se cumple el teorema de la divergencia.
+    \end{sol}
+    \item $\mathbf{A}=2 \rho z \mathbf{a}_{\rho}+3 z \sin \phi \mathbf{a}_{\phi}-4 \rho \cos \phi \mathbf{a}_{z}$ and $S$ is the surface of the wedge $0<\rho<2$, $0<\phi<45^{\circ}=\pi/4, 0<z<5$
+    \begin{sol}
+        Debemos comprobar los dos lados de la igualdad 
+        \begin{itemize}
+            \item Sea
+            \begin{align*}
+                \oint_{S} \mathbf{A} \cdot d \mathbf{S} &=\oint_{S} \left(2 \rho z ,+3 z \sin \phi ,-4 \rho \cos \phi\right)\cdot \left(\rho d\phi dz,d\rho dz, \rho d\phi d\rho\right)\\
+                &= \oint_{S} \left(2 \rho z\rho d\phi dz +3 z \sin \phi d\rho dz -4 \rho \cos \phi \rho d\phi d\rho\right)\\
+                &= \left(\iint_{\rho=0}+\iint_{\rho=2}+\iint_{\phi=0}+\iint_{\phi=\pi/4}+\iint_{z=0}+\iint_{z=5}\right)\\
+                & \ \ \ \ \left(2 \rho^2 z d\phi dz + 3 z \sin \phi d\rho dz -4 \rho^2 \cos \phi d\phi d\rho\right)\\
+                &=\iint_{\rho=2}2 \rho^2 z d\phi dz +\iint_{\phi=\pi/4} 3 z \sin \phi d\rho dz+\\
+                & \ \ \ \ \underbrace{-\iint_{z=0}-4 \rho^2 \cos \phi d\phi d\rho+\iint_{z=5}-4 \rho^2 \cos \phi d\phi d\rho}_{\text{se cancelan}}\\
+                &= 8\int_{0}^{\pi/4}d\phi \int_0^5 zdz+\frac{3}{\sqrt{2}}\int_{0}^{5}zdz \int_{0}^{2}d\rho \\
+                &= 8\left(\frac{\pi}{4}\right)\left(\frac{5^2}{2}\right)+\frac{3}{\sqrt{2}}\left(\frac{5^2}{2}\right)\left(2\right)\\
+                &=25\pi +\frac{75}{\sqrt{2}}
+            \end{align*}
+            \item Sea 
+            \begin{align*}
+                \int_{v} \nabla \cdot \mathbf{A} d v &=\int_v \left(\frac{1}{\rho} \frac{\partial}{\partial \rho}\left(\rho A_\rho\right)+\frac{1}{\rho} \frac{\partial A_\phi}{\partial \phi}+\frac{\partial A_z}{\partial z}\right)\rho d\rho d\phi dz\\
+                &=\int_v \left(\frac{1}{\rho} \frac{\partial}{\partial \rho}\left(2\rho^2z\right)+\frac{1}{\rho} \frac{\partial (3z\sin \phi)}{\partial \phi}+\frac{\partial (-4\rho \cos\phi)}{\partial z}\right)\rho d\rho d\phi dz\\
+                &= \int_v \left(4z+\frac{3z\cos\phi}{\rho}+0\right)\rho d\rho d\phi dz\\
+                &= \int_v \left(4\rho z+3z\cos\phi\right) d\rho d\phi dz\\
+                &= 4\int_{0}^{2}\rho d\rho\int_{0}^{\pi/4}d\phi  \int_0^5 zdz +3\int_{0}^{2}d\rho \int_{0}^{\pi/4}\cos\phi d\phi \int_0^5 zdz\\
+                &= 4\left(\frac{2^2}{2}\right)\left(\frac{\pi}{4}\right)\left(\frac{5^2}{2}\right)+3\left(2\right)\left(\sin\left(
+                    \frac{\pi}{4}
+                \right)\right)\left(\frac{5^2}{2}\right)\\
+                &= 25\pi +\frac{150}{2\sqrt{2}}
+            \end{align*}
+        \end{itemize}
+    \end{sol}
+    \item $\mathbf{A}=r^{2} \mathbf{a}_{r}+r \sin \theta \cos \phi \mathbf{a}_{\theta}$ and $S$ is the surface of a quarter of a sphere defined by $0<r<3,0<\phi<\pi / 2,0<\theta<\pi / 2$
+    \begin{sol}
+        Debemos comprobar los dos lados de la igualdad 
+        \begin{itemize}
+            \item Sea
+            \begin{align*}
+                \oint_{S} \mathbf{A} \cdot d \mathbf{S} &=\left(\iint_{r=0}+\iint_{r=3}+\iint_{\phi=0}+\iint_{\phi=\pi/2}+\iint_{\theta=0}+\iint_{\theta=\pi/2}\right)\\
+                & \ \ \ \ \left(r^2,r\sin\theta\cos\phi,0\right)\cdot (r^2\sin\theta d\theta d\phi,r\sin \theta drd\phi, rdrd\theta)\\
+                &= \iint_{r=3}r^4\sin\theta d\theta d\phi+\iint_{\theta=\pi/2}r^2\sin^2\theta\cos\phi drd\phi\\
+                &= 3^4\int_0^{\pi/2}\sin\theta d\theta\int_{0}^{\pi/2}d\phi+(1)^2\int_{0}^{3}r^2dr \int_{0}^{\pi/2}\cos\phi d\phi\\
+                &= 3^4(-\cos \frac{\pi}{2}+\cos 0)\left(\frac{\pi}{2}\right)+\frac{3^3}{3}\left(\sin\frac{\pi}{2}-\sin 0 \right)\\
+                &= \frac{81\pi}{2}+9
+            \end{align*}
+            \item Sea 
+            \begin{align*}
+                \int_{v} \nabla \cdot \mathbf{A} d v &=\int_v\left(\frac{1}{r^2}\frac{\partial}{\partial r}(r^2 A_r)+\frac{1}{r\sin\theta}\frac{\partial }{\partial \theta}(A_\theta \sin \theta)+\frac{1}{r\sin \theta}\frac{\partial A_\theta}{\partial \phi}\right)dv\\
+                &=\int_v\left(\frac{1}{r^2}\frac{\partial}{\partial r}(r^4)+\frac{1}{r\sin\theta}\frac{\partial }{\partial \theta}(r\sin^2 \theta\cos\phi)+\frac{1}{r\sin \theta}\frac{\partial (0)}{\partial \phi}\right)dv\\
+                &=\int_v\left(4r+\frac{r\cos\phi2\sin\theta \cos\theta}{r\sin\theta }\right)dv\\
+                &= \int_v\left(4r+2\cos\phi\cos\theta\right)r^2\sin\theta drd\theta d\phi\\
+                &= \int_{0}^{3}\int_{0}^{\pi/2}\int_{0}^{\pi/2}\left(4r^3\sin\theta +2r^2\cos\phi \cos\theta\sin\theta\right)drd\theta d\phi\\
+                &= 4\int_{0}^{3}r^3dr\int_{0}^{\pi/2}\sin\theta d\theta\int_{0}^{\pi/2}d\phi+2\int_{0}^{3}r^2dr\int_{0}^{\pi/2}\cos\theta\sin\theta d\theta\int_{0}^{\pi/2}\cos\phi d\phi\\
+                &= 4\left(\frac{3^4}{4}\right)\left(-\cos\frac{\pi}{2}+\cos 0\right)\left(\frac{\pi}{2}\right)+2\left(\frac{3^3}{3}\right)\left(\frac{1}{2}\right)\left(\sin\frac{\pi}{2}-\sin0\right)\\
+                &= 81\left(1\right)\left(\frac{\pi}{2}\right)+9\\
+                &=\frac{81\pi }{2}+9
+            \end{align*}
+        \end{itemize}
+    \end{sol}
 \end{enumerate}
 
 \end{problema}
@@ -694,11 +926,48 @@ for each of the following cases:
     Given that $\mathbf{F}=x^{2} y \mathbf{a}_{x}-y \mathbf{a}_{y}$, find
 
     \begin{enumerate}
-        \item (a) $\oint_{L} \mathrm{~F} \cdot d \mathrm{l}$ where $L$ is shown in Figure $3.29$.
+        \item $\oint_{L} \mathrm{F} \cdot d \mathrm{l}$ where $L$ is shown in Figure $3.29$.
+        \begin{sol}
+            Sea 
+            \begin{cajita}
+                Considerando: 
+                \begin{itemize}
+                    \item Para (1): $y=x\implies dy=dx$. 
+                    \item Para (2): $y=-x+2\implies dy=-dx$
+                    \item Para (3): $y=0\implies dy=0$
+                \end{itemize}
+            \end{cajita}
+            \begin{align*}
+                \oint_{L} \mathrm{F} \cdot d \mathrm{l} &= \oint_L \left(x^2y,-y,0\right)\cdot \left(dx,dy,dz\right)\\
+                &=\left(\int_1+\int_2+\int_3\right) \left(x^2ydx -ydy\right)\\
+                &= \int_1(x^2ydx -ydy) + \int_2(x^2ydx -ydy)+\int_3(x^2ydx -ydy)\\
+                &= \int_1(x^2(x)dx -xdx) + \int_2(x^2(-x+2)dx -(-x+2)(-dx))+0\\
+                &= \int_0^1(x^3-x)dx + \int_1^2\left(-x^3+2x^2 -x+2\right)dx\\
+                &= \frac{(1)^4}{4}-\frac{1^2}{2}+\left(\frac{17}{12}\right)\\
+                &= \frac{7}{6}
+            \end{align*}
+        \end{sol}
 
-        \item (b) $\int_{S}(\nabla \times \mathbf{I}) \cdot d S$ where $S$ is the area bounded by $L$.
-        
-        \item (c) Is Stokes's theorem satisfied?
+        \item $\int_{S}(\nabla \times \mathbf{F}) \cdot d S$ where $S$ is the area bounded by $L$.
+        \begin{sol}
+            Sea
+            \begin{align*}
+                \int_{S}(\nabla \times \mathbf{F}) \cdot d S &= \left(\iint_1+\iint_2+\iint_3\right)\\
+                & \ \ \ \left(\frac{\partial A_z}{\partial y}-\frac{\partial \mathrm{A}_y}{\partial z},\frac{\partial A_x}{\partial z}-\frac{\partial \mathrm{A}_z}{\partial x},
+                    \frac{\partial A_y}{\partial x}-\frac{\partial \mathrm{A}_x}{\partial y}\right) \cdot \left(dydx,dxdz,-dxdy\right)\\
+                    &=\left(\iint_1+\iint_2+\iint_3\right) \left(0-0,0-0,0-x^2\right) \cdot \left(dydx,dxdz,-dxdy\right)\\
+                    &=\left(\iint_1+\iint_2+\iint_3\right) \left(x^2dxdy\right)\\
+                    &=\iint_1\left(x^2dxdy\right) +\iint_2\left(x^2dxdy\right)+\iint_3\left(x^2dxdy\right)\\
+                    &=\int_0^1 x^2dx \int_{0}^{x} dy +\int_{1}^{2}x^2dx\int_{0}^{-x+2} dy+0\\
+                    &=\int_0^1 x^2(x)dx +\int_{1}^{2}x^2(-x+2)dx\\
+                    &=\frac{7}{6}
+            \end{align*}
+
+        \end{sol}
+        \item  Is Stokes's theorem satisfied?
+        \begin{sol}
+            Sí, se cumple la igualdad. 
+        \end{sol}
     \end{enumerate}
 
 
@@ -718,11 +987,39 @@ $$
 Assume anticlockwise direction.
 
 \begin{enumerate}
-    \item (a) Is $\mathbf{G}$ irrotational (or conservative)?
-
-    \item (b) Find the net flux of $\mathbf{G}$ over the cube $0<x, y, z<1$.
+    \item Is $\mathbf{G}$ irrotational (or conservative)?
+        \begin{sol}
+            Es necesario determinar si se cumple o no: $\nabla \times G=0$.
+            \begin{align*}
+                \nabla \times G &= \left(\frac{\partial A_z}{\partial y}-\frac{\partial \mathrm{A}_y}{\partial z},\frac{\partial A_x}{\partial z}-\frac{\partial \mathrm{A}_z}{\partial x},
+                \frac{\partial A_y}{\partial x}-\frac{\partial \mathrm{A}_x}{\partial y}\right)\\
+                &=(0,0,0)
+            \end{align*}
+            Entonces es irrotacional.
+        \end{sol}
+    \item Find the net flux of $\mathbf{G}$ over the cube $0<x, y, z<1$.
+    \begin{sol}
+        Sea 
+        \begin{align*}
+            \oint G \cdot d S&=\int \nabla \cdot G d v\\
+            &= \iiint 16 y d x d y d z=16 \int_0^1 d x \int_0^1 d z \int_0^1 y d y\\
+            &= 8
+        \end{align*}
+        
+    \end{sol}
     
-    \item (c) Determine the circulation of $\mathbf{G}$ around the edge of the square $z=0,0<x, y<1$.
+    \item Determine the circulation of $\mathbf{G}$ around the edge of the square $z=0,0<x, y<1$.
+    \begin{sol}
+        Sea
+        \begin{align*}
+            \oint G\cdot dl &=\left(\int_1 +\int_2 +\int_3 +\int_4\right)(16xy-z,8x^2,-x)\cdot (dx,dy,-dz)\\
+            &=\left(\int_{x=0,z=0} +\int_{y=1,z=0} +\int_{x=1,z=0} +\int_{y=0,z=0}\right)((16xy-z)dx+(8x^2)dy+xdz)\\
+            &=\int_{y=1,z=0}((16xy-z)dx+(8x^2)dy+xdz)\\ & \ \ +\int_{x=1,z=0}((16xy-z)dx+(8x^2)dy+xdz)\\
+            &= 16\int_0^1 xdx+8\int_1^0 dy\\
+            &= 16\left(\frac{1}{2}\right)-8\\
+            &= 0
+        \end{align*}
+    \end{sol}
 \end{enumerate}
 
 

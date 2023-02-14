@@ -332,7 +332,37 @@
     \end{enumerate}
     
 \end{ejemplo}
-
+\begin{teorema}
+    Los enunciados siguientes son equivalentes:
+    \begin{enumerate}
+        \item Una familia $\beta$ de subconjuntos abiertos del espacio topológico $(X,\tau)$ es una base para $\tau$, si cada abierto de $\tau$ es unión de miembros de $\beta$.
+        \item $\beta\subset \tau$ es una base para $\tau$ ssi $\forall G\in \tau,\forall p\in G\exists B_p\in \beta \ni p\in B_p\subset G$.
+    \end{enumerate}
+    \begin{dem}
+        \begin{itemize}
+            \item $(i)\to(ii)$ Sea $G\in \tau$ y sea $p\in G$. Como $G\in\tau$ y $\beta$ es base de $\tau\implies G=\bigcup_iB_i,B_i\in \beta$. Como $p\in G\implies p \in \bigcup_i B_i\implies \exists i_p\ni p\in B_{i_p}\implies $ dado $p\in G\exists B_{i_p}\in \beta \ni p\in B_{i_p}\subset G$. 
+            \item $(ii)\to (i)$ Sea $G\in \tau\implies$ Para cada $x\in G\exists B_x=\beta \ni x\in B_x\subset G\implies \bigcup_{x\in G}=G\implies$ es union de miembros de $\beta$.  
+        \end{itemize}
+    \end{dem}
+\end{teorema}
+\begin{teorema}
+    Sea $\beta$ una familia de subconjuntos de un conjunto no vacío $X$. Entonces, $\beta$ es una base para una topologia $\tau$ sobre $X$ ssi se cumplen: 
+    \begin{enumerate}
+        \item $X=\bigcup_{B\in\beta}B$
+        \item $\forall B,B^*\in \beta$ se tiene que $B\cap B^*$ la union de miembros de $\beta(\iff p\in B\cap B^*\exists B_p\in \beta \ni p\in B_p\subset B\cap B^*)$
+    \end{enumerate}
+    \begin{dem}
+        \begin{itemize}
+            \item $(\to)$ Sea $\beta$ la base de una topologia $\tau$ sobre $X$. Sabemos que $X$ es abierto $\implies X=\bigcup_{B\in \beta}B$, donde esta union se toma sobre todos los miembros de $\beta$. Como $\beta$ es base para $\tau\implies B\cap B^*$ puede escribirse como union de miembros de $\beta$. 
+            \item $(\gets)$ Sea $\tau$ la colección de las uniones de miembros de la familia de subconjuntos de $X$. A probar: $\tau$ es topologia. 
+            \begin{enumerate}
+                \item Por (i) $X\in \tau$. Además, la union de la clase vacia de $\beta$ es $\varnothing\implies \varnothing\in \tau$. 
+                \item Sea $\{G_i\}_{i\in I}$ una familia de miembros de $\tau$. Entonces, $G_i =\bigcup_{B\in\beta}B_{G_i}$ (donde cada $G_i$ es union de miembros de $\beta$) $\implies \bigcup_i$ es union de uniones de miembros de $\beta\implies \bigcup_i G_i\in \tau$. 
+                \item Sean $G_1,G_2\in \tau\implies G_i=\bigcup\{B_i:i\in I\}$ y $G_2=\bigcup \{B_j:j\in J\}$. Entonces, $G_1\cap G_2=(\bigcup_i B_i)\cap (\bigcup_j B_j)=\bigcup_{i=j}(B_i\cap B_j)\implies G_1\cap G_2\in \tau\implies\tau$ es una topologia sobre $X$. 
+            \end{enumerate}
+        \end{itemize}
+    \end{dem}
+\end{teorema}
 
 \begin{ejemplo}
     Sean $(a_1,b_1)$ y $(a_2,b_2)$ intervalos abiertos y acotados de $\mathbb{R}\implies$
@@ -402,3 +432,92 @@
         
     \end{dem}
 \end{teorema}
+
+\begin{definicion}
+    Un espacio topológico es un espacio de Hausdorf $(T_2)$ si dados $x,y\in X,x\not y ,\exists u,v\in \tau \ni x\in U,y\in V$ y $u\cap v =\varnothing$
+\end{definicion}
+
+\begin{ejemplo}
+    Sea $X=\{a,b\}$ con topología discreta $\implies X$ es $T_2$. Ahora con la topología $\tau_m =\{x,\varnothing, \{a\}\}$ no $T_2$.
+\end{ejemplo}
+
+\begin{teorema}
+    Sea $(X,d)$ un espacio métrico y sean $x,y\in X, x\not y \implies$ sea $\delta=d(x,y)\implies u=\beta_{\delta/2}(x)$ y $v=\beta_{\delta/2}(y)\implies x\in u$ y $y\in V$ y $u\cap v=\varnothing$. Por lo tanto, es de Hausdorf.
+\end{teorema}
+
+
+\begin{teorema}
+    Composición de mapeos continuos es un mapeo continuo. Sean $(X,\tau),(Y,\tau^*),(Z,\tau^{**})$ espacio topológicos y sean $f:X\to Y$ y $g:Y\to Z$ mapeos continuos. A probar $g\circ f: X\to Z$. Sea $G\in \tau^{**}\implies g^{-1}(G)\in \tau^*\implies f^{-1}[g^{-1}(G)]\in \tau =(g\circ f)^{-1}(G)\in \tau$.
+\end{teorema}
+
+\begin{teorema}
+    Sea $\{\tau_i\}$ sobre $X$, si $f:X\to Y$ continua, $\forall \tau_i\implies f$ es continuo con respecto a $\bigcap_i\tau_i$.
+\end{teorema}
+
+\begin{definicion}
+    Sea $(x_n)$ una sucesión en un espacio topológico $X$, se dice que $(x_n)$ converge a un punto $y\in X$ si $\forall u\in \tau \ni y\in U, \exists N \in \mathbb{Z}^+\ni n\geq N\implies x_n\in U$
+\end{definicion}
+
+\begin{teorema}
+    Si $X$ es un $T_2\implies $ cualquier sucesión de puntos en $X$ (a lemas) es un punto de $X$.
+    \begin{dem}
+        Suponga que $a$ y $b$ son límites de la sucesión $(x_n)\implies $ por ser $X$ de Hausdorf $\implies \exists u,v\in \tau \ni a\in U$ y $b\in V$ y $U\cap V=\varnothing$ como son límites $\implies \exists N_1,N_2\in \mathbb{Z}^+\ni n\geq N_1\implies X_n \in U$ y $m\geq N_2\implies X_m\in V$. Sea $N=\max\{N_1,N_2\}\implies n>N\implies X_n\in U $ y $X_n\in V\implies X_n\in U\cap V\implies U\cap V\neq \varnothing(\to\gets)$
+    \end{dem}
+\end{teorema}
+
+\begin{teorema}
+    Cada subconjunto límite $A\subseteq X$ es un $T_2$ es cerrado. 
+\end{teorema}
+Continuidad 
+\begin{definicion}
+    Sea $(X,\tau)$ y $(Y,\tau^*)$ esapacios topológicos. El mapeo $f:X\to Y$ es continuo si para cada $G\in \tau^*$ se tiene que $f^{-1}(G)\in\tau$
+\end{definicion}
+
+\begin{ejemplo}
+    Sean $X=\{a,b,c,d\}$ y $Y=\{x,y,z,w\}$, la topología $\tau=\{X,\varnothing,\{a\},\{a,b\},\{a,b,c\}\}$ y $Y=\{Y,\varnothing, \{x\},\{y\}, \{x,y\},\{x,z,w\}\}$
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.2]{imagenes/ejemplos1.jpeg}
+    \end{figure}
+\end{ejemplo}
+
+\begin{nota}
+    Sea $f: (X,\tau)\to (Y,\tau^*)$ un mapeo y suponga que $\beta=\{B_i\}$ es una base para $\tau^*$. Sea $G\in \tau^*\implies G=\bigcup_{i}B_i,B_i\in\beta $. Entonces, $f^{-1}(G)=g^{-1}\left(\bigcup_iB_i\right)=\bigcup_i f^{-1}(B_i)\implies f^{-1}(G)\in \tau$, si $f^{-1}(B_i)\in \tau$. 
+\end{nota}
+
+\begin{nota}
+    Dado un mapeo $f:X\to Y$ y si $A\subseteq Y\implies f^{-1}[A^c]=[f^{-1}(A)]^c$. En efecto: Sea $x\in f^{-1}(A^c)\iff f(x)\in A^c \iff f(x)\not\in A\iff x\not\in f^{-1}(A)\iff x\in [f^{-1}(A)]^c$
+    
+\end{nota}
+
+\begin{nota}
+    \begin{enumerate}
+        \item Sean $f:(X,\tau)\to(Y,\tau^*)$ un mapeo continuo y sea $F$ un cerrado de $Y\implies f^{-1}(F^c)=\left[f^{-1}(F)\right]^c\in \tau \implies f^{-1}(F)$ es cerrado en $X$.  
+        \item Sea $G$ un abierto de $Y\implies G^c$ es cerrado de $Y$. Si $f^{-1}[G^c]=[f^{-1}(G)]^c$ es cerrado, entonces $f^{-1}(G)\in \tau\implies f$ es continuo 
+    \end{enumerate}
+    
+\end{nota}
+
+
+\begin{prop}
+    Sea $f:X\to Y$ un mapeo entre espacios topológicos. Entonces, $f$ es un mapeo continuo ssi $f(\overline{A})\subset \overline{f(A)},\forall A\subseteq X$
+    \begin{cajita}
+        Propiedades: 
+        \begin{enumerate}
+            \item $f[f^{-1}(A)]=A$
+            \item $f^{-1}[\underbrace{f(A)}_{\subseteq X}]\supset A$
+        \end{enumerate}
+    \end{cajita}
+    \begin{dem}
+        Sea
+        \begin{itemize}
+            \item $(\implies )$ Suponga que $f$ es continuo y sabemos que $f(A)\subset \overline{f(A)}\implies f^{-1}[f(A)]\subset f^{-1}[\overline{f(A)}]$. Además, como $\overline{f(A)}$ es cerrado $\implies f^{-1}[\overline{f(A)}]$ es cerrado (ya que $f$ continuo). Entonces, 
+            \begin{align*}
+                A\subseteq \underbrace{f^{-1}[\overline{A}]}_{cerrado} &\implies A\subset \overline{A}\subset f^{-1}[\overline{f(A)}]\\
+                &\implies f(\overline{A})\subset f[f^{-1}[\overline{f(A)}]]\\
+                &\implies f(\overline{A})\subset \overline{f(A)}
+            \end{align*}
+            \item $(\impliedby)$ Supóngase que $f(\overline{A})\subset \overline{f(A)},\forall A\subseteq X$. Sea $C$ un cerrado de $Y$. Sea $A=f^{-1}(C)\implies f[\overline{f^{-1}(C)}]\subseteq \overline{f(f^{-1}(C))}\implies f[\overline{f^{-1}(C)}]\subseteq C\implies f^{-1}[f[\overline{f^{-1}(C)}]]\subseteq f^{-1}(C)\implies \overline{f^{-1}(C)}\subset f^{-1}(C)\implies f^{-1}(C)\subset \overline{f^{-1}(C)}\subset f^{-1}(C)\implies f^{-1}(C)=\overline{f^{-1}(C)}\implies f^{-1}(C)$ es cerrado. 
+        \end{itemize}
+    \end{dem}
+\end{prop}
