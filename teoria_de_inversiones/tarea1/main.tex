@@ -1,0 +1,385 @@
+\input{Configuraciones/paquetes}
+
+%--------------------------
+
+\begin{document}
+\input{Configuraciones/nombres}
+%--------------------------
+
+\begin{problema}
+    El vector aleatorio $\tilde{\boldsymbol{x}}=\left(\begin{array}{lll}\boldsymbol{x}_1 & \cdots & \boldsymbol{x}_n\end{array}\right)$ tiene una distribución Normal multivariante. Por tanto, la función de densidad de probabilidad $\boldsymbol{f}(\widetilde{\boldsymbol{x}})$ es:
+$$
+\mathbf{f}(\tilde{\boldsymbol{x}})=(2 \pi)^{-\frac{\mathrm{n}}{2}}|\Sigma|^{-1/2} \mathbf{e}^{-\frac{1}{2}(\tilde{\boldsymbol{x}}-\tilde{\mu})^{\mathrm{T}} \boldsymbol{\Sigma}^{-1}(\tilde{\boldsymbol{x}}-\tilde{\mu})}\quad (I)
+$$
+Responder: 
+\begin{enumerate}
+    \item ¿Qué representan $\tilde{\boldsymbol{\mu}}$ y $\boldsymbol{\Sigma}$ en la anterior expresión?
+    \begin{sol}
+        Tenemos: 
+        \begin{enumerate}
+            \item En primer lugar, debemos entender que es una variable aleatoria, en donde $\boldsymbol{x}_k, k\in \{1,\cdots, n\}$. Para esto, necesitamos terminología de teoría de la medida, la cual es una generalización de teoría de probabilidades. Entonces si $\boldsymbol{x}_k$ es una variable aleatoria, quiere decir que es una función de $\boldsymbol{x}_k:\Omega \to (\mathbb{R})$, en donde $\Omega$ es un conjunto de las posibles salidas que va hacia el espacio mesurable $\mathbb{R}$ de los números reales (en este caso lo usamos, ya que la distribución normal multivariante está definido sobre los números reales). Cada una de las variables aleatorias $\boldsymbol{x}_k$ tiene asociadas una probabilidad, las cuales se definen como elementos de un subconjunto $S\subseteq \mathbb{R}$ tal que:
+            $$p(\boldsymbol{x}_k\in S)= p\left\{\omega \in \Omega |\boldsymbol{x}_k(\omega)\in S \right\}$$
+
+            O en palabras más sencillas, la probabilidad de un elemento $\omega$ de un conjunto de posibles salidas $\Omega$, evaluada en la variable aleatoria, pertenece al subconjunto $S$ de los números reales $\mathbb{R}$. O en terminología más coloquial: está notación indica cuál es la probabilidad de que $\boldsymbol{x}_k$ sea igual a cierto número en \textit{cierto} subconjunto de los números reales .
+
+            \item Para $\boldsymbol{\Sigma}$ en este contexto, basado en la definición de función de densidad de probabilidad para $\mathbf{f}(\tilde{\boldsymbol{x}})$, en donde $\tilde{\boldsymbol{x}}$ es un vector columna real $n$-dimensional de variables aleatorias, tenemos que $\boldsymbol{\Sigma}$ representa al caso \textbf{no degenerado} de la función de densidad de probabilidad. El caso no degenerado, quiere decir que $\boldsymbol{\Sigma}$ es una matriz de covarianza (o autocovarianza) simétrica positiva definida, es decir: 
+            \begin{itemize}
+                \item Una \textit{matriz de covarianza} $M$ se define para un vector columna con variables aleatorias, cada una con varianza y valor esperado, 
+                $$\tilde{\boldsymbol{x}}=\begin{bmatrix}
+                    \boldsymbol{x}_1\\
+                    \boldsymbol{x}_2\\
+                    \vdots\\
+                    \boldsymbol{x}_n
+                \end{bmatrix} = \begin{bmatrix}
+                    \boldsymbol{x}_1 & 
+                    \boldsymbol{x}_2 &
+                    \cdots &
+                    \boldsymbol{x}_n
+                \end{bmatrix}^T  $$ 
+                Tal que la matriz de covarianzas son las covarianzas de cada una de sus entradas $(i,j)$, definidas como: 
+                $$\operatorname{cov}(\boldsymbol{x}_i,\boldsymbol{x}_j)=E\left[\left(\boldsymbol{x}_i-E[\boldsymbol{x}_i]\right)\left(\boldsymbol{x}_j-E[\boldsymbol{x}_j]\right)\right],$$
+                donde $E$ es valor esperado y $1\leq i\leq n$ y $1\leq j\leq n$. Es decir que la matriz de covarianza se vería así: 
+                $$M=
+\begin{aligned}
+& \left[\begin{array}{ccccc}
+    \operatorname{cov}(\boldsymbol{x}_1,\boldsymbol{x}_1) & \cdots & \cdots & \cdots & \operatorname{cov}(\boldsymbol{x}_1 ,\boldsymbol{x}_n) \\
+    \operatorname{cov}(\boldsymbol{x}_2,\boldsymbol{x}_1) & \cdots & \cdots & \cdots & \vdots \\
+\vdots & \cdots & \operatorname{cov}(\boldsymbol{x}_i \boldsymbol{x}_j) & \cdots & \vdots \\
+\vdots & \cdots & \cdots & \cdots & \vdots \\
+\operatorname{cov}(\boldsymbol{x}_n,\boldsymbol{x}_1) & \cdots & \cdots & \cdots & \operatorname{cov}(\boldsymbol{x}_n,\boldsymbol{x}_n)
+\end{array}\right] \\
+&
+\end{aligned}
+$$
+\item Ahora bien, también nos dicen que la \textit{matriz de covarianza} $M$ es \textbf{simétrica}. Es decir que la matriz de covarianza es igual a su matriz transpuesta. Es decir
+$$M=M^T,$$
+que quiere decir que para cada una de sus entradas $(i,j)$, 
+$$\operatorname{cov}(\boldsymbol{x}_i,\boldsymbol{x}_j) = \operatorname{cov}(\boldsymbol{x}_j,\boldsymbol{x}_i)$$
+O en matrices: 
+$$
+\begin{aligned}
+& \left[\begin{array}{ccccc}
+    \operatorname{cov}(\boldsymbol{x}_1,\boldsymbol{x}_1) & \cdots & \cdots & \cdots & \operatorname{cov}(\boldsymbol{x}_1 ,\boldsymbol{x}_n) \\
+    \operatorname{cov}(\boldsymbol{x}_2,\boldsymbol{x}_1) & \cdots & \cdots & \cdots & \vdots \\
+\vdots & \cdots & \operatorname{cov}(\boldsymbol{x}_i \boldsymbol{x}_j) & \cdots & \vdots \\
+\vdots & \cdots & \cdots & \cdots & \vdots \\
+\operatorname{cov}(\boldsymbol{x}_n,\boldsymbol{x}_1) & \cdots & \cdots & \cdots & \operatorname{cov}(\boldsymbol{x}_n,\boldsymbol{x}_n)
+\end{array}\right] \\
+&
+\end{aligned} =
+$$
+$$=\begin{aligned}
+    & \left[\begin{array}{ccccc}
+        \operatorname{cov}(\boldsymbol{x}_1,\boldsymbol{x}_1) & \cdots & \cdots & \cdots & \operatorname{cov}(\boldsymbol{x}_n ,\boldsymbol{x}_1) \\
+        \operatorname{cov}(\boldsymbol{x}_1,\boldsymbol{x}_2) & \cdots & \cdots & \cdots & \vdots \\
+    \vdots & \cdots & \operatorname{cov}(\boldsymbol{x}_j \boldsymbol{x}_i) & \cdots & \vdots \\
+    \vdots & \cdots & \cdots & \cdots & \vdots \\
+    \operatorname{cov}(\boldsymbol{x}_1,\boldsymbol{x}_n) & \cdots & \cdots & \cdots & \operatorname{cov}(\boldsymbol{x}_n,\boldsymbol{x}_n)
+    \end{array}\right] \\
+    &
+    \end{aligned}$$
+
+\begin{cajita}
+    Esta es una muy fuerte implicación, ya que por teorema tenemos que si $M=M^T$ entonces quiere decir que la matriz $M$ es cuadrada ($n\times n$). 
+\end{cajita}
+\item De la misma manera, nos dicen que si $M$ es positiva definida, se tiene entonces por teorema para el vector  $\tilde{\boldsymbol{x}}$, 
+
+$$\tilde{\boldsymbol{x}}^T M \tilde{\boldsymbol{x}} \geq 0, \quad \forall  \tilde{\boldsymbol{x}}\in \mathbb{R}^n$$
+            \end{itemize}
+            En resumidas cuentas, considerando el análisis anterior, $\Sigma$ representa a la matriz: 
+            $$\Sigma =
+            \begin{aligned}
+            & \left[\begin{array}{ccccc}
+                \operatorname{cov}(\boldsymbol{x}_1,\boldsymbol{x}_1) & \cdots & \cdots & \cdots & \operatorname{cov}(\boldsymbol{x}_1 ,\boldsymbol{x}_n) \\
+                \operatorname{cov}(\boldsymbol{x}_2,\boldsymbol{x}_1) & \cdots & \cdots & \cdots & \vdots \\
+            \vdots & \cdots & \operatorname{cov}(\boldsymbol{x}_i \boldsymbol{x}_j) & \cdots & \vdots \\
+            \vdots & \cdots & \cdots & \cdots & \vdots \\
+            \operatorname{cov}(\boldsymbol{x}_n,\boldsymbol{x}_1) & \cdots & \cdots & \cdots & \operatorname{cov}(\boldsymbol{x}_n,\boldsymbol{x}_n)
+            \end{array}\right] \\
+            &
+            \end{aligned}
+            $$
+            Que cumple con $\Sigma = \Sigma^T$, que implica que es una matriz cuadrada, además, que cumple con que  $\tilde{\boldsymbol{x}}^T M \tilde{\boldsymbol{x}} \geq 0, \quad \forall  \tilde{\boldsymbol{x}}\in \mathbb{R}^n$. Por otra parte, también es necesario entrar a más detalles en la expresión de densidad de probabilidad, 
+            \begin{itemize}
+                \item $\left|\Sigma\right|$ es equivalente al determinante de $\Sigma$. Es decir 
+                $$\left|\Sigma\right| \equiv \det \Sigma $$
+                \item $\Sigma^{-1}$ es la matriz invertible de $\Sigma$. Es decir, por teorema: 
+                $$\Sigma \Sigma^{-1}= \Sigma^{-1}\Sigma= I$$
+                Esta inversa, su calculo se simplifica con:
+                $$\Sigma^{-1}=\frac{1}{\det \Sigma}\operatorname{Adj}(A)$$
+            \end{itemize}      
+        \item Ahora, analizaremos a $\tilde{\boldsymbol{\mu}}$, que considera todo lo analizado en el inciso anterior. $\tilde{\boldsymbol{\mu}}$ hace referencia simplemente al vector de valores esperados (el vector de medias, en este caso) $n-$dimensional. Es decir: 
+        $$\tilde{\boldsymbol{\mu}}=E[\tilde{\boldsymbol{x}}]=\begin{bmatrix}
+            E[\boldsymbol{x}_1]\\
+            E[\boldsymbol{x}_2]\\
+            E[\boldsymbol{x}_3]\\
+            \vdots \\
+            E[\boldsymbol{x}_n]
+        \end{bmatrix}= \begin{bmatrix}
+            E[\boldsymbol{x}_1] &
+            E[\boldsymbol{x}_2]&
+            E[\boldsymbol{x}_3]&
+            \cdots &
+            E[\boldsymbol{x}_n]
+        \end{bmatrix}^T$$
+        En donde cada $E[\boldsymbol{x}_k]$, en donde $k\in \{1,\cdots, n\}$ es simplemente la media de la variable aleatoria $\boldsymbol{x}_k$, con su definición usual. Es decir, la variable aleatoria $\boldsymbol{x}_k$ con una lista de elementos finita ($x_1,x_2,\cdots, x_m$) o infinita ($x_1,x_2,\cdots, x_m, \cdots $) de elementos, con sus respectivas probabilidades asociadas. Entonces, el valor esperado de $E[\boldsymbol{x}_k]$ podría expresarme como: 
+        \begin{enumerate}
+            \item Caso finito: 
+            $$E[\boldsymbol{x}_k]=\sum_{z=1}^m x_z p_z$$
+            En donde la sumatoria de las proabilidades $p$ deben ser igual a cero, en notación matemática: $\sum_{z=1}^{m}p_z=1$.
+            \item Caso infinito: 
+            $$E[\boldsymbol{x}_k]=\sum_{z=1}^\infty x_z p_z$$
+        \end{enumerate}
+
+
+        
+        \end{enumerate}
+    \end{sol}
+    \item Brinde ejemplos numéricos de $\widetilde{\boldsymbol{\mu}}$ y $\boldsymbol{\Sigma}$ para el caso en el que $n=3$.
+    \begin{sol}
+        Para $n=3$ tenemos que un vector columna real de variables aleatorias definido como 
+        $$\tilde{\boldsymbol{x}}=\begin{bmatrix}
+            \boldsymbol{x}_1\\
+            \boldsymbol{x}_2\\
+            \boldsymbol{x}_3
+        \end{bmatrix} = \begin{bmatrix}
+            \boldsymbol{x}_1 & 
+            \boldsymbol{x}_2 &
+            \boldsymbol{x}_3
+        \end{bmatrix}^T  $$
+        con funcionalidad de probabilidades
+        \begin{align*}
+            \mathbf{f}(\tilde{\boldsymbol{x}}) &=(2 \pi)^{-\frac{\mathrm{3}}{2}}|\Sigma|^{-1/2} \mathbf{e}^{-\frac{1}{2}(\tilde{\boldsymbol{x}}-\tilde{\mu})^{\mathrm{T}} \boldsymbol{\Sigma}^{-1}(\tilde{\boldsymbol{x}}-\tilde{\mu})}\\
+            &= \frac{\mathbf{e}^{-\frac{1}{2}(\tilde{\boldsymbol{x}}-\tilde{\mu})^{\mathrm{T}} \boldsymbol{\Sigma}^{-1}(\tilde{\boldsymbol{x}}-\tilde{\mu})}}{\sqrt{(2\pi)^3|\Sigma|}}\\
+            &= \frac{\exp \left(-\frac{1}{2}(\tilde{\boldsymbol{x}}-\tilde{\mu})^{\mathrm{T}} \boldsymbol{\Sigma}^{-1}(\tilde{\boldsymbol{x}}-\tilde{\mu})\right)}{\sqrt{8\pi^3|\Sigma|}}\\
+        \end{align*}
+        En donde: 
+        \begin{enumerate}
+            \item $\Sigma$ es: 
+            $$\Sigma =
+            \begin{bmatrix}
+                \operatorname{cov}(\boldsymbol{x}_1,\boldsymbol{x}_1) &  \operatorname{cov}(\boldsymbol{x}_1,\boldsymbol{x}_2) &  \operatorname{cov}(\boldsymbol{x}_1,\boldsymbol{x}_3)\\
+                \operatorname{cov}(\boldsymbol{x}_2,\boldsymbol{x}_1) &  \operatorname{cov}(\boldsymbol{x}_2,\boldsymbol{x}_2) &  \operatorname{cov}(\boldsymbol{x}_2,\boldsymbol{x}_3)\\
+                \operatorname{cov}(\boldsymbol{x}_3,\boldsymbol{x}_1) &  \operatorname{cov}(\boldsymbol{x}_3,\boldsymbol{x}_2) &  \operatorname{cov}(\boldsymbol{x}_3,\boldsymbol{x}_3)
+            \end{bmatrix}
+            $$
+            \item $\tilde{\boldsymbol{\mu}}$ es: 
+            $$\tilde{\boldsymbol{\mu}}=E[\tilde{\boldsymbol{x}}]=\begin{bmatrix}
+                E[\boldsymbol{x}_1]\\
+                E[\boldsymbol{x}_2]\\
+                E[\boldsymbol{x}_3]
+            \end{bmatrix}= \begin{bmatrix}
+                E[\boldsymbol{x}_1] &
+                E[\boldsymbol{x}_2]&
+                E[\boldsymbol{x}_3]
+            \end{bmatrix}^T$$
+        \end{enumerate}
+        Entonces, proponemos dos ejemplos para ampliar estas ecuaciones planteados: 
+        \begin{enumerate}
+            \item Ejemplo 1. Sea \begin{enumerate}
+                \item $\Sigma$ es: 
+                $$\Sigma =
+                \begin{bmatrix}
+                    0.1 & 0.5 & 0.1\\
+                    0.5 & 0.8 & 0.9\\
+                    0.1 & 0.9 & -0.9
+                \end{bmatrix}
+                $$
+                \item $\tilde{\boldsymbol{\mu}}$ es: 
+                $$\tilde{\boldsymbol{\mu}}=E[\tilde{\boldsymbol{x}}]=\begin{bmatrix}
+                    1\\
+                    2\\
+                    3
+                \end{bmatrix}= \begin{bmatrix}
+                    1 &
+                    2&
+                    3
+                \end{bmatrix}^T$$
+                \item Sea $$\tilde{\boldsymbol{x}}= \begin{bmatrix}
+                    9\\
+                    8\\
+                    6
+                \end{bmatrix}$$
+                \item Sea entonces, 
+                \begin{align*}
+                    \tilde{\boldsymbol{x}}-\tilde{\boldsymbol{\mu}} &= \begin{bmatrix}
+                        9\\
+                        8\\
+                        6
+                    \end{bmatrix}- \begin{bmatrix}
+                        1\\
+                        2\\
+                        3
+                    \end{bmatrix} = \begin{bmatrix}
+                    8\\
+                    6\\
+                    3
+                \end{bmatrix}
+                \intertext{Por medio de cofactores:}
+                |\Sigma|&= 0.154
+                \intertext{La matriz inversa: }
+                \Sigma^{-1} &=                \begin{bmatrix}
+                    0.1 & 0.5 & 0.1\\
+                    0.5 & 0.8 & 0.9\\
+                    0.1 & 0.9 & -0.9
+                \end{bmatrix}^{-1}
+                \end{align*}
+                \item Entonces usando el siguiente \textit{script} de \textit{Python}, tenemos: 
+                \begin{verbatim}
+import numpy as np
+
+# Parametros
+S = np.matrix('0.1 0.5 0.1 ; 0.5 0.8 0.9 ; 0.1 0.9 -0.9')
+mu = np.matrix('1 ; 2 ; 3')
+x = np.matrix('9 ; 8 ; 6')
+
+# Función de densidad de probabilidad
+numerador = np.exp(-(1/2)*np.transpose(x-mu)*np.linalg.inv(S)*(x-mu))
+denominador = np.sqrt(8*np.pi*np.linalg.det(S))
+dpf = numerador/denominador 
+print(dpf)
+                \end{verbatim}
+                Lo que dos da un resultado 
+                $$f\left(\begin{bmatrix}
+                    9\\
+                    8\\
+                    6
+                \end{bmatrix}\right)= 7.9920871\times 10^{48}$$
+            \end{enumerate}
+            \item Ejemplo 2. Sea \begin{enumerate}
+                \item $\Sigma$ es: 
+                $$\Sigma =
+                \begin{bmatrix}
+                    0.3 & 0.6 & 0.1\\
+                    0.6 & 0.3 & 0.4\\
+                    0.1 & 0.4 & -0.3
+                \end{bmatrix}
+                $$
+                \item $\tilde{\boldsymbol{\mu}}$ es: 
+                $$\tilde{\boldsymbol{\mu}}=E[\tilde{\boldsymbol{x}}]=\begin{bmatrix}
+                    0.3\\
+                    0.2\\
+                    0.5
+                \end{bmatrix}$$
+                \item Sea $$\tilde{\boldsymbol{x}}= \begin{bmatrix}
+                    0\\
+                    0.1\\
+                    0
+                \end{bmatrix}$$
+                \item Sea entonces, 
+                \begin{align*}
+                    \tilde{\boldsymbol{x}}-\tilde{\boldsymbol{\mu}} &= \begin{bmatrix}
+                        0\\
+                    0.1\\
+                    0
+                    \end{bmatrix}- \begin{bmatrix}
+                        0.3\\
+                    0.2\\
+                    0.5
+                    \end{bmatrix}
+                \intertext{Por medio de cofactores:}
+                |\Sigma|&= 0.0899
+                \intertext{La matriz inversa: }
+                \Sigma^{-1} &=  \begin{bmatrix}
+                    0.3 & 0.6 & 0.1\\
+                    0.6 & 0.3 & 0.4\\
+                    0.1 & 0.4 & -0.3
+                \end{bmatrix}^{-1}
+                \end{align*}
+                \item Entonces usando el siguiente \textit{script} de \textit{Python}, tenemos: 
+                \begin{verbatim}
+import numpy as np
+
+# Parametros
+S = np.matrix('0.3 0.6 0.1 ; 0.6 0.3 0.4 ; 0.1 0.2 -0.3')
+mu = np.matrix('0.3 ; 0.2 ; 0.5')
+x = np.matrix('0 ; 0.1 ; 0')
+
+# Función de densidad de probabilidad
+numerador = np.exp(-(1/2)*np.transpose(x-mu)*np.linalg.inv(S)*(x-mu))
+denominador = np.sqrt(8*np.pi*np.linalg.det(S))
+dpf = numerador/denominador 
+print(dpf)
+                \end{verbatim}
+                Lo que dos da un resultado 
+                $$f\left(\begin{bmatrix}
+                    0\\
+                    0.1\\
+                    0
+                \end{bmatrix}\right)= 0.7820077$$
+            \end{enumerate}
+        \end{enumerate}
+    \end{sol}
+\end{enumerate}
+Suponga que los precios en el mercado de los $n$ activos financieros en una cartera de inversión, se comportan prospectivamente conforme un proceso representado por:
+$$
+\tilde{\boldsymbol{x}}_{\mathbf{t}}=\tilde{\boldsymbol{c}}+\tilde{\boldsymbol{x}}_{\mathbf{t}-1}+\tilde{\boldsymbol{\varepsilon}}_{\mathrm{t}} \quad \text { (II) }
+$$
+donde $\tilde{\boldsymbol{\varepsilon}}_{\mathbf{t}} \sim \mathbf{N}(\tilde{\mathbf{0}}, \boldsymbol{\Sigma})$ y $\tilde{\boldsymbol{c}}$ representa un vector de elementos constantes.
+Responder: 
+\begin{enumerate}
+    \item ¿Qué tipo de paseo aleatorio representa la expresión (II)?
+    \begin{sol}
+
+        Para comprender de una mejor manera el problema, será necesario analizar cada uno de sus componentes. 
+        \begin{enumerate}
+            \item $\tilde{\boldsymbol{x}}_{\mathbf{t}}$ es el valor de los activos en el tiempo $t$.
+            \item $\tilde{\boldsymbol{x}}_{\mathbf{t}-1}$ son sus valores en el tiempo $t-1$
+            \item  $\tilde{\boldsymbol{c}}$ es un vector de constantes que podría interpretarse como los costos fijos o retornos. 
+            \item $\tilde{\boldsymbol{\varepsilon}}_{\mathrm{t}}$ son los datos aleatorios agregados al modelo que tienen una distribución normal multivariada con media $\tilde{\mathbf{0}}$ y la matriz de covarianza $\boldsymbol{\Sigma}$. 
+        \end{enumerate}
+
+        De todos estos términos, quien llama más la atención es $\tilde{\boldsymbol{c}}$, ya que es una constante que se suma al valor anterior del proceso en cada paso de tiempo. Esto implica que el proceso podría tener una tendencia a moverse en una dirección determinada sesgada por el valor que tenga $\tilde{\boldsymbol{c}}$.\bigbreak
+        
+        Entonces, según la literatura, la expresión (II) representa un paseo aleatorio con \textit{drift}, que se define como un tipo de proceso estocástico en el que los cambios en el valor de una variable aleatoria por cada paso de tiempo son aleatorios pero tienen una tendencia o sesgo a dirigirse en una dirección determinada. Esto está asociado a que el \textit{drift} se suma al valor anterior del proceso en cada paso de tiempo.\bigbreak 
+
+        De la misma manera, la expresión (II) puede catalogarse dentro de los modelos de vectores de autoregresión de orden 1. En este caso, el  paseo aleatorio con \textit{drift} puede ser utilizado para interpretar el cambio de los precios de los activos financieros. 
+    \end{sol}
+    \item Si $\tilde{c}$ es tal que todos sus elementos son positivos y constantes, describa detalladamente el comportamiento de los precios en el futuro que predice dicho modelo.
+    \begin{sol}
+        Si todos los elementos de $\tilde{\boldsymbol{c}}$ son positivos y constantes, entonces la expresión (II) indica que los precios de los activos financieros de la cartera de inversión tendrán una tendencia alcista en el futuro.\bigbreak
+        Nótese que la expresión tiene $\tilde{\boldsymbol{\varepsilon}}_{\mathbf{t}}$, lo que implica que habrá cambios aleatorios en los precios tanto positivas como negativas. Aunque  en perspectiva, puede haber errores lo suficientemente grandes como para contrarrestar temporalmente la tendencia general, el   $\tilde{\boldsymbol{c}}$ siempre es positivo, entonces la tendencia siempre irá hacia el alza. \bigbreak 
+        En resumen, la expresión da una tendencia general al alza en los precios de los activos financieros en la cartera de inversión para tiempos futuros, pero también indica los cambios aleatorios temporales en los precios debido al término de error aleatorio, que a largo plazo, no deberían afectar la tendencia alcista.
+    \end{sol}
+    \item Si los precios siguen un proceso como (II), ¿qué puede decir usted sobre la distinción entre los espacios de mecanismo y de observación?
+    \begin{sol}
+        Si los precios siguen un proceso como el descrito en la expresión (II), entonces podemos hacer las siguientes clasificaciones: 
+        \begin{enumerate}
+            \item El espacio de mecanismo se refiere a los factores que determinan el cambio de los precios a través del tiempo. En el caso que tenemos, estos factores son $\tilde{\boldsymbol{c}}$ y el término de error aleatorio $\tilde{\boldsymbol{\varepsilon}}_{\mathbf{t}}$.
+            \item El espacio de observación se refiere a las mediciones o datos observables del proceso. En la expresión (II), el espacio de observación serían los valores observados de los precios de los activos financieros en la cartera de inversión.
+        \end{enumerate}
+        Bajo este razonamiento, la distinción entre el espacio de mecanismo y el espacio de observación es la diferencia entre los factores que determinan los cambios del proceso a través del tiempo y las mediciones o datos observables.
+    \end{sol}
+    \item  ¿Si los precios del mercado se comportan en el futuro según la ecuación (II), seguirá siendo válida la Hipótesis de los Mercados Eficientes?
+    \begin{sol}
+        
+        La HME sostiene que los precios financieros incorporan toda la información disponible de manera instantánea. Una consecuencia de la HME es que es imposible obtener mejores retornos que el promedio, ajustando por riesgo, de manera consistente.
+
+        Es decir, si los precios del mercado se comportan en el futuro según la ecuación (II), entonces la validez de la HME dependerá de si $\tilde{\boldsymbol{c}}$ y $\tilde{\boldsymbol{\varepsilon}}_{\mathbf{t}}$ son completamente impredecibles y no pueden ser explotados para obtener ganancias consistentes por encima del promedio del mercado. Entonces tendríamos dos casos particulares: 
+        \begin{enumerate}
+            \item Si los términos son impredecibles y no pueden ser explotados para obtener ganancias consistentes por encima del promedio del mercado, entonces la HME seguiría siendo válida. 
+            \item Si estos términos son predecibles o pueden ser explotados para obtener ganancias consistentes por encima del promedio del mercado, entonces la HME ya no sería válida.
+        \end{enumerate}
+
+
+    \end{sol}
+    \item ¿Considera que esta representación de los precios de mercado sería adecuada en un contexto en el que el mecanismo generador de los precios es puramente caótico en el sentido de los modelos dinámicos no lineales?
+    \begin{sol}
+        Consideremos el hecho de que el mecanismo para generar los precios es de naturaleza caótica en el sentido de los modelos dinámicos no lineales, entonces la representación de los precios de mercado dada por la ecuación (II) quizás no sea la más adecuada. Esto es porque la ecuación (II) es un proceso lineal y estocástico, mientras que un sistema caótico es por definición no lineal. Entonces tendríamos una contradicción. 
+
+        Las características de un sistema caótico se caracteriza por tener una dinámica compleja y aleatoria. En estos modelos, si las condiciones iniciales varían mínimamente, estas pueden llevar a grandes diferencias en el comportamiento del sistema.
+
+        Por lo tanto, si el mecanismo generador de los precios es caótico en el sentido de los modelos dinámicos no lineales, entonces definitivamente habría que usar un modelo no lineal para representar la evolución de los precios en lugar de la ecuación (II). Aunque no descartaría completamente la ecuación (II), ya que podría servir para regiones de estabilidad y podría servir como una aproximación burda. 
+    \end{sol}
+\end{enumerate}
+
+
+
+\end{problema}
+
+
+%---------------------------
+%\bibliographystyle{apa}
+%\bibliography{referencias.bib}
+
+\end{document}

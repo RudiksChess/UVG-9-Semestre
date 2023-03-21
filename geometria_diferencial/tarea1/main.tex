@@ -420,7 +420,113 @@ $$
 
 (Sugerencia: ver las ideas en el Ejercicio 12, pág 26 de Do Carmo.)
 \begin{sol}
-    
+
+
+    Considerando el ejercicio de Do Carmo, sea $\alpha: I\to\mathbb{R}^3$ una curva regular parametrizada y sea $\beta: J\to\mathbb{R}^3$ la reparametrización de $\alpha(I)$ por la longitud de arco, $s=s(t)$ medido de $s_0\in I $. Sea $t=t(s)$ la función inversa de $s$ y sea $d\alpha/dt = \alpha', d^2 \alpha / dt^2$, etc. Entonces, 
+    \begin{itemize}
+        \item Para la curvatura, sea 
+        \begin{align*}
+            \alpha'(t) &= \frac{d\alpha}{dt}= \frac{d\beta}{ds}\frac{ds}{dt}=T(s)\frac{ds}{dt} \\
+            \alpha''(t) &= T'(s)\frac{ds}{dt}+T(s)\frac{d^2 s}{dt^2}\\
+        \end{align*}
+        Ahora bien, sea 
+        \begin{align*}
+            \alpha'(t)\times \alpha''(t)&= \left(T(s)\frac{ds}{dt}\right)\times \left(T'(s)\frac{ds}{dt}+T(s)\frac{d^2 s}{dt^2}\right)\\
+            &= \left(T(s)\frac{ds}{dt}\right)\times\left(T'(s)\frac{ds}{dt}\right) + \left(T(s)\frac{ds}{dt}\right)\times \left(T(s)\frac{d^2 s}{dt^2}\right)\\
+            &= \frac{d^2s}{dt^2} \left(T(s)\times T'(s)\right)+ \frac{ds}{dt}\frac{d^2s}{dt^2} \left(\underbrace{T(s)\times T(s)}_{=0}\right)\\
+            &= \frac{d^2s}{dt^2} \left(T(s)\times T'(s)\right)\\
+            &= \frac{d^2s}{dt^2} \left(|T(s)||T'(s)|\sin \theta_{TT'}\right)
+            \intertext{Como $T(s)$ y $T'(s)$ son ortogonales $\theta_{TT'}=\frac{\pi}{2}$ y además, sea $|T(s)|=1$, entonces:  }
+            &= \frac{d^2s}{dt^2} |T'(s)|
+        \end{align*}
+        Considérese ahora la norma de esta expresión: 
+        \begin{align*}
+            \left|\alpha'(t)\times \alpha''(t)\right| &= \frac{d^2s}{dt^2} |T'(s)|\\
+        \end{align*}
+        Entonces, de esta expresión despejamos: 
+        \begin{align*}
+            |T'(s)| &= \frac{\left|\alpha'(t)\times \alpha''(t)\right|}{\frac{d^2s}{dt^2}}\\
+            &= \frac{\left|\alpha'(t)\times \alpha''(t)\right|}{\left|\alpha'(s)\right|^2}
+        \end{align*}
+        Usando la definición de curvatura por Frenet, usando $s=t$ sea: 
+        \begin{align*}
+            \kappa(t) &= \frac{|T'(t)|}{|\alpha'(t)|}\\
+                      &=  \frac{\left|\alpha'(t)\times \alpha''(t)\right|}{\left|\alpha'(t)\right|^3}
+        \end{align*}
+
+        ---------------------------------------------------------------------------------------------------------------
+
+        Sin embargo, este método es bastante engorroso. Con las fórmulas de Frenet, se puede resolver de una forma mucho más sencilla, nótese que para $R^3$ las ecuaciones son: 
+        \begin{align*}
+            T'(s) &= \kappa(s)N(s)|\alpha'|\\
+            N'(s) &= -\kappa(s)|\alpha'|-\tau(s)B(s)|\alpha'|\\
+            B'(s) &= \tau(s)N(s)|\alpha'|
+        \end{align*}
+        y además las propiedades: 
+        \begin{align*}
+            T(s) &= \frac{\alpha'(s)}{|\alpha'(s)|}\\
+            N(s) &= \frac{T'(s)}{|T'(s)|}\\
+            B(s)&= T(s)\times N(s)
+        \end{align*}
+        Considere eso, entonces: 
+        \begin{itemize}
+            \item La curvatura, 
+        \begin{align*}
+            \alpha'&= |\alpha'|T\\
+            \alpha'' &= |\alpha'|'T + |\alpha'|T'\\
+                   &= |\alpha'|'T + |\alpha'|kN 
+        \end{align*}
+        Entonces, 
+        \begin{align*}
+            \alpha'\times \alpha'' &= \left(|\alpha'|T\right)\times \left(|\alpha'|'T + |\alpha'|kN \right)\\
+            &=\left(|\alpha'|T\right)\times  \left(|\alpha'|'T \right)+
+            \left(|\alpha'|T\right)\times  \left(|\alpha'|kN \right)\\
+            &=|\alpha'||\alpha'|'\left(T\times T\right) +|\alpha'||\alpha'|k
+            \left(T\times N \right)\\
+            &=|\alpha'||\alpha'|'\left(\underbrace{T\times T}_{=0}\right) +|\alpha'|^3k
+            B\\
+            &= |\alpha'|^3k
+            B
+        \end{align*}
+        Consideremos la norma: 
+        \begin{align*}
+            |\alpha'\times \alpha''| &= |\alpha'|^3k
+        \end{align*}
+        Entonces
+        $$k=\frac{|\alpha'\times \alpha''|}{|\alpha'|^3}$$
+        \item La torsión, tenemos las ecuaciones deducidas previamente, 
+        $$\alpha'\times \alpha''=|\alpha'|^3k B$$
+        Despejamos para $B$,
+        \begin{align*}
+            B &= \frac{\alpha'\times \alpha''}{|\alpha'|^3k}\\
+            &= \frac{\alpha'\times \alpha''}{|\alpha'|^3\left(\frac{|\alpha'\times \alpha''|}{|\alpha'|^3}\right)}\\
+            &= \frac{\alpha'\times \alpha''}{|\alpha'\times \alpha''|}
+        \end{align*}
+        Con esto, considérese $\alpha'''$: 
+        \begin{align*}
+            \alpha''' &= |\alpha'|'' T + |\alpha'|'T' + (|\alpha'|^2k)'N + |\alpha'|^2k N' \\
+          &= |\alpha'|''' T + (|\alpha'|'|\alpha'|k + (|\alpha'|^2k)')N +|\alpha'|^3k (-k T + \tau B).
+        \end{align*}
+        Por otra parte, 
+        \begin{align*}
+            \alpha'''\cdot B &= \left(|\alpha'|''' T + (|\alpha'|'|\alpha'|k + (|\alpha'|^2k)')N +|\alpha'|^3k (-k T + \tau B)\right)\cdot (T\times N)\\
+            &= |\alpha'|''' T\cdot (T\times N) + (|\alpha'|'|\alpha'|k + (|\alpha'|^2k)')N\cdot (T\times N)\\
+            & \ \ \ +|\alpha'|^3k (-k T + \tau B)\cdot (T\times N)
+            \intertext{Vea que $T\times T=0$ y $N\times N=0$}
+            &= |\alpha'|^3k (\tau B)\cdot (T\times N)\\
+            &= |\alpha'|^3k \tau
+        \end{align*}
+        Por lo tanto, despejando para $\tau$ se tiene:
+        \begin{align*}
+            \tau &= \frac{\alpha ''' \cdot (\alpha'\times \alpha'')}{|\alpha'\times \alpha''||\alpha'|^3 k }\\
+            &= \frac{\alpha ''' \cdot (\alpha'\times \alpha'')}{|\alpha'\times \alpha''||\alpha'|^3 \left(\frac{|\alpha'\times \alpha''|}{|\alpha'|^3}\right) }\\
+            &= \frac{\alpha ''' \cdot (\alpha'\times \alpha'')}{|\alpha'\times \alpha''|^2 }\\
+            &= \frac{ (\alpha'\times \alpha'')\cdot \alpha ''' }{|\alpha'\times \alpha''|^2 }\\
+            &= \frac{ \det(\alpha'\times \alpha'', \alpha ''')}{|\alpha'\times \alpha''|^2 }\\
+        \end{align*}
+        \item Para una curva plana, es el mismo procedimiento que en el \textbf{Problema 4}. 
+        \end{itemize}
+    \end{itemize}
 \end{sol}
 \end{problema}
 
@@ -469,7 +575,6 @@ Muestre que la curvatura y la torsión de $\alpha$ son constantes.
     \end{itemize}
 \end{sol}
 \end{problema}
-
 \begin{problema}
      Construir una curva plana, parametrizada por longitud de arco, cuya curvatura esté dada exactamente por $\kappa(s)=s^{-1 / 2}=1/s^{1/2}=1/\sqrt{s}$.
     \begin{sol}
