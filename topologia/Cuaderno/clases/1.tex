@@ -1201,3 +1201,84 @@ $$
 \begin{dem}
     Como $X$ es $T_4\implies X$ es normal y $T_1$. A probar: $X$ es regular. Sean $x\in X$ y $F$ es un cerrado de $X\ni x\not\in F\implies \{x\}$ es un cerrado disjunto de $F\implies $ existen abiertos disjuntos $G$ y $H\ni x\in \{x\}\subset G$ y $F\subset H\implies X$ es regular.   
 \end{dem}
+
+
+
+\begin{cajita}
+    Tenemos: 
+    \begin{itemize}
+        \item $T_4$: Normal + $T_1$ 
+        \item $T_3$: Regular + $T_1$
+    \end{itemize}
+    Entonces $T_4\implies T_3$.
+\end{cajita}
+
+\begin{ejemplo}
+    Sea $X=\mathbb{R}$ dotado de la topología en que los abiertos son $X,\varnothing$ y los intervalos de la forma $(a,\infty),a\in X$
+    \begin{itemize}
+        \item Los cerrados son de la forma $(-\infty,a]$. Como no hay dos cerrados disjuntos $\implies X$ es normal. 
+        \item Considere $(-\infty,0]$ y el punto $1\in X$. Nótese que: 
+        \begin{enumerate}
+            \item $1\not\in (\infty,0]$
+            \item No hay abiertos disjuntos que separen a 1 y $(\infty,0]$
+        \end{enumerate}
+        Entonces $X$ no es regular.  
+    \end{itemize}
+    Conclusión, un espacio normal no es necesariamente regular. 
+\end{ejemplo}
+
+
+\begin{ejemplo}
+    Cada metrizable es $T_4$, suponga que $d$ es una métrica que genera la topología del espacio $(X,\tau)$. COmo el métrico es $T_2\implies X$ es $T_1$. \begin{itemize}
+        \item A probar: $X$ es normal. Sean $A$ y $B$ cerrados disjuntos en $X$. 
+        \item Sea $d(x,y)<\delta_x/3$ y $d(y,z)<\varepsilon_y/3$. Sea $\delta_a=\max\{\delta_x,\varepsilon_y\}$, etnonces $d(x,y)<\delta_x/3$ y $d(y,z)<\delta_y/3$. Entonces $d(x,y)\leq d(x,z)+d(z,y)\leq 2/3 dx\implies y\in B_{\delta_x}(x)$. Contradicción. 
+    \end{itemize}
+\end{ejemplo}
+
+\begin{definicion}
+    Sea $F:= \{f_j: j\in I\}$ la clase  de funciones del conjunto $X$ en el conjunto $Y$. Se dice que $F$ separa puntos si, $\forall x,y\in X,x\neq y$, se tiene que $f_i(x)\neq f_i(y)$. 
+\end{definicion}
+
+\begin{ejemplo}
+    Sea 
+    \begin{itemize}
+        \item $F=\{\sin nx, \sin 2x,\cdots, \sin nx, ...\}$, definidas sobre $\mathbb{R}$. Entonces $F$ no separa puntos. 
+        \item $F=\{f:\mathbb{R}\to \mathbb{R}\ni f(x)=ax, \forall a\in \mathbb{R}-\{0\}\}$ entonces $F$ separa puntos. 
+    \end{itemize}
+\end{ejemplo}
+
+\begin{prop}
+    Si $C(X,\mathbb{R})$ es la clase de funciones continuas y de valores reales sobre $X$, que separa puntos $\implies X$ es Hausdorff. 
+    \begin{dem}
+        Sean $x,y\in X$, $x\neq y$. Como $C(X,\mathbb{R})$ separa puntos $\implies f(x)\neq f(y)$. Como $\mathbb{R}$ es Hausdorff, existen abiertos disjuntos $G$ y $H$ en $\mathbb{R}\ni f(x)\in G$ y $g(x)\in H$. Además, $f$ es continua, entonces: 
+        $$x\in \underbrace{f^{-1}(G)}_{abierto}$$
+        y  
+        $$y\in \underbrace{f^{-1}(H)}_{abierto}$$
+        y 
+        $$f^{-1}(G)\cap f^{-1}(H)= f^{-1}(G\cap H)=f^{-1}(\varnothing)=\varnothing$$
+        Entonces $X$ es Hausdorff.
+    \end{dem}
+\end{prop}
+
+
+\begin{definicion}
+    Un espacio topológico es completamente regular ssi satisface: SIi $F$ es un cerrado de $X$ y $p\in X\ni p\not\in F$, entonces existe una función continua. $f:X\to [0,1]\ni f(p)=0$ y $f(F)=\{1\}$.
+\end{definicion}
+
+
+\begin{nota}
+    Un espacio completamente regular y $T_1$ es un espacio  Tíkonov $T_{3  \frac{1}{2}}$
+\end{nota}
+
+
+\begin{nota}
+    Sean $F_1$ y $F_2$ cerrrados de un espacio normal $X$. Entonces existe una función continua $f:X\to [0,1]\ni f(F_1)=\{0\}$ y $f(F_2)=\{1\}$.
+\end{nota}
+
+\begin{teorema}
+    Si $X$ es completamente regular, entonces $X$ es regular. 
+    \begin{dem}
+        Sea $F$ un cerrado de $X$ y $p\in X\ni p\not\in F$. Sea $f:X\to [0,1]$ una función continua $f(p)=0$ y $f(F)=\{1\}$. Sea $G=f^{-1}[0,1/3)$ abierto y $H=f^{-1}(2/3,1]$ abieto. Entonces $p\in G$ y $F\subset H$, además como $$[0,1/3)\cap (2/3,1]=\varnothing$$
+        Entonces $G\cap H=\varnothing$, entonces $X$ es regular. 
+    \end{dem}
+\end{teorema}

@@ -213,7 +213,24 @@ $$
 
         \item Muestre que es posible, usando la proyección estereográfica, cubrir la esfera con dos cartas locales.
         \begin{sol}
-            La primera carta ya la generamos en el inciso anterior. Ahora, la otra carta la podemos generar con el polo sur $S=(0,0,-2)$ y el procedimiento es análogo. 
+            Analizamos la parametrización anterior para que sea una carta.
+            $$\pi^{-1}(u,v)=\left(\frac{4u}{u^2+v^2+4}, \frac{4v}{u^2+v^2+4}, \frac{2(u^2+v^2)}{u^2+v^2+4}\right)$$
+            \begin{itemize}
+                \item $\pi^{-1}$ es diferenciable. Analizamos la existencia de las derivadas parciales y también verificamos que son continuas. 
+                \begin{figure}[H]
+                    \centering 
+                    \includegraphics[scale=0.5]{imagenes/8.png}
+                \end{figure}
+
+                \item $\pi^{-1}$ es un homomorfismo. Nótese que $f$ es continua, porque sus componentes lo son. La propiedad de ser biyectiva (inyectividad y sobreyectivad) es directa por la forma en que definimos $\pi^{-1}$. 
+                \item La derivada $dx_1:\mathbb{R}^2\to T_p(\mathbb{R}^3)$ es inyectiva para cada $q\in U$. Verificamos que los vectores los vectores de derivadas parciales $x_u,v_v$ son linealmente independientes, es decir el producto cruz no es igual a cero. Lo cual verificamos a continuación: 
+                \begin{figure}[H]
+                    \centering 
+                    \includegraphics[scale=0.5]{imagenes/9.png}
+                \end{figure}
+            \end{itemize}
+            
+            Ahora, la otra carta la podemos generar con el polo sur $S=(0,0,-2)$ y el procedimiento es análogo. 
         \end{sol}
     \end{enumerate}
 
@@ -244,16 +261,7 @@ Dos superficies regulares $\mathrm{S}_1$ y $\mathrm{S}_2$ en $\mathbb{R}^3$ son 
             \end{cajita}
             Sean $\mathbf{x}_1:U_1\to S^2$ y $\mathbf{x}_2:U_2\to S^2$ parametrizaciones tales que $A(\mathbf{x}_1(U_1))\subset \mathbf{x}_2(U_2)$. Entonces debemos probar que $$ \mathbf{x}_2^{-1}\circ A\circ \mathbf{x}_1:U_1\to U_2 $$ es diferenciable.
 
-            Para esto, por la definición de cambio de parámetro, $\mathbf{x}_2^{-1}\circ \mathbf{x}_2:U_1\to U_2$ es diferenciable. Además, básicamente lo que hace $A$ es $A=-\mathrm{identidad}=-\mathrm{id}$, es decir $\mathbf{x}_2^{-1}\circ A\circ \mathbf{x}_1=\mathbf{x}_2^{-1}\circ (-\mathrm{id})\circ \mathbf{x}_1$. Entonces, ahora tenemos:
-            \begin{align*}
-                d(\mathbf{x}_2^{-1}\circ A\circ \mathbf{x}_1)&=d( \mathbf{x}_2^{-1}(A( \mathbf{x}_1)))\\
-                &=d(\mathbf{x}_2^{-1})d(-\mathrm{id})d(\mathbf{x}_1)\\
-                &=-d(\mathbf{x}_2^{-1})d(\mathrm{id})d(\mathbf{x}_1)\\
-                &=-d(\mathbf{x}_2^{-1}\circ \mathrm{id}\circ \mathbf{x}_1)\\
-                &=-d(\mathbf{x}_2^{-1}\circ \mathbf{x}_1)
-            \end{align*}
-            
-            Entonces $\mathbf{x}_2^{-1}\circ A\circ \mathbf{x}_1$ es diferenciable. Lo que nos permite concluir que $A$ es diferenciable en todos sus puntos. $A$ es diferenciable. 
+            Para esto, 
             \item Inversa diferenciable. Sea $A(A(x,y,z))=A(-x,-y,-z)=(x,y,z)$, lo que implica que $A^{-1}=A$ y por lo tanto, el inciso anterior aplica aqui también, mismo argumento. Inversa diferenciable. 
 
             
@@ -324,7 +332,7 @@ Dos superficies regulares $\mathrm{S}_1$ y $\mathrm{S}_2$ en $\mathbb{R}^3$ son 
                     \left(\frac{x_1}{a},\frac{y_1}{b},\frac{z_1}{c}\right) &= \left(\frac{x_2}{a},\frac{y_2}{b},\frac{z_2}{c}\right)\\
                     \left(\frac{x_1}{a},\frac{y_1}{b},\frac{z_1}{c}\right) &= \left(\frac{x_2}{a},\frac{y_2}{b},\frac{z_2}{c}\right)
                 \end{align*}
-                \item Sobreyectiva. Sea $(x’,y’,z’) \in S$. Entonces, $$ (x’)^2 + (y’)^2 + (z’)^2 = 1. $$ Let $(x,y,z) = (ax’,by’,cz’)$. De mesto, $$ \left(\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}\right) = 1, $$ so $(x,y,z) \in E$. Moreover, $$ f(x,y,z) = f(ax’,by’,cz’) = \left(\frac{ax’}{a},\frac{by’}{b},\frac{cz’}{c}\right) = (x’,y’,z’). $$ Entonces para cada punto en $S$, existe un punto en  $E$ tal que se cumple la regla de asignación. 
+                \item Sobreyectiva. Sea $(x’,y’,z’) \in S$. Entonces, $$ (x’)^2 + (y’)^2 + (z’)^2 = 1. $$ Let $(x,y,z) = (ax’,by’,cz’)$. De mesto, $$ \left(\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}\right) = 1, $$ so $(x,y,z) \in E$. Además, $$ f(x,y,z) = f(ax’,by’,cz’) = \left(\frac{ax’}{a},\frac{by’}{b},\frac{cz’}{c}\right) = (x’,y’,z’). $$ Entonces para cada punto en $S$, existe un punto en  $E$ tal que se cumple la regla de asignación. 
             \end{enumerate}
 
 Por otra parte, su inversa es $$ f^{-1}(x,y,z)=(ax,by,cz), $$
