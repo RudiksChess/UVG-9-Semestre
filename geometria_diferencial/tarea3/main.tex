@@ -257,11 +257,17 @@ Dos superficies regulares $\mathrm{S}_1$ y $\mathrm{S}_2$ en $\mathbb{R}^3$ son 
             \end{itemize}
             \item $A$ es diferenciable. Para esto, nos apoyamos en la siguiente definición vista en clase: 
             \begin{cajita}
-                Sea $f: S_1 \rightarrow S_2$ una aplicación entre superficies regulares $S_1$ y $S_2$. Diremos que $f$ es diferenciable si para cualesquiera parametrizaciones $\mathbf{x}: U \subseteq \mathbb{R}^2 \rightarrow S_1$ y $\mathbf{y}: V \subseteq \mathbb{R}^2 \rightarrow S_2$, con $f \circ \mathbf{x}(U) \subseteq \mathbf{y}(V)$, se tiene que la aplicación $\mathbf{y}^{-1} \circ f \circ \mathbf{x}: U \rightarrow V$ es diferenciable.
+                Sea $f: V \subseteq \mathbb{R}^3 \rightarrow \mathbb{R}$ una función diferenciable. Si $S \subseteq V$ es una superficie regular, entonces $\left.f\right|_S: S \rightarrow \mathbb{R}$ es diferenciable.\bigbreak 
+En general, si $F: V_1 \subseteq \mathbb{R}^3 \rightarrow V_2 \subseteq \mathbb{R}^3$ es diferenciable, y $S_1 \subseteq V_1, S_2 \subseteq V_2$ son superficier regulares, con $F\left(S_1\right) \subseteq S_2$, entonces $\left.F\right|_{S_1}: S_1 \rightarrow S_2$ es diferenciable.
             \end{cajita}
-            Sean $\mathbf{x}_1:U_1\to S^2$ y $\mathbf{x}_2:U_2\to S^2$ parametrizaciones tales que $A(\mathbf{x}_1(U_1))\subset \mathbf{x}_2(U_2)$. Entonces debemos probar que $$ \mathbf{x}_2^{-1}\circ A\circ \mathbf{x}_1:U_1\to U_2 $$ es diferenciable.
+            Sea $V_1=\mathbb{R}^3$ y $V_2=\mathbb{R}^3$. Entonces debemos probar que $f:\mathbb{R}^3\to \mathbb{R}^3$ tal que 
 
-            Para esto, 
+            $$A(x,y,z)=(-x,-y,-z)$$
+            es diferenciable. Para esto, usamos el hecho de que toda transformación lineal es diferenciable. Tenemos: 
+
+            $$A(x, y, z)=\left(\begin{array}{ccc}-1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & -1\end{array}\right)\left(\begin{array}{l}x \\ y \\ z\end{array}\right)$$
+            Por lo tanto, $A$ es diferenciable. 
+
             \item Inversa diferenciable. Sea $A(A(x,y,z))=A(-x,-y,-z)=(x,y,z)$, lo que implica que $A^{-1}=A$ y por lo tanto, el inciso anterior aplica aqui también, mismo argumento. Inversa diferenciable. 
 
             
@@ -332,7 +338,7 @@ Dos superficies regulares $\mathrm{S}_1$ y $\mathrm{S}_2$ en $\mathbb{R}^3$ son 
                     \left(\frac{x_1}{a},\frac{y_1}{b},\frac{z_1}{c}\right) &= \left(\frac{x_2}{a},\frac{y_2}{b},\frac{z_2}{c}\right)\\
                     \left(\frac{x_1}{a},\frac{y_1}{b},\frac{z_1}{c}\right) &= \left(\frac{x_2}{a},\frac{y_2}{b},\frac{z_2}{c}\right)
                 \end{align*}
-                \item Sobreyectiva. Sea $(x’,y’,z’) \in S$. Entonces, $$ (x’)^2 + (y’)^2 + (z’)^2 = 1. $$ Let $(x,y,z) = (ax’,by’,cz’)$. De mesto, $$ \left(\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}\right) = 1, $$ so $(x,y,z) \in E$. Además, $$ f(x,y,z) = f(ax’,by’,cz’) = \left(\frac{ax’}{a},\frac{by’}{b},\frac{cz’}{c}\right) = (x’,y’,z’). $$ Entonces para cada punto en $S$, existe un punto en  $E$ tal que se cumple la regla de asignación. 
+                \item Sobreyectiva. Sea $(x’,y’,z’) \in S$. Entonces, $$ (x’)^2 + (y’)^2 + (z’)^2 = 1. $$ Sea $(x,y,z) = (ax’,by’,cz’)$. De mesto, $$ \left(\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}\right) = 1, $$ entonces $(x,y,z) \in E$. Además, $$ f(x,y,z) = f(ax’,by’,cz’) = \left(\frac{ax’}{a},\frac{by’}{b},\frac{cz’}{c}\right) = (x’,y’,z’). $$ Entonces para cada punto en $S$, existe un punto en  $E$ tal que se cumple la regla de asignación. 
             \end{enumerate}
 
 Por otra parte, su inversa es $$ f^{-1}(x,y,z)=(ax,by,cz), $$

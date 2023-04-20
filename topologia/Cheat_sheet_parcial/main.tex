@@ -1,0 +1,61 @@
+\documentclass[a4paper, 12pt]{article}
+\input{settings/packages}
+\input{settings/page}
+\input{ambientes}
+
+\begin{document}
+\input{settings/titlepage}
+\setcounter{page}{1}
+%----------------------------------------
+
+\input{clases/1.tex}
+
+
+\begin{problema}
+    \begin{enumerate}
+        \item 1. Demuestre que $f: X \rightarrow Y$ es continua ssi $f^{-1}\left(A^0\right) \subset\left[f^{-1}(A)\right]^0$, para cada $A \subset X$.
+        \item  2. Considere a $\mathbb{R}$ con la topología usual. Pruebe que si cada función $f: X \rightarrow \mathbb{R}$ es continua, entonces $X$ es un espacio discreto.
+        \item  3. Sea $f: X \rightarrow Y$ un mapeo entre espacios topológicos. Demuestre los enunciados siguientes:
+        \begin{enumerate}
+            \item 3.1. $f$ es cerrado ssi $\overline{f(A)} \subset f(\bar{A})$ para cada $A \subset X$.
+            \item 3.2. $f$ es abierto ssi $f\left(A^0\right) \subset(f(A))^0$ para cada $A \subset X$.
+        \end{enumerate}
+        
+        \item 4. Pruebe cada una de las siguientes es una propiedad topológica: Punto límite, Interior, Frontera, Vecindad
+        \item Suponga que $X, Y$ son espacios topológicos tales que $X=\cup X_n \& Y=\cup Y_n$, donde $\left(X_n\right), \quad\left(Y_n\right)$ son sucesiones de conjuntos abiertos disjuntos en $X$ \& $Y$, respectivamente. Pruebe que, si $X_n$ es homemorfo a $Y_n$ para cada $n$, entonces $X$ \& $Y$ son homeomorfos.
+    \end{enumerate}
+\end{problema}
+
+\begin{problema}
+    1.
+1.1. Si $A \subset X$, demuestre que la familia de todos los subconjuntos de $X$ que contienen a $A$, junto con el conjunto vacío $\emptyset$, es una topología sobre $X$.
+1.2. ¿Qué topología resulta cuando $A=\emptyset$ ? ¿Y cuando $A=X$ ?
+2.
+2.1. Pruebe la operación $A \mapsto A^0$, en un espacio topológico $X$ tiene las propiedades siguientes:
+a) $A^0 \subset A$
+b) $\left(A^0\right)^0=A^0$
+c) $A^0 \cap B^0=(A \cap B)^0$
+d) $X^0=X$
+e) $G$ es abierto ssi $G^0=G$
+2.2. Conversamente, demuestre que si $X$ es un conjunto, cualquier mapeo de $\mathcal{P}(X)$ en $\mathcal{P}(X)$, tal que $A \mapsto A^0$ y que satisface de las propiedades a), b), c) y d), y si los conjuntos abiertos se definen en $X$ mediante e), entonces el resultado es una topología sobre $X$ en la cual el interior de un conjunto $A \subset X$ es $A^0$.
+3. Pruebe que las topologías sobre un conjunto fijo $X$, parcialmente ordenadas por la inclusión, forman un retículo.
+(Ayuda: Ver problema 3G de Willard).
+4. Un subconjunto abierto $G$ en un espacio topológico es regularmente abierto ssi $G$ es el interior de su cerradura. Un subconjunto cerrado es regularmente cerrado ssi es la cerradura de su interior. Pruebe que:
+4.1. El complemento de un conjunto regularmente abierto es regularmente cerrado y viceversa.
+4.2. Si $A$ es un subconjunto cualquiera de un espacio topológico, entonces $(\bar{A})^0$ es regularmente abierto.
+4.3. La intersección de dos conjuntos regularmente abiertos es regularmente abierto. ¿Se cumple esta propiedad en el caso de la unión?
+5. Demuestre que si $\mathcal{B}$ es una base para una topología sobre $X$, entonces la topología generada por $\mathcal{B}$ es igual a la intersección de todas las topologías sobre $X$ que contienen a $B$.
+\end{problema}
+
+
+
+
+
+
+
+
+
+%----------------------------------------
+\newpage
+
+\end{document}

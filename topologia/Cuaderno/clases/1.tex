@@ -1282,3 +1282,194 @@ $$
         Entonces $G\cap H=\varnothing$, entonces $X$ es regular. 
     \end{dem}
 \end{teorema}
+
+\begin{definicion}
+    $X$ es $T_0$ ssi $\forall x,y\in X_1, x\neq y$, existe un abierto que contiene a uno de los puntos, pero no a ambos.  
+\end{definicion}
+\begin{cajita}
+    Sea $(X_n)$ una sucesión en $X$. Se dice que $X_n\to X$ si cada abierto $U$, que contiene a $X$, continee a la cola de la sucesión. (i.e. si $\exists N\in \mathbb{Z}\ni$ si $n\geq N\implies x_n\in U$)
+\end{cajita}
+\begin{teorema}
+    Un espacio topológico $X$ es $T_1$ ssi $\forall x\in X$, la sucesión $x,x,x,\cdots $ converge a $x$ y solo a $x$. 
+    \begin{dem}
+        Sea 
+        \begin{itemize}
+            \item $(\implies) X$ es $T_1$ y $x\in X$, entonces se tiene que $x,x,\cdots$ converge a $x$. Si $y\in X\ni x\neq y$. Entonces existen abiertos $U$ y $V\ni x\in U $y $x\not\in U$; $y\in V$ y $y\not\in U\implies$ no es posible que $y$ sea límite de $x,x,\cdots$. 
+            \item $(\impliedby)$ Supóngase que $X$ no es $T_1$ y  que la sucesión $x,x,\cdots$ converge a $x$. Como $X$ no es $T_1$, entonces existe $y\ni x\neq y\ni$ cada abierto que contiene a $x$ a $y$. Entonces $x,x,x,\cdots \to y$.  
+        \end{itemize}
+    \end{dem}
+\end{teorema}
+
+\begin{teorema}
+    Un espacio topológico $X$ es $T_2$ ssi cada sucesión convergente tienen límite único. 
+\end{teorema}
+
+\begin{nota}
+    Los espacios Hausdorff son, principalmente, los espaciones métricos y los metrizables. 
+\end{nota}
+
+\begin{ejemplo}
+    Considere $\mathbb{R}$ dotado de la topología cofinita. Sea $(x_n)$ una sucesión en $\mathbb{R}$ con términos diferentes. Sea $p\in \mathbb{R}$  (elemento arbitrario) y sea $G$ un abierto cualquiera que contenga a $p$. Entonces $G^c$ es un conjunto finito, entoces $G^c$ tiene un número finito de términos de $(x_n)\implies G$  contiene a la cola de $(x_n)\implies x_n\to p$. Por la arbitrariedad de $p$, $x_n\to p$, $\forall p\in \mathbb{R}$.  
+\end{ejemplo}
+
+\subsection{Nets}
+
+\begin{dem}
+    Sea $D$ un conjunto $y\leq$ una relación definida sobre $D$ que satisface: 
+    \begin{enumerate}
+        \item $\leq$ es reflexiva, $x\leq x,\forall x\in D$. 
+        \item $\leq$ es transitiva, si $x\leq y$ y $y\leq z\implies x\leq z$. 
+        \item $\leq$ es dirigida, si $x,y\in D\implies \exists z\in D\ni x\leq z$ y $y\leq z$.  
+    \end{enumerate}
+    Entonces el para $(D,\leq)$ es un conjunto dirigido. 
+\end{dem}
+
+\begin{ejemplo}
+    Sea $(\mathbb{Z}^+,\leq)$, $(\mathbb{N},\leq)$ es un conjunto dirigido. 
+\end{ejemplo}
+
+\begin{ejemplo}
+    Sea $$\{C=\{ n,n+1,n+2, \cdots\}, n\in \mathbb{Z}^+\}$$
+    \begin{itemize}
+        \item Sea $C\leq H$ ssi $C\subseteq H$
+        \item $C\leq H$ ssi $C\supseteq H$
+    \end{itemize}
+     Entonces, $(\{\}m \leq )$ son conjuntos dirigidos.
+\end{ejemplo}
+
+\begin{ejemplo}
+    Sea $(X,\tau)$ un espacio topológico. Sea $x\in X$ y considere 
+$$D_x=\{u\in \tau: x\in U\}$$
+
+\begin{itemize}
+    \item $(D_x,\leq)$, donde $U\leq V$ ssi $U\subseteq V$
+    \item $(D_x,\leq)$ donde $U\leq V$ ssi $U\supseteq V$
+\end{itemize}
+son conjuntos dirigidos.
+\end{ejemplo}
+
+
+\begin{definicion}
+    Una red en un conjunto $X$ es un mapeo 
+    $$w:D\to X$$
+    donde $(D,\leq)$ es un conjunto dirigido.  
+\end{definicion}
+
+\begin{nota}
+    Cada sucesión sobre $X$ es una red. 
+\end{nota}
+
+\begin{definicion}[Convergencia]
+    Si $(X,\tau)$ es un espacio topológico y $w:D\to X$ es una red, se dice que $w$ converge a $x\in X$, si para cada abierto $U$ que contiene a $x$, existe $d\in D\ni T_\alpha=\{w(e):d\leq e\in D\}\subseteq U$. 
+\end{definicion}
+
+\begin{nota}
+    $w\to x$ (la red converge a $x$), o bien $x$ es punto límite de $w$. 
+\end{nota}
+
+\begin{teorema}
+    Sea $(X,\tau)$ un espacio topológico y sea $A\subseteq X$, entonces $x\in \mathbb{A}$ ssi existe una red $w$ sea $A\ni w\to x$.
+    \begin{dem}
+        Sea 
+        \begin{itemize}
+            \item $(\to)$ Suponemos que $x\in\overline{A}$. 
+            \begin{itemize}
+                \item Caso: $x\in A'$ (i.e. punto límite) entonces para cada cada abierto $U$ de de $X\ni x\in U\exists x_U\in U\cap A$ (fijo para cada $U$). Sea 
+                $$D=\{G\in \tau \ni x\in G\}.$$
+                El cual es un conjunto dirigido en la relación $G_1\leq G_2$ ssi $G_1\supseteq G_2$. Definamos $$w:D_x\to A\ni w(U)=x_u$$
+                la cual es una red. A probar: $w\to x$. Sea $U$ un abierto cualquiera que contiene a $x$. Considere 
+                $$T_U=\{w(V):\underbrace{U\leq V}_{U\supseteq V}\}$$ 
+                Entonces $w(V)=X_v\in V\cap A\subseteq U\cap A\subseteq U\implies w\to x$
+            \end{itemize}
+        \end{itemize}
+    \end{dem}
+\end{teorema}
+
+
+\begin{nota}
+    Un subconjunto $D'$ de un subconjunto dirigido $D$ es cofinal, si $\forall d\in D\exists e\in D'\ni d\leq e$. 
+\end{nota}
+\begin{definicion}
+    Sean $w:D\to X$ y $v: E\to x$ redes sobre $X$ (donde $(D,\leq)$ y $(E,\leq )$ son conjuntos dirigidos). Se dice que $v$ es una subred de $w$ si existe una función $h:E\to D\ni$ 
+    \begin{enumerate}
+        \item $h$ es monótona, es decir, $\alpha\leq \beta\implies h(\alpha)\leq h(\beta)$
+        \item $h$ es cofinal (es decir, $h(E)$ es cofinal con $D$).
+        \item $v(\alpha)=w(h(\alpha)),\forall \alpha\in E$.
+    \end{enumerate}
+    
+\end{definicion}
+
+\begin{definicion}[Subsucesión]
+    Una subsucesión de $(X_n)$ es una sucesión de la forma $(X_{n_k})$, es decir, dadad $(X_n)$, la subsucesión es de la forma $(X_{h_k})$, donde $h$ es una función creciente, $h:\mathbb{Z}^+\to \mathbb{Z}^+$, y donde $h$ no es acotada (i.e. su rango es cofinal con $\mathbb{Z}^+$)
+\end{definicion}
+
+%------------------------- clase 
+
+\begin{ejemplo}
+    $M\subseteq X\implies \mathcal{F}_n=\{A\subseteq X\ni M\subseteq A\}$ es el filtro principal generado por $M$. 
+\end{ejemplo}
+\begin{ejemplo}
+    $M=\{x\},x\in X\implies X=\mathcal{F}_x=\{A\subseteq X\ni x\in A\}$. 
+\end{ejemplo}
+
+%----------------- clase 
+
+\begin{teorema}
+    Sea $X\neq \varnothing$ y $\mathcal{F}_\alpha\in F(X),\alpha\in I$. Entonces $\bigcap_\alpha \mathcal{F}_\alpha \in F(X)$
+    \begin{dem}
+        Sea 
+        \begin{enumerate}
+            \item Como $\varnothing\not\in \mathcal{F}_\alpha,\forall \alpha \in I\implies \varnothing \not\in \bigcap_\alpha \mathcal{F}_\alpha$.
+            \item Sea $A\in \bigcap_\alpha \mathcal{F}_\alpha$ y sea $A\subseteq B\subseteq X$. Como $A\in \bigcap_\alpha \mathcal{F}_\alpha\implies A\in \mathcal{F}_\alpha,\forall \alpha\in I$. Como $\mathcal{F}_\alpha$ es filtro $\forall \alpha$ y como $A\subset B\implies B\in \mathcal{F}_\alpha,\forall \alpha \implies B\in \bigcap_\alpha \mathcal{F}_\alpha $
+            \item Sean $A,B\in \bigcap_\alpha \mathcal{F}_\alpha \implies A,B\in \mathcal{F}_\alpha,\forall \alpha \in I$. Como $\mathcal{F}_\alpha$ es filtro $\forall \alpha \implies A\cap B\in \mathcal{F}_\alpha,\forall_\alpha\implies A\cap B \in \bigcap_{\alpha}\mathcal{F}_\alpha\implies \bigcap_\alpha \mathcal{F}_\alpha$ es filtro de $X$.  
+        \end{enumerate}
+    \end{dem}
+\end{teorema}
+
+\begin{nota}
+    Sea $X\neq\varnothing$ y sea $A\not\subseteq X\implies$ Considere $B=X-A=A^c$ y a los filtros $\mathcal{F}_A$ y $\mathcal{F}_B$. Entonces, $\mathcal{F}_A\cup \mathcal{F}_B$ no es filtro. En efecto, como $A\subset \mathcal{F}_A$ y $B\subset \mathcal{F}_B\implies A\cap B=\varnothing\implies \varnothing \mathcal{F}_A\cup \mathcal{F}_B$. 
+\end{nota}
+
+\begin{teorema}
+    Sea $X$ un conjunto y $U(x)$ una colección de filtros sobre $X$. Si para cualesquiera $\mathcal{F}_1,\mathcal{F}_2\in U(x)$ se tiene que $\mathcal{F}_1\subset \mathcal{F}_2$ o $\mathcal{F}_2\subset \mathcal{F}_1\implies \bigcup U(x)$ es filtro. 
+    \begin{dem}
+        Sea 
+        \begin{enumerate}
+            \item $\varnothing \not\in \mathcal{F}$, para cada $\mathcal{F}\in U(x)\implies \varnothing \not\in \bigcup U(x)$.
+            \item Sea $A\in U(x)$ y $A\subseteq B$. Entonces, exise $\mathcal{F}\in U(x)\ni A\in \mathcal{F}$. Como $\mathcal{F}$ es filtro y $A\subset B\implies B\in \mathcal{F}\implies B\in \bigcup U(X)$.
+            \item Sean $A,B\in \bigcup U(X)\implies$ existen $\mathcal{F}_1,\mathcal{F}_2\in U(X)$, tal que $A\in \mathcal{F}_1$ y $B\in \mathcal{F}_2$. Supongamos que $\mathcal{F}_1\subset \mathcal{F}_2\implies A,B\in \mathcal{F}_2\implies A\cap B\in \mathcal{F}_2\implies A\cap B\in \bigcup U(X)\implies \bigcup U(X)$ es filtro. 
+        \end{enumerate}
+    \end{dem}
+\end{teorema}
+
+\begin{prop}
+    Sea $X$ un conjunto y $\mathcal{F}, \mathcal{G}$ filtros sobre $X$. Entonces, $\mathcal{F}\bigcup_* G:=\{F\cup G:F\in \mathcal{F}\wedge G\in \mathcal{G}\}$ es filtro sobre $X$. 
+    \begin{dem}
+        Sea 
+        \begin{enumerate}
+            \item $\varnothing \not\in \mathcal{F}$ y $\varnothing\not\in \mathcal{G}\implies\varnothing \not\in F\bigcup_* \mathcal{G}$. 
+            \item Sea $A\in \mathcal{F}\bigcup_* \mathcal{G}$ y $A\subset B$. Entonces $A=F\cup G$, $F\in \mathcal{F}$ y $G\in \mathcal{G}$. Entonces, $F\subset F\cup G=A \implies F\subset A\implies A\in \mathcal{F}\implies B\in\mathcal{F}$. Además, $G\subset F\cup G=A\implies G\subset A\implies A\in \mathcal{G}\implies B\in \mathcal{G}$. Entonces 
+            $$B=B\cup B\in \mathcal{F}\bigcup_* G$$
+            \item Sean $u_1,u_2\in \mathcal{F}\bigcap_* \mathcal{G}$, i.e. existen $F_1,F_2\in \mathcal{F}$ y $G_1,G_2\in \mathcal{G}$ tal que $U_1=F_1\bigcap G_2$ y $U_2=F_2\bigcap G_2\implies U_1\cap U_2=(F_1\cup G_1)\cap (F_2\cup G_2)=[(F_1\cup G_1)\cap F_2]\cup [(F_1\cup G_1)\cap G_2]=[(F_1\cap F_2)\cup (G_1\cap F_2)]\cup [(F_1\cap G_2)\cup (G_1\cap G_2)]\implies F_1\cap F_2\subset (F_1\cap F_2)\cup (G_1\cap F_2)\in \mathcal{F}\implies (F_1\cap G_2)\cup (G_1\cap G_2)\in \mathcal{G}\implies U_1\cap U_2\in \mathcal{F}\bigcup_* \mathcal{G}$.
+        \end{enumerate}
+    \end{dem}
+\end{prop}
+
+
+\begin{cajita}
+    \begin{nota}[Escolio]
+        Sea $\mathcal{F}$ un filtro sobre $X\neq\varnothing$. Entonces,  $\mathcal{F}\cup \{\varnothing\}$ es una topología sobre $X$. 
+    \end{nota}    
+\end{cajita}
+
+\begin{definicion}[Ultrafiltros]
+    Sea 
+    \begin{itemize}
+        \item Un filtro sobre $X$ es un ultrafiltro  si se cumple $\forall A\subset X $, se tiene que $A\in \mathcal{F}$ o $A^c\in \mathcal{F}$.
+        \item Un ultrafiltro es un filtro maximal en $(F(X), \subseteq)$; i.e. un ultrafiltro es un filtro $U$ sobre $X$ tal que si $\mathcal{G}$ es un filtro sobre $X$ tal que $X\ni U\subseteq G\implies U=G$ 
+    \end{itemize}
+\end{definicion}
+
+\begin{definicion}
+    $\mathcal{F}$ converge a $x$ ($\mathcal{F}\to x$) si $\forall V\in N(x)\exists F\in \mathcal{F}\ni F\subset V$. 
+\end{definicion}

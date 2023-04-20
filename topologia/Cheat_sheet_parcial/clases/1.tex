@@ -1,0 +1,529 @@
+
+\section{Topología}
+
+\begin{definicion}
+    Sea $X\neq \varnothing$. Una clase $\tau$ de subconjunto de $X$ es una topología sobre $X$, se cumple: 
+    \begin{enumerate}
+        \item $\varnothing,X\in \tau$
+        \item La unión de una clase arbitraria de conjuntos en $\tau$ es un miembro de $\tau$. 
+        \item La intersección de una clase finita de miembros de $\tau$ está en $\tau$. 
+    \end{enumerate}
+    Los miembros de $\tau$ son los abiertos de $X$. 
+\end{definicion}
+
+\begin{prop}
+    Si $\tau_1$ y $\tau_2$ son topologías sobre $X$, entonces $\tau_1\cap \tau_2$ es topología sobre $X$.
+\end{prop}
+
+
+
+\begin{definicion}
+    Sean $X$ y $Y$ espacios topológicos y $f$ un mapeo de $X$ en $Y$. Se dice que $f$ es continua si $f^{-1}(G)$ es un abierto de $X$ para cada abierto de $G$ de $Y$. 
+\end{definicion}
+
+\begin{definicion}
+    Se dice que el mapeo es abierto si, para cada abierto $G$ de $X$, se cumple que $f(G)$ es abierto de $Y$. 
+\end{definicion}
+
+\begin{definicion}
+    Si $f$ es continuo, entonces $f(x)$ es la imagen continua de $X$ bajo $f$. 
+\end{definicion}
+
+\begin{definicion}[Homeomorfismo]
+    Un homeomorfismo es un mapeo biyectivo y bicontinuo (continuo y abierto) entre espacios topológicos. En este caso, los espacios son homeomorfos. 
+\end{definicion}
+
+
+
+%----
+
+
+\begin{definicion}
+    El par $(A,\tau_A)$ es un espacio topologico y se dice es un subespacio de $X$, 
+    \begin{enumerate}
+        \item $\varnothing\in \tau\implies A\cap \varnothing=\varnothing\in\tau_A$ y $X\in \tau\implies A\cap X=A\in \tau_A$.
+        \item Sea $\{G_i\}_{i\in I}$ una colección de miembros de $\tau_A\implies \exists H_i\in \tau\ni G_i=A\cap H_i, \forall i\implies \bigcup_i G_i=\bigcup_i(A\cap H_i)= A\cap\left(\underbrace{\bigcup_{i}H_i}_{\in\tau}\right)\in\tau_A$
+        \item Sean $G_1,G_2\in \tau_A\implies\exists H_i\in\tau\ni G_i=A\cap H_i$, $i=1,2$. Entonces, $G_1\cap G_2=(A\cap H_1)\cap (A\cap H_2)=A\cap (\underbrace{H_1\cap H_2}_{\in\tau})\in\tau_A\implies \tau_A$ es topología sobre $A$. 
+    \end{enumerate}
+\end{definicion}
+
+
+%---------
+
+\begin{definicion}
+    Sea $(X,\tau)$ un espacio topológico. Un subconjunto $A\subset X$ es cerrado si y solo si $A^c\in\tau $.
+\end{definicion}
+
+
+
+
+\begin{definicion}
+    Sea $X$ un espacio topológico: 
+    \begin{enumerate}
+        \item Una vecindad de un punto (o de un conjunto), es un abierto de $X$ que contiene al punto (o al conjunto).
+        \item Sea $A\subseteq X$. Un punto $x$ en $A$ es aislado si existe una vecindad de $x$ que no contiene ningún otro punto de $A$. 
+        \item Sea $A\subseteq X$. Un punto de $y\in X$ es un punto límite de $A$ si, $\forall G\in \tau\ni y\in G$, se tiene que $(G-\{y\})\cap A\neq\varnothing$. 
+        \begin{cajita}
+            EL conjunto de puntos límite de $A$ se llama derivado de $A$, $(A',D(A))$.  
+        \end{cajita}
+        \item Sea $A\subseteq X$. La cerradura de $A$, denotado $\overline{A}$, es el cerrado más pequeño que contiene a $A$. Es decir, si $F_i$ son los cerrados de $X$ que contiene a $A\implies \overline{A}=\bigcap_i F_i$. 
+        \begin{cajita}
+            Tenemos:
+            \begin{enumerate}
+                \item $A\subseteq \overline{A}$
+                \item Si $A$ es cerrado $\implies A=\overline{A}$.
+            \end{enumerate}
+        \end{cajita}
+        \item Un subconjunto $A$ de $X$ es denso (siempre denso), si $\overline{A}=X$.
+        \item El espacio topológico $X$ es separable si tiene un subconjunto separable contable y denso. 
+        \item Un punto de adherencia de $A\subseteq X$ es cualquier elemento de $\overline{A}$.
+    \end{enumerate}
+\end{definicion}
+
+\begin{prop}
+    Sea $A\subset B\implies A'\subset B'$.
+    \begin{prop}
+        Sea $A\subset B$ y sea $x\in A'\implies$ si $G$ es un abierto $\ni x\in G\implies (G-\{x\})\cap B\supset (G-\{x\})\cap A\neq \varnothing\implies x\in B'\implies A'\subset B'$.
+    \end{prop}
+\end{prop}
+
+\begin{prop}
+    Derivado de la unión $(A\cup B)'=A'\cup B' $
+    
+\end{prop}
+
+\begin{prop}
+    $A\subseteq X$ es cerrado ssi $A'\subseteq A$.
+\end{prop}
+
+\begin{prop}
+    Sea $F$ un superconjunto cerrado de $A$, entonces $A'\subset F$. 
+\end{prop}
+
+\begin{prop}
+    $A\cup A'$ es cerrado.
+\end{prop}
+
+
+\begin{prop}
+    $\overline{A}=A\cup A'$
+
+\end{prop}
+
+
+\begin{prop}
+    Si $A\subset B\implies \overline{A}\subset \overline{B}$.
+    
+\end{prop}
+
+\begin{prop}
+    $\overline{A\cup B}=\underbrace{\overline{A}\cup \overline{B}}_{cerrado}$
+\end{prop}
+
+\begin{teorema}
+    Sea \begin{enumerate}
+        \item $\overline{\varnothing}=\varnothing$
+        \item $A\subset \overline{A}$
+        \item $\overline{A\cup B}=\overline{A}\cup \overline{B}$
+        \item $\overline{\overline{A}}=\overline{A}$
+    \end{enumerate}
+
+\end{teorema}
+
+\begin{definicion}
+    \begin{enumerate}
+        \item Un punto $P$ de $X$ es interior de $A\subseteq X$, si existe un abierto $G\ni$
+        $$p\in G\subset A$$
+        \item El interior de $A$, denotado $\int(A)$ o $A^{\circ}$, es el conjunto de todos los puntos interiores de $A$. 
+    \end{enumerate}
+    
+\end{definicion}
+
+\begin{definicion}
+    Un punto frontera de $A\subset X$ es un punto tal que, cada vecindad del punto intersecta a $A$ y $A^c$.
+\end{definicion}
+
+ 
+
+\begin{definicion}
+    Una base $\beta$ (abierta) para el espacio topológico $(X,\tau)$ es una clase de abiertos de $X$ tal que cada abierto en $\tau$ puede escribirse como uniones de los miembros de la clase. 
+\end{definicion}
+
+
+\begin{definicion}
+    Sea $(X,\tau)$ un espacio topológico. Una subclase $S$ de abiertos en $\tau$ es una subbase de la topología $\tau$, si las intersecciones finitas de miembros de $S$ producen una base $\tau$. 
+\end{definicion}
+
+\begin{teorema}
+    Los enunciados siguientes son equivalentes:
+    \begin{enumerate}
+        \item Una familia $\beta$ de subconjuntos abiertos del espacio topológico $(X,\tau)$ es una base para $\tau$, si cada abierto de $\tau$ es unión de miembros de $\beta$.
+        \item $\beta\subset \tau$ es una base para $\tau$ ssi $\forall G\in \tau,\forall p\in G\exists B_p\in \beta \ni p\in B_p\subset G$.
+    \end{enumerate}
+\end{teorema}
+
+\begin{teorema}
+    Sea $\beta$ una familia de subconjuntos de un conjunto no vacío $X$. Entonces, $\beta$ es una base para una topologia $\tau$ sobre $X$ ssi se cumplen: 
+    \begin{enumerate}
+        \item $X=\bigcup_{B\in\beta}B$
+        \item $\forall B,B^*\in \beta$ se tiene que $B\cap B^*$ la union de miembros de $\beta(\iff p\in B\cap B^*\exists B_p\in \beta \ni p\in B_p\subset B\cap B^*)$
+    \end{enumerate}
+\end{teorema}
+
+
+
+\begin{teorema}
+    Sea $X$ cualquier conjunto no vacío y sea $S$ una clase arbitraria de subconjuntos de $X$. Entonces, $S$ puede constituirse en la subbase para una topología abierta para una topología sobre $X$ en el sentido que las intersecciones finitas de los miembros de $S$ producen una base para dicha topología. 
+\end{teorema}
+
+\begin{teorema}
+    Sea $X\neq \varnothing$ y sea $S$ una clase arbitraria de subconjunto de $X$. Entonces, $S$ puede servir como subbase abierta de una topología sobre $X$ en el sentido que la clase $\tau$ de todas las uniones de intersecciones finitas en $S$ es una topogía. 
+    
+    \begin{lema}
+        Si $S$ es subbase de las topologías $\tau$ y $\tau^*$ sobre $X$ $\implies \tau = \tau^*$ 
+    \end{lema}
+\end{teorema}
+
+\begin{teorema}
+    Sea $X$ un subconjunto no vacío y sea $S$ una clase de subconjuntos de $X$. La topología $\tau$ sobre $X$, generada por $S$, es la intersección de todas las topologías sobre $X$ que contienen a $S$. 
+    
+\end{teorema}
+
+
+\begin{definicion}
+    Un espacio topológico que tiene una base contable es un espacio segundo contable. 
+\end{definicion}
+
+\begin{teorema}[de Lindelof]
+    Sea $X$ un espacio vacío no contable. Si un abierto de $G$ de $X$ se puede representar como unión de una clase $\{G_i\}$ de abierto de $X\implies G$ puede representarse como unión contable de los $G_i$. 
+    
+\end{teorema}
+
+\begin{definicion}
+    Un espacio topológico es un espacio de Hausdorf $(T_2)$ si dados $x,y\in X,x\not y ,\exists u,v\in \tau \ni x\in U,y\in V$ y $u\cap v =\varnothing$
+\end{definicion}
+
+\begin{teorema}
+    Sea $(X,d)$ un espacio métrico y sean $x,y\in X, x\not y \implies$ sea $\delta=d(x,y)\implies u=\beta_{\delta/2}(x)$ y $v=\beta_{\delta/2}(y)\implies x\in u$ y $y\in V$ y $u\cap v=\varnothing$. Por lo tanto, es de Hausdorf.
+\end{teorema}
+
+
+\begin{teorema}
+    Composición de mapeos continuos es un mapeo continuo. Sean $(X,\tau),(Y,\tau^*),(Z,\tau^{**})$ espacio topológicos y sean $f:X\to Y$ y $g:Y\to Z$ mapeos continuos. A probar $g\circ f: X\to Z$. Sea $G\in \tau^{**}\implies g^{-1}(G)\in \tau^*\implies f^{-1}[g^{-1}(G)]\in \tau =(g\circ f)^{-1}(G)\in \tau$.
+\end{teorema}
+
+\begin{teorema}
+    Sea $\{\tau_i\}$ sobre $X$, si $f:X\to Y$ continua, $\forall \tau_i\implies f$ es continuo con respecto a $\bigcap_i\tau_i$.
+\end{teorema}
+
+\begin{teorema}
+    Si $X$ es un $T_2\implies $ cualquier sucesión de puntos en $X$ (a lemas) es un punto de $X$.
+\end{teorema}
+
+\begin{teorema}
+    Cada subconjunto límite $A\subseteq X$ es un $T_2$ es cerrado. 
+\end{teorema}
+
+
+\begin{definicion}
+    Sea $(X,\tau)$ y $(Y,\tau^*)$ esapacios topológicos. El mapeo $f:X\to Y$ es continuo si para cada $G\in \tau^*$ se tiene que $f^{-1}(G)\in\tau$
+\end{definicion}
+
+
+\begin{prop}
+    Sea $f:X\to Y$ un mapeo entre espacios topológicos. Entonces, $f$ es un mapeo continuo ssi $f(\overline{A})\subset \overline{f(A)},\forall A\subseteq X$
+    \begin{cajita}
+        Propiedades: 
+        \begin{enumerate}
+            \item $f[f^{-1}(A)]=A$
+            \item $f^{-1}[\underbrace{f(A)}_{\subseteq X}]\supset A$
+        \end{enumerate}
+    \end{cajita}
+\end{prop}
+
+\begin{prop}
+    Sea $\{\tau_i\}$ una colección de topologías sobre $X$. Si $f:X\to Y$ es continuo con respecto a cada $\tau_i\implies f$ es continuo con respecto a $\tau=\bigcap_i\tau_i\implies f$ es continuo respecto a $\tau=\bigcap_i \tau_i$.
+\end{prop}
+
+\begin{prop}
+    Sea $f:(X,\tau)\to (Y,\tau)$ un mapeo continuo, si $A\subset X\implies f|_A:(A,\tau_A)\to (Y,\tau')$ es continua. 
+\end{prop} 
+
+
+\begin{definicion}
+    Sean $(X,\tau)$ un espacio topológico y $x\in X$ un subconjunto $U\subseteq X$ es vecindad de $x$, si $\exists V\in \tau\ni x\in V\subset U$ (es decir, $x$ es un punto interior de $U$.)
+\end{definicion}
+
+\begin{definicion}
+    Lqa colección de todas las vecindades de un punto $x\in X$ se llamna sistema de vecindades de $x$. Notación: $N_x$. 
+\end{definicion}
+
+
+\begin{prop}
+    $N_x$ es cerrado bajo intersecciones y extensiones. Es decir: 
+    \begin{enumerate}
+        \item Si $u,w\in N_x\implies u\cap w\in N_x$.
+        \item Si $u\in N_x$ y $u\subseteq w \implies w\in N_x$. 
+    \end{enumerate}
+\end{prop}
+
+
+\begin{prop}
+    Sea $A$ un subconjunto del espacio topológico $(X,\tau)\ni \forall x\in A\exists G\in\tau\ni x\in G\subset A$. Entonces, $A$ es abierto en $\tau$. 
+\end{prop}
+
+
+\begin{prop}
+    Un conjunto $G$ es abierto ssi $G$ es vecindad de cada uno de sus puntos. 
+    
+\end{prop}
+
+
+
+\begin{prop}
+    Sea 
+    \begin{enumerate}
+        \item $N_x\neq \varnothing$ y $x\in A,\forall A\in N_x$. 
+        \item Cada miembro $A\in N_x$ es un superconjunto de un miembro $G\in N_x$, donde $G$ es vecindad de cada uno de sus puntos. 
+    \end{enumerate}
+\end{prop}
+
+
+\begin{definicion}
+    Un mapeo $f:X\to Y$ entre espacios topologicos es continuo en un punto $x\in X$, para cada $U\in N_f(x)\exists V\in N_x\ni f(V)\subset U$. 
+\end{definicion}
+
+\begin{teorema}
+    Un mapeo $f:X\to Y$ entre espacios topologicos, es continuio ssi es continuo en cada punto de $X$. 
+\end{teorema}
+
+
+\begin{teorema}
+    Un mapeo $f:X\to Y$ es continuo ssi es continuo en cada punto de $X$. 
+\end{teorema}
+
+
+
+\begin{definicion}
+    Una función $f:X\to Y$ es secuencialmente continua en un punto $p\in X$ ssi para cada sucesión $(a_n)$, se cumple que: si $a_n\to p\implies f(a_n)\to f(p)$
+    
+\end{definicion}
+
+\begin{teorema}
+    Si una función $f:X\to Y$ es continua en $p\in X$, entonces $f$ es secuencialmente continua en $p\in X$. 
+\end{teorema}
+
+
+\begin{definicion}
+    Un mapeo $f:X\to Y$ es 
+    \begin{enumerate}
+        \item Abierto, si $\forall G$, abierto de $X$, $f(G)$ es abierto de $Y$. 
+        \item Cerrado, si $\forall H$, cerrado de $X$, $f(H)$ es cerrado de $Y$. 
+    \end{enumerate}
+\end{definicion}
+
+\begin{definicion}
+    Los espacios topológicos $(X,\tau)$ y $(Y,\tau')$ son homeomorfos si existe una función $f:X\to Y$ tal que: 
+    \begin{enumerate}
+        \item $f$ es biyectiva. 
+        \item $f$ y $f^{-1}$ son continuas.
+    \end{enumerate}
+    En este caso, $f$ es un homeomorfismo. 
+\end{definicion}
+
+
+\begin{prop}
+    Sea $f:(X,\tau)\to (Y,\tau^*)$ un mapeo abierto e inyectivo y sea $A\subset X$ tal que $f(A)=B$. Entonces, la restricción $f_A:(A,\tau_A)\to (B,\tau_B)$
+    es abierto e inyectivo. 
+\end{prop}
+
+
+%---- 24-02
+\begin{teorema}
+    Sea $\{f_i:X\to (Y_i,\tau_i)\}$ una colección de mapeos definidos sobre un conjunto vacio de $X$ sobre los espacios topologicos $(Y_i,\tau_i)$, sea 
+    $$S=\bigcup_i \{f^{-1}(H):H\in \tau_i\},$$
+    y definamos $\tau$ como la topologia sobre $X$ generada por $S$. 
+    \begin{enumerate}
+        \item Todos los $f_i$ son continuas con respecto a $\tau$. 
+        \item Si $\tau^*$ es la intersección de todas las topologias sobre $X$ con respecto a las cuales las $f_i$ son continuas, entonces $\tau=\tau^*$. 
+        \item $\tau$ es la topologia menos fina sobre $X$ tales que las $f_i$ son continuas. 
+        \item $S$ es una subbase para $\tau$. 
+    \end{enumerate}
+\end{teorema}
+
+
+\subsection*{Topologia producto}
+Sea $X_\alpha$ un conjunto, $\forall \alpha \in I$. El producto cartesiano de las $x_\alpha$, es el conjunto 
+$$\prod_{\alpha\in I} X_\alpha := \{x:I\to \bigcup_{\alpha\in I}X_\alpha \ni x(\alpha)\in X_\alpha, \forall \alpha \in I\}$$
+
+
+\begin{definicion}
+    Sea $\left\{x_\alpha \right\}_{\alpha \in I}$ una colección de espacios topológicos y sea $X=\prod_{\alpha \in I} x_\alpha$. La topologia menos fina que hace continuas a las proyecciones sobre $X$, es la topologia producto.
+\end{definicion}
+
+%--- 01-03
+
+\begin{definicion}
+    Sean $(X_\alpha,\tau_\alpha)$, $\alpha\in I$ espacios topologicos y sea $X=\prod_{\alpha\in I}X_\alpha$
+    \begin{enumerate}
+        \item Las funciones $\pi_k:X\to X_k$ se llaman proyecciones.
+        \item La topologia generada por las proyecciones en la topologia producto de $X$. 
+        \item Es decir, es la topologia menos fuerte que hace continuas a las proyeccciones. 
+        \item Un espacio producto tiene la forma $$\left(\prod_{\alpha\in I} X_\alpha,\tau\right)$$
+    \end{enumerate}
+\end{definicion}
+
+\begin{prop}
+    Sea $\{X_\alpha\}_{\alpha\in I}$ una colección de espacios de Hausdorff, y sea $X=\prod_\alpha X_\alpha$ el espacio producto. Entonces, $X$ es de Hausdorff. 
+\end{prop}
+
+\begin{problema}
+    Una funcion $f$ del espacio topologico $\prod_\alpha X_\alpha$ es continua ssi para  cada proyeccion $\pi_i$, se tiene que $\pi_\alpha \circ f$ es continua. 
+\end{problema}
+
+\subsection{Compactos}
+
+\begin{definicion}
+    Sea $(X,\tau)$ un espacio topológico una clase $\{H_i\}$ de abiertos de $X$ es una cubierta abierta de $X$, si $\bigcup_i H_i=X$. 
+\end{definicion}
+
+\begin{definicion}
+    Una subclase de una cubierta abierta de $X$ que también es cubierta abierta es una subcubierta de la inicial. 
+\end{definicion}
+
+\begin{definicion}
+    Un espacio compacto es un espacio topológico en el que cada cubierta abierta tiene una subcubierta finita. Es representar $X=\bigcup_{i\in I}^n H_i $
+\end{definicion}
+
+
+\begin{teorema}
+    Todo subespacio cerrado de un espacio compacto es compacto.
+    
+\end{teorema}
+
+\begin{teorema}
+    Cualquier imagen continua de un espacio compacto es compacto. 
+    
+\end{teorema}
+
+\begin{prop}
+    Propiedad de intersección finita 
+\end{prop}
+
+\begin{teorema}
+    Los enunciados siguientes son equivalentes: 
+    \begin{enumerate}
+        \item $X$ es un espacio compacto. 
+        \item Para cada clase $\{F_i\}$ de cerrados de $X\ni \bigcap_{i}F_i=\varnothing$, se cumple que $\{F_i\}$ contiene una subclase finita $\{F_{i_1}, \cdots, F_{i_m}\}\ni F_{i_1}\cap \cdots \cap F_{i_m}=\varnothing$  
+    \end{enumerate}
+\end{teorema}
+
+
+\begin{teorema}
+    $X$ es un espacio compacto ssi cadad clase de cerrados de $X$ que tiene la pif, tinee intersección no vacía. 
+\end{teorema}
+
+
+\begin{teorema}
+    Un espacio topológico es compacto si cada cubierta abierta básica tiene subcubierta abierta finita. 
+    
+\end{teorema}
+
+\begin{teorema}
+    Un espacio topológico es compacto si cada cubierta abierta subbásica tiene una subcubierta finita. 
+\end{teorema}
+
+\begin{teorema}
+    En un espacio de $T_2$, cualquier punto y un subespacio disjunto y compacto, puede separarse por abiertos, en el sentido que tienen vecindades disjuntas. 
+\end{teorema}
+
+\begin{teorema}
+    Cada subespacio compacto de un $T_2$ es cerrado. 
+\end{teorema}
+
+\begin{teorema}
+    Un mapeo biyectivo y continuo de un espacio compacto en un espacio de Hausdorff es un homeomorfismo. 
+\end{teorema}
+
+
+\begin{definicion}
+    Un espacio $X$ es $T_1$ si, para $x,y\in X$, $x\neq y$, existen vecindades $G$ y $H$ tales que $x\in G$ y $y\not\in G$; $y\in H$ y $x\not\in H$ 
+\end{definicion}
+
+\begin{teorema}
+    Un espacio topológico es $T_1$ ssi los unitarios son cerrados. 
+\end{teorema}
+
+\begin{prop}
+    Tenemos 
+    \begin{enumerate}
+        \item $\mathbb{R}$ con la topología usual es $T_1$. 
+        \item Cada $T_2$ es $T_1$. 
+    \end{enumerate}
+\end{prop}
+
+
+\begin{teorema}
+    Cada subespacio de un $T_1$ es un $T_1$. 
+    
+\end{teorema}
+
+
+\begin{definicion}
+    Un espacio $X$ es regular ssi satisface: 
+    si $F$ es un cerrado de $X$ y $p\in X\ni p\not\in F$, existen abiertos $G$ y $G\ni F\subset G$ y $\{p\}\subset H$. $G\cap H=\varnothing$
+\end{definicion}
+
+
+\begin{definicion}
+    Un espacio topológico es $T_3$ si es regular y $T_1$. 
+\end{definicion}
+
+\begin{teorema}
+    Si $X$ es $T_3$ entonces $X$ es $T_2$. 
+\end{teorema}
+
+\begin{teorema}
+    Un espacio $X$ es normal es normal si para $F_1$ y $F_2$, cerrados disjuntos de $X$, existen vecindades dijuntas $G$ y $H$ tal que $F_1\subset G$ y $F_2\subset H$.
+\end{teorema}
+
+
+
+\begin{definicion}
+    Un espacio topológico que es normal y $T_1$ es un $T_4$. 
+\end{definicion}
+
+\begin{teorema}
+    Los enunciados siguientes son equivalentes: 
+    \begin{enumerate}
+        \item $X$ es normal 
+        \item Si $H$ es un superconjunto abierto del cerrado $F$, existe un abierto $G$ tal que 
+        $$F\subset G\subset \overline{G}\subset H$$
+    \end{enumerate}
+\end{teorema}
+
+\begin{prop}
+    Si $X$ es un $T_4\implies X$ es un $T_3$.
+\end{prop}
+
+
+\begin{definicion}
+    Sea $F:= \{f_j: j\in I\}$ la clase  de funciones del conjunto $X$ en el conjunto $Y$. Se dice que $F$ separa puntos si, $\forall x,y\in X,x\neq y$, se tiene que $f_i(x)\neq f_i(y)$. 
+\end{definicion}
+
+
+\begin{prop}
+    Si $C(X,\mathbb{R})$ es la clase de funciones continuas y de valores reales sobre $X$, que separa puntos $\implies X$ es Hausdorff. 
+    
+\end{prop}
+
+
+\begin{definicion}
+    Un espacio topológico es completamente regular ssi satisface: SIi $F$ es un cerrado de $X$ y $p\in X\ni p\not\in F$, entonces existe una función continua. $f:X\to [0,1]\ni f(p)=0$ y $f(F)=\{1\}$.
+\end{definicion}
+
+
+
+\begin{teorema}
+    Si $X$ es completamente regular, entonces $X$ es regular. 
+\end{teorema}
