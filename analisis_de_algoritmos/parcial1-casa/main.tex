@@ -1,0 +1,162 @@
+\input{Configuraciones/paquetes}
+
+%--------------------------
+
+\begin{document}
+\input{Configuraciones/nombres}
+%--------------------------
+\begin{problema}
+    Considérese el \textit{Travelling Salesman Problem} (TSP):
+\begin{verbatim}def tsp(G, start, node, visited):
+    costs = []
+    nextone = -1
+    minactual = 10000000
+    for edge in range(len(G[node])):
+      if (edge not in visited):
+
+        costs.append(G[node][edge]+tsp(G, start, edge, visited + [edge]))
+  
+        mintemporal = min(costs)
+        if (minactual >= mintemporal):
+          nextone = edge
+          minactual = mintemporal
+  
+      if (len(costs)>0):
+  
+        visited.append(nextone)
+  
+        return min(costs)
+        
+      else:
+  
+        return G[node][start]
+  
+\end{verbatim}
+
+Entonces, 
+\begin{itemize}
+    \item Divide-Conquer-Combine: 
+    \begin{itemize}
+        \item \textbf{Divide}: Es la parte en el que el problema se divide en subproblemas. En este caso tenemos al \textbf{for} que itera a cada \textbf{edge} y el condicional \begin{verbatim}
+                if (edge not in visited)
+        \end{verbatim}
+        el cual subdivide el problema a los \textit{edges} no visitados. 
+        \item \textbf{Conquer}: En esta parte es donde se ejecutan las llamadas recursivas. En este caso particular es cuando se ejecuta
+        \begin{verbatim}
+            tsp(G, start, edge, visited + [edge])
+        \end{verbatim}
+        \item \textbf{Combine}: Aquí es donde se juntas las llamadas recursivas, es decir, en este algoritmo es la parte en donde se agregan a la lista de costos: 
+        \begin{verbatim}
+costs.append(G[node][edge]+tsp(G, start, edge, visited + [edge]))
+        \end{verbatim}
+    \end{itemize}
+    \item Relación de recurrencia de su tiempo de ejecución: 
+    \begin{itemize}
+        \item Aquí notamos que hay diversas parte del algoritmo que debemos tomar en cuenta,
+        tenemos $n$ problemas (nodos) en el grafo completo, y cada problema (nodo) tiene $n-1$ subconjuntos posibles de problemas (nodos), esto podría expresarse como $T(n-1)$. Además, la recurrencia está dentro de un ciclo \textbf{for}. Las demás partes del algoritmo o son $\Theta(1)$ o $\Theta(n)$ podemos concluir que la recurrencia de este algoritmo es 
+        $$T(n)=nT\left(n-1\right)+\Theta(n)$$
+        Siendo más formalistas, tenemos 
+        $$T(n)=\begin{cases}
+            \Theta(1),& n=1\\
+            T(n)=nT(n-1)+\Theta(n), & n>1
+        \end{cases}$$
+
+        Ahora, usando la técnica del árbol de recursión, tenemos: 
+        \begin{figure}[H]
+            \centering 
+            \begin{tikzpicture}[level distance=1.5cm,
+                level 1/.style={sibling distance=3cm},
+                level 2/.style={sibling distance=1.5cm}]
+                \node {T(n)}
+                  child {node {T(n-1)}
+                    child {node {T(n-2)}}
+                    child {node {$\dots$}}
+                    child {node {T(n-2)}}
+                  }
+                  child {node {$\dots$}}
+                  child {node {T(n-1)}
+                    child {node {T(n-2)}}
+                    child {node {$\dots$}}
+                    child {node {T(n-2)}}
+                  };
+              \end{tikzpicture}
+        \end{figure}
+
+        De esto, obtenemos: 
+        \begin{align*}
+            T(n) &= cn +cn(n-1)+cn(n-1)(n-2)+\cdots cn!
+        \end{align*}
+        Con lo que podemos concluir que el algoritmo tiene complejidad $$O(n!)$$
+    \end{itemize}
+    
+\end{itemize}
+\end{problema}
+
+\begin{problema}
+    Considere Merge Sort: 
+    \begin{verbatim}
+    Merge_Sort(A, p, r):
+        if p < r:
+            q= floor((p+r)/2)
+            Merge-Sort(A,p,q)
+            Merge-Sort(A,q+1,r)
+            Merge(A,p,q,r)
+    \end{verbatim}
+    Entonces: 
+    \begin{itemize}
+        \item Divide-Conquer-Combine: 
+        \begin{itemize}
+            \item Divide: La parte donde se divide el algoritmo: 
+            \begin{verbatim}
+                        q= floor((p+r)/2)
+                \end{verbatim}
+            \item Conquer: Las llamadas recursivas, es decir: 
+            \begin{verbatim}
+                        Merge-Sort(A,p,q)
+                        Merge-Sort(A,q+1,r)
+                \end{verbatim}
+            \item Combine: Donde se juntan las llamadas recursivas
+            \begin{verbatim}
+                        Merge(A,p,q,r)
+                \end{verbatim}
+        \end{itemize}
+        \item Para este caso, la relación de recurrencia ya la habíamos encontrado en la clase, la cual es: 
+        $$
+T(n)= \begin{cases}\Theta(1) & \text { if } n=1 \\ 2 T(n / 2)+\Theta(n) & \text { if } n>1\end{cases}
+$$
+    \end{itemize}
+    (O sea la respuesta que da el PDF del parcial, es correcta) y con Master Method, se había comprobado que la solución era $\Theta(n\log_2 n)$. Ahora bien, usando el método de substitución, tenemos: 
+    \begin{itemize}
+        \item Para $T(n)=O(n\log_2 n)$
+        \begin{itemize}
+            \item Paso inductivo, sea $T(n)\leq cn\log_2 n \implies T(n/2)\leq c\left(n/2\right)\log_2 (n/2)$. Por lo tanto, 
+            \begin{align*}
+                T(n)= 2 T(n / 2)+cn &\leq 2\left(c\left(n/2\right)\log_2 \left(n/2\right)\right)+cn \\
+                &= cn\log_2\left(\frac{n}{2}\right)+cn \\
+                &= cn(\log_2 n - \log_2 2)+cn\\
+                &= cn\log_2n,\quad c\geq 2
+            \end{align*}
+            \item Paso base, a partir de $n\geq n_0=2$, $T(2)=4$ y la propiedad se cumple: 
+            $$T(2)\leq c2\log_2(2)=2c,\quad c\geq 2$$ 
+        \end{itemize}
+        \item Para $T(n)=\Omega(n\log_2 n)$
+        \begin{itemize}
+            \item Paso inductivo, sea $T(n)\geq cn\log_2 n \implies T(n/2)\geq c\left(n/2\right)\log_2 (n/2)$. Por lo tanto, 
+            \begin{align*}
+                T(n)= 2 T(n / 2)+cn &\geq 2\left(c\left(n/2\right)\log_2 \left(n/2\right)\right)+cn \\
+                &= cn\log_2\left(\frac{n}{2}\right)+cn \\
+                &= cn(\log_2 n - \log_2 2)+cn\\
+                &= cn\log_2n,\quad 0<c\leq 1
+            \end{align*}
+            \item Paso base, a partir de $n\geq n_0=2$, $T(2)=4$ y la propiedad se cumple: 
+            $$T(2)\geq c2\log_2(2)=2c,\quad 0< c\leq 1$$ 
+        \end{itemize}
+    \end{itemize}
+\end{problema}
+
+
+%---------------------------
+%\bibliographystyle{apa}
+%\bibliography{referencias.bib}
+
+\end{document}

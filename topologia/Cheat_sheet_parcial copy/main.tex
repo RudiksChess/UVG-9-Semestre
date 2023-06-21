@@ -1,0 +1,281 @@
+\documentclass[a4paper, 12pt]{article}
+\input{settings/packages}
+\input{settings/page}
+\input{ambientes}
+
+\begin{document}
+\input{settings/titlepage}
+\setcounter{page}{1}
+%----------------------------------------
+
+
+\subsection{Nets}
+
+\begin{prop}
+    Sea $D$ un conjunto $y\leq$ una relación definida sobre $D$ que satisface: 
+    \begin{enumerate}
+        \item $\leq$ es reflexiva, $x\leq x,\forall x\in D$. 
+        \item $\leq$ es transitiva, si $x\leq y$ y $y\leq z\implies x\leq z$. 
+        \item $\leq$ es dirigida, si $x,y\in D\implies \exists z\in D\ni x\leq z$ y $y\leq z$.  
+    \end{enumerate}
+    Entonces el para $(D,\leq)$ es un conjunto dirigido. 
+\end{prop}
+
+
+
+\begin{definicion}
+    Una red en un conjunto $X$ es un mapeo 
+    $$w:D\to X$$
+    donde $(D,\leq)$ es un conjunto dirigido.  
+\end{definicion}
+
+\begin{nota}
+    Cada sucesión sobre $X$ es una red. 
+\end{nota}
+
+\begin{definicion}[Convergencia]
+    Si $(X,\tau)$ es un espacio topológico y $w:D\to X$ es una red, se dice que $w$ converge a $x\in X$, si para cada abierto $U$ que contiene a $x$, existe $d\in D\ni T_\alpha=\{w(e):d\leq e\in D\}\subseteq U$. 
+\end{definicion}
+
+\begin{nota}
+    $w\to x$ (la red converge a $x$), o bien $x$ es punto límite de $w$. 
+\end{nota}
+
+\begin{teorema}
+    Sea $(X,\tau)$ un espacio topológico y sea $A\subseteq X$, entonces $x\in \mathbb{A}$ ssi existe una red $w$ sea $A\ni w\to x$.
+\end{teorema}
+
+
+\begin{nota}
+    Un subconjunto $D'$ de un subconjunto dirigido $D$ es cofinal, si $\forall d\in D\exists e\in D'\ni d\leq e$. 
+\end{nota}
+
+\begin{definicion}
+    Sean $w:D\to X$ y $v: E\to x$ redes sobre $X$ (donde $(D,\leq)$ y $(E,\leq )$ son conjuntos dirigidos). Se dice que $v$ es una subred de $w$ si existe una función $h:E\to D\ni$ 
+    \begin{enumerate}
+        \item $h$ es monótona, es decir, $\alpha\leq \beta\implies h(\alpha)\leq h(\beta)$
+        \item $h$ es cofinal (es decir, $h(E)$ es cofinal con $D$).
+        \item $v(\alpha)=w(h(\alpha)),\forall \alpha\in E$.
+    \end{enumerate}
+    
+\end{definicion}
+
+\begin{definicion}[Subsucesión]
+    Una subsucesión de $(X_n)$ es una sucesión de la forma $(X_{n_k})$, es decir, dadad $(X_n)$, la subsucesión es de la forma $(X_{h_k})$, donde $h$ es una función creciente, $h:\mathbb{Z}^+\to \mathbb{Z}^+$, y donde $h$ no es acotada (i.e. su rango es cofinal con $\mathbb{Z}^+$)
+\end{definicion}
+\begin{definicion}
+    Sea $X$ un conjunto. Una colección $\mathcal{F}\subseteq P(X)$ es un filtro sobre $X$ si se satisfacen: 
+    \begin{enumerate}
+        \item $\varnothing\not\in \mathcal{F}$
+        \item Si $A\in \mathcal{F}$ y $A\subseteq B\implies B\in \mathcal{F}$ 
+        \item Si $A,B\in \mathcal{F}\implies A\cap B\in \mathcal{F}$
+    \end{enumerate}
+\end{definicion}
+
+\begin{ejemplo}
+    Sea $\mathcal{F}=\{x\}$, siempre que $X\neq \varnothing$ es filtro trivial. 
+\end{ejemplo}
+
+\begin{ejemplo}
+    Sea $X\neq \varnothing$, $x\in X$. Entonces $X= \{A\ni A\subseteq X\wedge x\in A\}$
+\end{ejemplo}
+\begin{ejemplo}
+    Sean $(X,\tau)$ un espacio topológico, $x\in X$ 
+    $$\mathcal{F}_x=\{A\subseteq X: \exists U\in \tau \ni x\in U\subseteq A\}$$
+    es el filtro de vecindades de $X$. 
+\end{ejemplo}
+
+\begin{ejemplo}
+    Sea $X$ un conjuhnto infinito y sea 
+    $$\mathcal{F}=\{A\subseteq X\ni X-A \text{ es finito}\}$$
+    $\mathcal{F}$ se le conoce como el filtro de Frechet. 
+\end{ejemplo}
+
+\begin{cajita}
+    Dado un conjunto $X$, cualquier colección $S\subseteq P(X)$ tiene la propiedad de intersección finita (PIF) si para todos  $A_1,A_2,\cdots, A_n\in S$, se tiene que $\bigcap_{k=1}^n A_k\neq \varnothing$. 
+
+\end{cajita}
+\begin{nota}
+    Cualquier coleccion $S\subseteq P(X)$ con la PIF genera un filtro que la contiene. 
+\end{nota}
+
+\begin{nota}
+    Sea $F(X)$ la colección de todos los filtros sobre $X$. Sea $\leq$ la relación de contención, entonces $(F(X),\leq)$ es un conjunto parcialmente ordenado. Este orden no puede ser lineal ($x\not\subset y$ y $y\not\subset x$)
+\end{nota}
+
+%------------------------- clase 
+
+\begin{ejemplo}
+    $M\subseteq X\implies \mathcal{F}_n=\{A\subseteq X\ni M\subseteq A\}$ es el filtro principal generado por $M$. 
+\end{ejemplo}
+\begin{ejemplo}
+    $M=\{x\},x\in X\implies X=\mathcal{F}_x=\{A\subseteq X\ni x\in A\}$. 
+\end{ejemplo}
+
+%----------------- clase 
+
+\begin{teorema}
+    Sea $X\neq \varnothing$ y $\mathcal{F}_\alpha\in F(X),\alpha\in I$. Entonces $\bigcap_\alpha \mathcal{F}_\alpha \in F(X)$
+
+\end{teorema}
+
+\begin{nota}
+    Sea $X\neq\varnothing$ y sea $A\not\subseteq X\implies$ Considere $B=X-A=A^c$ y a los filtros $\mathcal{F}_A$ y $\mathcal{F}_B$. Entonces, $\mathcal{F}_A\cup \mathcal{F}_B$ no es filtro. En efecto, como $A\subset \mathcal{F}_A$ y $B\subset \mathcal{F}_B\implies A\cap B=\varnothing\implies \varnothing \mathcal{F}_A\cup \mathcal{F}_B$. 
+\end{nota}
+
+\begin{teorema}
+    Sea $X$ un conjunto y $U(x)$ una colección de filtros sobre $X$. Si para cualesquiera $\mathcal{F}_1,\mathcal{F}_2\in U(x)$ se tiene que $\mathcal{F}_1\subset \mathcal{F}_2$ o $\mathcal{F}_2\subset \mathcal{F}_1\implies \bigcup U(x)$ es filtro. 
+\end{teorema}
+
+\begin{prop}
+    Sea $X$ un conjunto y $\mathcal{F}, \mathcal{G}$ filtros sobre $X$. Entonces, $\mathcal{F}\bigcup_* G:=\{F\cup G:F\in \mathcal{F}\wedge G\in \mathcal{G}\}$ es filtro sobre $X$. 
+\end{prop}
+
+
+\begin{cajita}
+    \begin{nota}[Escolio]
+        Sea $\mathcal{F}$ un filtro sobre $X\neq\varnothing$. Entonces,  $\mathcal{F}\cup \{\varnothing\}$ es una topología sobre $X$. 
+    \end{nota}    
+\end{cajita}
+
+\begin{definicion}[Ultrafiltros]
+    Sea 
+    \begin{itemize}
+        \item Un filtro sobre $X$ es un ultrafiltro  si se cumple $\forall A\subset X $, se tiene que $A\in \mathcal{F}$ o $A^c\in \mathcal{F}$.
+        \item Un ultrafiltro es un filtro maximal en $(F(X), \subseteq)$; i.e. un ultrafiltro es un filtro $U$ sobre $X$ tal que si $\mathcal{G}$ es un filtro sobre $X$ tal que $X\ni U\subseteq G\implies U=G$ 
+    \end{itemize}
+\end{definicion}
+
+\begin{definicion}
+    $\mathcal{F}$ converge a $x$ ($\mathcal{F}\to x$) si $\forall V\in N(x)\exists F\in \mathcal{F}\ni F\subset V$. 
+\end{definicion}
+
+\begin{definicion}
+    Sean $(X,\leq)$ un conjunto parcialmente ordenado, $a\in X$ y $A\subset X$. Se dice que $a$ es un elemento maximal de $A$, si $a\in A$ y si $a\leq b$, para todo $b\in A\implies a=b$.  
+\end{definicion}
+
+\begin{definicion}
+    Sean $(X,\leq)$ un conjunto parcialmente ordenado y $C\subset X$. Se dice que $C$ es cadena en $X$, si $\forall a,b\in C$ se cumple $a\leq b$ o $b\leq a$.  
+\end{definicion}
+
+\begin{lema}[De Zorn]
+    Si $X$ es un conjunto vacío y parcialmente ordenado $\ni$ cada cadena en $X$ tiene cota superior, entonces $X$ tiene un elemento maximal. 
+\end{lema}
+
+\begin{definicion}
+    Sea $X\neq \varnothing$. Una familia $U\subseteq P(X)$ (Potencia: $2^X$) es un ultrafiltro si se cumplen: 
+    \begin{enumerate}
+        \item $\mathcal{U}$ es filtro. 
+        \item Si $\mathcal{F}$ es un filtro sobre $X$ ral que $\mathcal{U}\subseteq \mathcal{F}\implies \mathcal{U}= \mathcal{F}$.  $\mathcal{U}$ es un filtro maximal
+    \end{enumerate} 
+\end{definicion}
+\begin{ejemplo}
+    Sea $X$ un espacio topológico. Si $x\in X$, entonces $\mathcal{F}_x = \{A\subseteq X\ni x\in A\}$ es un ultrafiltro de $X$. En efecto: 
+    \begin{enumerate}
+        \item $\mathcal{F}_x$ es un filtro. 
+        \item Sea $\mathcal{G}$ un filtro sobre $X\ni \mathcal{F}_x\subseteq \mathcal{G}$. Como $\{x\}\in \mathcal{F}$ y $\mathcal{F}_x\subset \mathcal{G}\implies $ para cada $G\in \mathcal{G}\implies G\cap\{x\}\neq \varnothing\implies x\in G,\forall G\in \mathcal{G}\implies G\in \mathcal{F}_x\implies \mathcal{G}\subset \mathcal{F}_x\implies \mathcal{F}$ es un ultrafiltro sobre $X$.
+        \item  Sea $X$ un conjunto vacío y $A\subset X$, con al menos dos puntos. $\implies \mathcal{F}_A=\{F\subset X\ni A\subset F\}$ no es un ultra filtro. Entonces $M\in \mathcal{F}_A\implies A\subset M\implies x\in M \implies M\in \mathcal{F}_x\implies \mathcal{F}_A\subset \mathcal{F}_x$. Además, como $\{x\}\in \mathcal{F}_x$ y además, $\{x\}\not\in \mathcal{F}_A\implies \mathcal{F}_x\not\subset \mathcal{F}_A\implies \mathcal{F}_A$ no puede ser ultrafiltro en $X$. 
+    \end{enumerate}
+\end{ejemplo}
+
+\begin{teorema} (Tarski, 1930)
+    Sea $X$ un conjunto y $\mathcal{F}$ un filtro sobre $X$. Entonces, existe un ultrafiltro $\mathcal{U}$ sobre $X$ tal que $\mathcal{F}\subset \mathcal{U}$. 
+
+    
+\end{teorema}
+
+
+
+\begin{definicion}
+    Una subcolección $\beta\subset \mathcal{F}$ es una base del filtro $\mathcal{F}$ si ocurre $\forall F\in \mathcal{F}\exists B\in \beta\ni B\subset F$.
+\end{definicion}
+
+\begin{teorema}
+    Una familia $\beta$ de subconjuntos no vacíos de $X$ es base de algún filtro sobre $X$ ssi $\forall B_1,B_2\in \beta \ni B_3 \subset \beta \ni B_3 = B_1\cap B_2$.
+\end{teorema}
+
+ %--------------------------------
+
+
+ %cosas
+
+ \begin{teorema}
+    Sea $X,Y$ espacios topológicos, $\mathcal{F}$ un filtro sobre $X$ y un mapeo $f:X\to Y$. Entonces 
+    $$\beta_{\mathcal{F}}=\{f(F):F\in \mathcal{F}\}$$
+    es una base para filtros en $Y$. 
+ \end{teorema}
+
+ \begin{teorema}
+    Sean $X,Y$ espacios topológicos, $\mathcal{F}$ un filtro sobre $Y$ y un mapeo $f:X\to Y$. Si, $\forall F\in \mathcal{F}$ se tiene que $f^{-1}(F)\neq 0$, entonces $\beta=\{f^{-1}(F):F\in \mathcal{F}\}$ es una base de filtros para $X$. 
+
+ \end{teorema}
+
+ \begin{teorema}
+    Sea $X\neq \varnothing, \mathcal{F}$ un filtro sobre $X$ y $E\subset X$. Si $\beta=\{F\cap E: F\in \mathcal{F}\}$ y $\beta' =\{F\cap (X-E):F\in \mathcal{F}\}$, entonces: 
+    \begin{enumerate}
+        \item Si $F\cap E\neq \varnothing,\forall F\in \mathcal{F}\implies \beta$ es una base de filtros sobre $X$. 
+
+        \item Si $\exists F\in \mathcal{F}\ni F\cap E\neq \varnothing \implies \beta '$ es base de filtros sobre $X$. 
+
+    \end{enumerate}
+ \end{teorema}
+
+ \begin{definicion}
+    Sea $(X,\tau)$ un espacio topológico $F$ un filtro sobre $X$, $x\in X$. Entonces: 
+    \begin{enumerate}
+        \item Se dice que $\mathcal{F}$ converge a $x$, $\mathcal{F}\to x$, si $\forall V\in N(x)\exists F\in \mathcal{F}\ni F\subset V$
+        \item Se dice que $x$ es un punto de acumulación de $\mathcal{F}$, si $\forall F\in \mathcal{F}$ y $\forall V \in N(x)$, se cumple que $F\cap V\neq \varnothing$. Notación: $F\geq x$
+    \end{enumerate}
+ \end{definicion}
+
+
+ \begin{teorema}
+    Sean $X$ un conjunto y $U$ un filtro sobre $X$. Entonces, los enunciados siguientes son equivalentes: 
+    \begin{enumerate}
+        \item $\mathcal{U}$ es ultrafiltro
+        \item Para cada $E\subset X\ni E\cap F\neq \varnothing,\forall F\in \mathcal{U}$, se tiene que $E\in \mathcal{U}$.
+        \item Si $E\subset X\implies E\in \mathcal{U}$ o $ X-E\in \mathcal{U}$
+        \item Si $A,B\subset X$ y $A\cup B \in \mathcal{U}\implies A\in \mathcal{U}$ o $B\in \mathcal{U}$. 
+    \end{enumerate}
+\end{teorema}
+
+\begin{definicion}
+    Sean $(X,\tau)$ un espacio topológico y $\mathcal{F}$ un filtro sobre $X$ y $x\in X$.Entonces, $\mathcal{F}\to x$
+    , si $\forall V\in N(x)\exists F\in \mathcal{F}\ni F\subset V$.
+\end{definicion}
+
+\begin{teorema}
+    Sea $(X,\tau)$ un espacio topológico $\mathcal{F}$ un filtro sobre $X$ y $x\in X$. Entonces, $\mathcal{F}\to x\iff N(x)\subset F$. 
+\end{teorema}
+
+\begin{ejemplo}
+    Sean $X$ un espacio topológico y $x\in X\implies \mathcal{F}(x)=N(x)$ converge a $x$. 
+\end{ejemplo}
+
+\begin{ejemplo}
+    Sea $X$ un espacio indiscreto. Como $X$ es la única vecindad disponible para convergencia, entonces cualquier filtro sobre $X$ converge a cada punto de $X$. 
+\end{ejemplo}
+
+\begin{ejemplo}
+    Considere el espacio de Sierpinski. es decir: $X=\{0,1\}$ y $\tau=\{X,\varnothing, \{0\}\}$ y sea $\mathcal{F}=N(x)$. 
+    \begin{itemize}
+        \item Sea $x=0\implies N(x)\to 0$; $N(X)\to 1$
+    \end{itemize}
+\end{ejemplo}
+
+\begin{teorema}
+    Sea $X$ un espacio topológico $x\in X$ y $\mathcal{F}$ un filtro sobre $X\ni \mathcal{F}\to x$. Si $G$ es un filtro sobre $X\ni F\subset G\implies G\to x$. 
+\end{teorema}
+
+\begin{definicion}
+    Se dice que $x$ es un punto de acumulación del filtro $\mathcal{F}$ sobre $X$, si $\forall F\in \mathcal{F}$ y $\forall V\in N(x)$, se cumple que $F\cap V\neq \varnothing$ 
+    \begin{nota}
+        $F>x$
+    \end{nota}
+\end{definicion}
+
+
+%----------------------------------------
+\newpage
+
+\end{document}

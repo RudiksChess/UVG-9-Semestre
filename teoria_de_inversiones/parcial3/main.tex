@@ -1,0 +1,150 @@
+\input{Configuraciones/paquetes}
+
+%--------------------------
+
+\begin{document}
+\input{Configuraciones/nombres}
+%--------------------------
+
+\begin{problema}
+    Demuestre que las funciones Dirac-delta $\left\langle x_j \mid x_i\right\rangle=\delta\left(x_j-x_i\right)$ son ortogonales para todo $i \neq j$
+    \begin{sol}
+        Para resolver esto, considérese las definiciones del documento del módulo cuántico: 
+        \begin{itemize}
+            \item Una función de impulso conocida como Dirac-delta:
+            $$
+            \psi_{x_0}(x)=\delta\left(x-x_0\right)
+            $$
+            La función Dirac-delta, con parámetro $x_0$ adquiere un valor cero evaluada en cualquier valor $x$ excepto en $x_0$. 
+            \item Propiedades de la función Dirac-delta:
+            \begin{enumerate}
+                \item $$\delta\left(x-x_0\right)=0 ; x \neq x_0$$
+                \item $$\int_{x_0-\epsilon}^{x_0+\varepsilon} d x \delta\left(x-x_0\right)=1 ; \varepsilon>0$$
+                \item $$\int_{x_0-\varepsilon}^{x_0+z} d x f(x) \delta\left(x-x_0\right)=f\left(x_0\right) ; \varepsilon>0$$
+            \end{enumerate}
+            El valor de $\delta\left(x-x_0\right)$ en $x_0$ queda indefinido, o puede considerarse $\infty$.
+        \end{itemize}
+
+
+
+
+
+        Ahora bien, para demostrar que las funciones Dirac-delta $\left\langle x_j \mid x_i\right\rangle=\delta\left(x_j-x_i\right)$ son ortogonales para todo $i \neq j$, por definción debemos demostrar que el producto interior es 0. Es decir, 
+        $$\left\langle x_j \mid x_i\right\rangle=\delta\left(x_j-x_i\right)=0, \quad i\neq j$$
+
+Ahora, utilizamos la propiedad de ortogonalidad de la función Dirac-delta, tenemos dos casos: 
+
+\begin{itemize}
+    \item Si $i \neq j$, entonces $x_i \neq x_j$. Esto implica que, en todos los puntos excepto en $x = x_i$ y $x = x_j$, ambas funciones Dirac-delta son cero. Como resultado, el producto de las dos funciones también es cero en todos estos puntos.
+    $$\left\langle x_j \mid x_i\right\rangle=\delta\left(x_j-x_i\right)=0, \quad i\neq j$$
+
+    \item En el caso de que $x = x_i = x_j$, el producto de las dos funciones Dirac-delta no sería cero. Pero dado que $i \neq j$, este caso no es posible.
+\end{itemize}
+Por lo tanto, 
+$$\left\langle x_j \mid x_i\right\rangle=\delta\left(x_j-x_i\right)=0, \quad i\neq j$$
+demostrando que las funciones Dirac-delta son ortogonales para todo $i\neq j$. 
+    \end{sol}
+\end{problema}
+
+\begin{problema}
+    ¿Bajo qué circunstancias específicas pueden coincidir exactamente las funciones de amplitud de onda antes y después de la observación?
+    \begin{sol}
+        En términos generales, podemos inferir que las funciones de amplitud de onda antes y después de la observación coinciden exactamente en circunstancias en las que el sistema no ha sido perturbado por la observación. Para ser más rigurosos, en la guía cuántica tenemos las siguientes definiciones: 
+        \begin{itemize}
+            \item La función de amplitud de onda se define como $\langle v_i|\psi \rangle \equiv \psi(v_i)$. La función de amplitud de onda, $\psi(v_i)$, puede interpretarse como el límite de una función discreta de las amplitudes proyectadas sobre cada estado básico. Sobre una base discreta, podemos enumerar los valores que toma la función de amplitud de onda, $\{\langle v_{i_1}|\psi \rangle  , \langle v_{i_2}|\psi \rangle  , \cdots , \langle v_{i_n}|\psi \rangle  \}$. Como estamos en el caso continuo y cada $| v_{i_i} \rangle$ constituye un estado básico en la base de medición, tenemos un número infinito de proyecciones cuyo valor está dado por $\psi(v_i)$
+            
+            \item La medición se realiza con el operador $\mathbf{x}$ que extrae el logaritmo del precio a partir de la función de amplitud de onda.
+            \item Si la medición arroja el valor característico $x_0$, la función de amplitud de onda después de la medición se denota como $\psi_{x_0}(x)$, que satisface la ecuación:
+
+            \begin{equation*}
+            \mathbf{x} \psi_{x_0}(x) = x_0 \psi_{x_0}(x).
+            \end{equation*}
+            
+            En términos de la función delta de Dirac, tenemos:
+            
+            \begin{equation*}
+            \psi_{x_0}(x) = \delta(x - x_0),
+            \end{equation*}
+            
+            que, por sus propiedades, es cero en todas partes excepto en $x = x_0$, donde es indefinida.
+        \end{itemize}
+
+Por tanto, las funciones de amplitud de onda antes y después de la observación coincidirán exactamente si y solo si la medición no perturba al sistema (aunque para ser rigurosos, sí hubo algún tipo de perturbación, la cual consideramos despreciable), lo que implica que el sistema se mantuvo en el mismo estado $x_0$ antes y después de la observación. 
+    \end{sol}
+\end{problema}
+
+\begin{problema}
+    En la econometría clásica, suele suponerse que existe un proceso generador de datos cuyos parámetros pueden, en principio, inferirse usando la información disponible en el espacio de observación. Si el proceso generador de datos responde a una función de amplitud de onda que habita el espacio de estado, ¿considera usted que los parámetros del proceso generador de datos son igualmente accesibles? Justifique su respuesta.
+    \begin{sol}
+        En primer lugar, vamos a definir los dos campos en cuestión, desde un punto de vista conceptual. 
+        \begin{itemize}
+            \item La econometría clásica se basa en teorías estadísticas y probabilísticas para inferir los parámetros de los modelos económicos. En este caso, se asume que existe un proceso generador de datos que puede ser modelado con ciertos parámetros, los cuales pueden ser inferidos a partir de las observaciones. Los modelos econométricos son determinísticos en el sentido de que, dados los parámetros del modelo, se pueden hacer predicciones exactas sobre los datos futuros.
+            \item La mecánica cuántica se basa en principios de superposición e incertidumbre, y se representa a través de funciones de onda y su evolución temporal. La función de onda cuántica proporciona información probabilística sobre el estado de un sistema cuántico. No se puede predecir con certeza el resultado de una medida individual; en cambio, la función de onda proporciona las probabilidades de obtener los posibles resultados.
+        \end{itemize}
+
+        Si nos fijamos en el procedimiento descrito en la guía, vemos que la medición de una propiedad (como el logaritmo del precio) causa que el sistema colapse en un estado determinado, que se describe por la función característica $\psi_{x_{0}}(x)$, que satisface la ecuación $x\psi_{x_{0}}(x) = x_{0}\psi_{x_{0}}(x)$, y que es cero para todos los $x$ que no son iguales a $x_{0}$.\bigbreak
+
+        Por tanto, podríamos decir que los parámetros del proceso generador de datos, después de la medición, ya no están accesibles en el sentido de que ya no están en superposición, sino que han colapsado a un estado específico. Esto se puede ver en la forma de la función característica después de la medición, que es una función Dirac-delta centrada en el valor medido $x_{0}$.\bigbreak 
+
+        Entonces, aunque los parámetros del proceso generador de datos podrían estar en superposición antes de la medición, la propia medición hace que colapsen a un estado específico. Esto nos hace inferir que los parámetros del proceso generador de datos son accesibles, pero solo en el sentido de que podemos medirlos y hacer que el sistema colapse a un estado específico.\bigbreak 
+
+        Sin embargo, aquí estaríamos suponiendo que el sistema cuántico de interés sigue las reglas de la medición y la superposición cuántica de la manera tradicional. Si hubiera alguna forma de realizar mediciones que no causen el colapso del sistema, o si el sistema pudiera estar en superposición incluso después de la medición, entonces la accesibilidad de los parámetros podría ser diferente.
+    \end{sol}
+\end{problema}
+
+\begin{problema}
+    Dado que el enfoque cuántico admite los fenómenos de interferencia y reconoce que el acto de observación influye sobre el estado del objeto observado, ¿qué modificaciones consideraría necesario hacer a los procedimientos de la inferencia clásica?
+    \begin{sol}
+        El enfoque cuántico tiene características únicas como la interferencia, la superposición y el colapso de la función de onda durante la observación. Estas propiedades requieren modificaciones en los procedimientos de inferencia clásica para adaptarse al entorno cuántico. Algunas modificaciones necesarias podrían ser: 
+
+        \begin{enumerate}
+            \item Incorporación de amplitudes de probabilidad complejas: En lugar de trabajar con probabilidades clásicas, en un entorno cuántico, debemos trabajar con amplitudes de probabilidad, que son números complejos. Matemáticamente, esto implica que debemos reemplazar las probabilidades clásicas $P(x)$ con las amplitudes de probabilidad cuánticas $\psi(x)$ y usar la regla de Born:
+
+            $$
+            P(x) = |\psi(x)|^2
+            $$
+            
+            \item Revisión de las leyes de probabilidad: Las leyes de probabilidad clásicas, como la suma y el producto, deben modificarse para adaptarse al contexto cuántico. Por ejemplo, en lugar de utilizar la regla clásica de la probabilidad en la unión de dos eventos $P(A \cup B) = P(A) + P(B) - P(A \cap B)$, debemos tener en cuenta la interferencia cuántica, lo que nos llevaría a una probabilidad totalmente distinta y no como se suele calcular en el enfoque clásico. 
+            
+            \item Entrelazamiento y variables ocultas: En un entorno cuántico, las variables pueden estar entrelazadas, lo que significa que sus estados están correlacionados incluso cuando están separadas por grandes distancias. Esto puede requerir un enfoque diferente para tratar con variables ocultas y la estimación de parámetros en comparación con la econometría clásica.
+            
+            \item Actualización de las técnicas de estimación: Los métodos de estimación clásicos, como el método de mínimos cuadrados (es decir, todo tipo de regresiones lineales) y la estimación de máxima verosimilitud, que son dos elementos básicos de la estadística matemática, pero que un ambiente cuántico definitivamente podrían variar sus resultados. 
+    
+            \item Consideración del efecto del observador: Esta es una de las cosas esenciales en un entorno cuántico, el acto de observación en sí mismo puede influir en el estado del objeto observado, lo que lleva al colapso de la función de onda. Por lo tanto, este debería ser un elemento a tomar en cuenta. 
+        \end{enumerate}
+
+
+    \end{sol}
+\end{problema}
+
+
+\begin{problema}
+    Explique por qué se dice que la evolución conjunta de un precio y de su movimiento no es determinista sino probabilista.
+    \begin{sol}
+        La evolución conjunta de un precio y su movimiento en un mercado no es determinista sino probabilista podría explicarse de múltiples maneras, por ejemplo la naturaleza intrínseca de la incertidumbre y la entropía de los sistemas humanos (los humanos somos bastante caóticos y eso se ve reflejado en los mercados financieros y económicos, por ejemplo). Por lo general, los mercados siguen trayectorias indefinidas, no lineales y que casi siempre son impredecibles. Si nos vamos a más detalles, por ejemplo: 
+        \begin{itemize}
+            \item Hay cambios en la oferta y la demanda. 
+            \item El comportamiento de los inversores es atípica, no presentan comportamientos consistentes. 
+            \item Hay movimientos e intervenciones regulatorias (por ejemplo, la FED de Estados Unidos subiendo las tasas de interés a cada rato)
+            \item Eventos globales, tales como la guerra, la muerte de alguien importante, la invasión de un país, etcétera. 
+        \end{itemize}
+        
+        Si nos vamos a un enfoque más matemático y riguroso, es bueno considerar que la  evolución conjunta de un precio y de su movimiento respetan varios aspectos importantes vistos a lo largo del curso: 
+\begin{enumerate}
+    \item Procesos estocásticos: Un ejemplo común en finanzas es el movimiento browniano geométrico, que se utiliza para modelar la evolución del precio de un activo financiero en un mercado eficiente.
+    
+    \item Ecuaciones diferenciales estocásticas: Las ecuaciones diferenciales estocásticas son ecuaciones que describen cómo evoluciona un proceso estocástico en el tiempo, teniendo en cuenta tanto las dinámicas determinísticas como las fluctuaciones aleatorias. Un ejemplo clásico es la ecuación de Black-Scholes para el precio de una opción financiera, que tiene en cuenta tanto el movimiento determinista del precio del activo subyacente como la volatilidad del mercado.
+    
+    \item Teoría de la probabilidad y estadística: La teoría de la probabilidad y la estadística proporcionan el marco conceptual y las herramientas matemáticas necesarias para analizar y modelar la incertidumbre y la variabilidad en los datos observados. Esto incluye conceptos como variables aleatorias, distribuciones de probabilidad, momentos, correlaciones y técnicas de estimación e inferencia.
+\end{enumerate}
+
+
+
+En resumen, la evolución conjunta de un precio y su movimiento no es determinista sino probabilista debido a la incertidumbre y la complejidad en los sistemas económicos y financieros. Los enfoques matemáticos y estadísticos, como los procesos estocásticos, las ecuaciones diferenciales estocásticas y la teoría de la probabilidad, permiten modelar y analizar esta evolución en términos de probabilidades y escenarios posibles, lo que nos confirma que la evolución conjunta de un precio y de su movimiento es probabilista. 
+    \end{sol}
+\end{problema}
+%---------------------------
+%\bibliographystyle{apa}
+%\bibliography{referencias.bib}
+
+\end{document}

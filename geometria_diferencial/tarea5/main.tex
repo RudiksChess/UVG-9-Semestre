@@ -1,0 +1,565 @@
+\input{Configuraciones/paquetes}
+
+%--------------------------
+
+\begin{document}
+\input{Configuraciones/nombres}
+%--------------------------
+
+\begin{problema}
+Determinar las curvas asintóticas del catenoide
+
+$$
+\mathbf{x}(u, v)=(\cosh u \cos v, \cosh u \sin v, v), \quad u, v \in \mathbb{R}
+$$
+\begin{sol}
+    Para resolver este problema, se utiliza la siguiente definición: 
+    \begin{cajita}
+        Una curva regular conexa $C$ en la vecindad coordenada de $x$, es una curva asintótica $\iff$ para cada parametrización $\alpha(t) = x(u(t),v(t)),\quad t\in I$, de $C$ tenemos $II(\alpha'(t))=0$, $\forall t\in I\iff e(u')^2 + 2fu'v' + g(v')^2 = 0, t \in I$
+    \end{cajita}
+    Primero, necesitamos calcular la primera y segunda forma fundamental del catenoide.Calculamos las derivadas parciales con respecto a $u$ y $v$:
+\begin{align*}
+    \mathbf{x}_u(u, v) &= (\sinh u \cos v, \sinh u \sin v, 0) \\
+    \mathbf{x}_v(u, v) &= (-\cosh u \sin v, \cosh u \cos v, 1)
+\end{align*}
+    
+Ahora, podemos calcular los coeficientes de la primera forma fundamental $I = (E, F, G)$, donde:
+\begin{align*}
+    E &= \langle \mathbf{x}_u, \mathbf{x}_u \rangle = (\sinh u \cos v)^2 + (\sinh u \sin v)^2 + 0^2 = \sinh^2 u \\
+F &= \langle \mathbf{x}_u, \mathbf{x}_v \rangle = -\sinh u \cosh u \cos v\sin v - \sinh u \cosh u \sin v\cos v = 0\\
+G &= \langle \mathbf{x}_v, \mathbf{x}_v \rangle = (\cosh^2 u \sin^2 v) + (\cosh^2 u \cos^2 v) + 1^2 = \cosh^2 u + 1
+\end{align*}
+
+
+Calculemos la segunda forma fundamental $II = (e, f, g)$: 
+\begin{align*}
+    \mathbf{x}_{uu}(u, v) &= (\cosh u \cos v, \cosh u \sin v, 0) \\
+\mathbf{x}_{uv}(u, v) &= (-\sinh u \sin v, \sinh u \cos v, 0) \\
+\mathbf{x}_{vv}(u, v)& = (-\cosh u \cos v, -\cosh u \sin v, 0)
+\end{align*}
+
+
+Calculemos los coeficientes de la segunda forma fundamental usando el vector normal unitario $\mathbf{N}$. Primero, consideramos: 
+
+\begin{align*}
+    \mathbf{x}_u \times \mathbf{x}_v &=(\sinh u \sin v,-(\sinh u \cos v), \sinh u \cosh u \cos^2 v + \cosh u\sinh u \sin^2v)\\
+    &=  (\sinh u \sin v,-\sinh u \cos v, \sinh u \cosh u)
+\end{align*}
+Y de esto:
+\begin{align*}
+    \mathbf{N} &= \frac{\mathbf{x}_u \times \mathbf{x}_v}{\| \mathbf{x}_u \times \mathbf{x}_v \|}\\
+    & = \frac{(\sinh u \sin v,-\sinh u \cos v, \sinh u \cosh u)}{\sqrt{(\sinh u \sin v)^2 + (-\sinh u \cos v)^2+(\sinh u \cosh u)^2}}\\
+    & = \frac{(\sinh u \sin v,-\sinh u \cos v, \sinh u \cosh u)}{\sqrt{\sinh^2 u +\sinh ^2 u\cosh^2 u}}\\
+    & = \frac{(\sinh u \sin v,-\sinh u \cos v, \sinh u \cosh u)}{\sinh u\sqrt{1+\cosh^2 u}}\\
+    &=  \frac{(\sin v,-\cos v, \cosh u)}{\sqrt{1+\cosh^2 u}}
+\end{align*}
+
+
+
+Los coeficientes de la segunda forma fundamental son:
+\begin{align*}
+    e &= \langle \mathbf{x}_{uu}, \mathbf{N} \rangle = 0\\
+f &= \langle \mathbf{x}_{uv}, \mathbf{N} \rangle =\left\langle (-\sinh u \sin v, \sinh u \cos v, 0), \frac{(\sin v,-\cos v, \cosh u)}{\sqrt{1+\cosh^2 u}} \right\rangle \\
+&= \frac{\left(-\sinh u\sin^2 v -\sinh u \cos^2 v \right)}{\sqrt{1+\cosh^2 u}}=-\frac{\sinh u }{\sqrt{1+\cosh^2 u}}\\
+g &= \langle \mathbf{x}_{vv}, \mathbf{N} \rangle = 0
+\end{align*}
+
+
+Ahora que tenemos los coeficientes de la primera y segunda forma fundamental, podemos usar la definición de curva asintótica:
+
+$$
+II(\alpha'(t)) = 0 \iff e(u')^2 + 2fu'v' + g(v')^2 = 0
+$$
+
+Sustituyendo los coeficientes obtenidos:
+\begin{align*}
+    e(u')^2 + 2fu'v' + g(v')^2 &= 0\\
+   2\left(-\frac{\sinh u }{\sqrt{1+\cosh^2 u}}\right)u'v'  &= 0
+\end{align*}
+
+
+Esto implica que, o bien $f = 0$, o bien $u'v' = 0$. Analizamos los dos casos los dos casos:
+\begin{enumerate}
+    \item Si $f = 0$, entonces:
+
+    $$
+    -\frac{\sinh u}{\sqrt{1+\cosh^2 u}} = 0
+    $$
+    
+    Esta ecuación se cumple cuando $\sinh u = 0$, lo que implica que $u = 0$ o $u$ es un múltiplo entero de $2\pi$.
+    \item Si $u'v' = 0$, tenemos dos subcasos:
+    \begin{enumerate}
+        \item Si $u' = 0$, entonces la curva es constante en la coordenada $u$. 
+        \item Si $v' = 0$, entonces la curva es constante en la coordenada $v$. 
+    \end{enumerate}
+    
+\end{enumerate}
+
+
+
+\end{sol}
+
+\end{problema}
+
+
+\begin{problema}
+    Considere la superficie de Enneper
+
+$$
+\mathbf{x}(u, v)=\left(u-\frac{u^{3}}{3}+u v^{2}, v-\frac{v^{3}}{3}+v u^{2}, u^{2}-v^{2}\right), \quad u, v \in \mathbb{R}
+$$
+
+y mostrar que
+\begin{enumerate}
+    \item Los coeficientes de la primera forma fundamental son
+
+    $$
+    E=G=\left(1+u^{2}+v^{2}\right)^{2}, \quad F=0 .
+    $$
+    
+    \begin{sol}
+        Calculamos los coeficientes de la primera forma fundamental (E, F, G).
+        \begin{itemize}
+            \item Sea  
+            \begin{align*}
+                \mathbf{x}_u &= \left(1-u^2+v^2,2 u v,2 u\right) \\
+                \mathbf{x}_v &= \left(2 u v,1+u^2-v^2,-2 v\right)
+            \end{align*}
+            \item Sea
+            \begin{align*}
+                E &= \langle \mathbf{x}_u, \mathbf{x}_u \rangle = 4 u^2+4 u^2 v^2+(1-u^2+v^2)^2=\left(1+u^{2}+v^{2}\right)^{2}\\
+                F &= \langle \mathbf{x}_u, \mathbf{x}_v \rangle = -4 u v+2 u v (1+u^2-v^2)+2 u v (1-u^2+v^2)= 0\\
+                G &= \langle \mathbf{x}_v, \mathbf{x}_v \rangle = 4 v^2+4 u^2 v^2+(1+u^2-v^2)^2=\left(1+u^{2}+v^{2}\right)^{2}\\
+            \end{align*}
+           
+            
+        \end{itemize}
+
+
+    \end{sol}
+    \item Los coeficientes de la segunda forma fundamental son
+    
+    $$
+    e=2, \quad g=-2, f=0
+    $$
+    \begin{sol}
+        Calculamos los coeficientes de la segunda forma fundamental (e, f, g).
+        \begin{itemize}
+            \item Encontramos $\mathbf{x}_u \times \mathbf{x}_v$: 
+            \begin{align*}
+                \mathbf{x}_u \times \mathbf{x}_v &= \left(-2 u-2 u^3-2 u v^2,2 v+2 u^2 v+2 v^3,1-u^4-2 u^2 v^2-v^4\right)\\
+                &= (-2 u (1+u^2+v^2),2 v (1+u^2+v^2),-(-1+u^2+v^2) (1+u^2+v^2))
+            \end{align*}
+            \item Calculamos $\mathbf{N}$: 
+            \begin{align*}
+                \mathbf{N} &= \frac{\mathbf{x}_u \times \mathbf{x}_v}{\| \mathbf{x}_u \times \mathbf{x}_v \|}\\
+                &= \frac{(-2 u (1+u^2+v^2),2 v (1+u^2+v^2),-(-1+u^2+v^2) (1+u^2+v^2))}{\sqrt{(-2 u (1+u^2+v^2))^2+(2 v (1+u^2+v^2))^2+(-(-1+u^2+v^2) (1+u^2+v^2))^2}}\\
+                &= \frac{(-2 u (1+u^2+v^2),2 v (1+u^2+v^2),-(-1+u^2+v^2) (1+u^2+v^2))}{\sqrt{(1+u^2+v^2)^4}}\\
+                &= \frac{(-2 u (1+u^2+v^2),2 v (1+u^2+v^2),-(-1+u^2+v^2) (1+u^2+v^2))}{(1+u^2+v^2)^2}\\
+                &= \frac{(-2 u ,2 v ,-(-1+u^2+v^2))}{(1+u^2+v^2)}\\
+            \end{align*}
+            \item Calculamos 
+            \begin{align*}
+                \mathbf{x}_{uu} &= (-2 u,2 v,2)\\
+                \mathbf{x}_{uv} &= (2 v,2 u,0)\\
+                \mathbf{x}_{vv} &= (2 u,-2 v,-2)
+            \end{align*}
+            \begin{align*}
+                e &= \langle \mathbf{x}_{uu}, \mathbf{N} \rangle = \left\langle (-2 u,2 v,2),\frac{(-2 u ,2 v ,-(-1+u^2+v^2))}{(1+u^2+v^2)} \right\rangle =2\\
+                f &= \langle \mathbf{x}_{uv}, \mathbf{N} \rangle =\left\langle (2 v,2 u,0),\frac{(-2 u ,2 v ,-(-1+u^2+v^2))}{(1+u^2+v^2)} \right\rangle= 0\\
+                g &= \langle \mathbf{x}_{vv}, \mathbf{N} \rangle =\left\langle (2 u,-2 v,-2),\frac{(-2 u ,2 v ,-(-1+u^2+v^2))}{(1+u^2+v^2)} \right\rangle =-2 
+            \end{align*}
+            
+            
+        \end{itemize}
+
+
+    \end{sol}
+    \item Las cuvaturas principales están dadas por
+    
+    $$
+    \kappa_{1}=\frac{2}{\left(1+u^{2}+v^{2}\right)^{2}}, \quad \kappa_{2}=-\frac{2}{\left(1+u^{2}+v^{2}\right)^{2}} .
+    $$
+    \begin{sol}
+        Para esto, encontramos $H$ y $K$ y posteriormente resolvemos la ecuación:
+        $$x^2-2Hx+K=0$$
+        En donde: 
+
+        $$H=\frac{1}{2}\left(\frac{eG-2fF+gE}{EG-F^2}\right)=\frac{1}{2}\left(\frac{2(1+u^2+v^2)^2-2(1+u^2+v^2)^2}{(1+u^2+v^2)^4}\right)=0$$
+        $$K= \frac{eg-f^2}{EG-F^2}=\frac{2(-2)}{(1+u^2+v^2)^2}=\frac{-4}{(1+u^2+v^2)^2} $$
+        De esto
+        $$\kappa_{1,2}=x=\sqrt{\frac{4}{(1+u^2+v^2)^2} }= \pm \frac{2}{(1+u^2+v^2)}$$
+    \end{sol}
+    
+    \item Las líneas de curvatura son las curvas coordenadas.
+    \begin{sol}
+        Se cumple directamente por la definición: una curva regular conexa $C$ en $S$ es una línea de curvatura de $S$ tal que $N'(t)=\lambda (t)\alpha'(t)$ para cualquier parametrización $\alpha(t)$ de $C$, donde $N(t)=N\circ \alpha(t)$ y $\alpha(t)$ es una función diferencible de $t$. 
+    \end{sol}
+    
+    \item Las curvas asintóticas son de la forma $u+v=$ const., $u-v=$ const.
+    \begin{sol}
+        Usando el procedimiento del \textbf{Problema 1}, 
+        \begin{align*}
+            e(u')^2+2fu'v'+g(v')^2&=0\\
+            2(u')^2+2(0)u'v'+(-2)(v')^2 &=0\\ 
+            2(u'-v')(u'+v') &= 0
+        \end{align*}
+        Lo que muestra que $u+v=$ const., $u-v=$ const.
+
+    \end{sol}
+\end{enumerate}
+
+
+
+
+\end{problema}
+
+
+\begin{problema} (La Pseudoesfera) Consideramos la curva tractriz (ver ejercicio 3 en Lista 01).
+
+    \begin{enumerate}
+        \item Determine la superficie de revolución que se obtiene a partir de la tractriz, y hallar una parametrización alrededor de un punto regular.
+        \begin{sol}
+            El problema 3 de la Lista 01, ya habíamos encontrado que una parametrización $$\alpha(t)= \left(\sin t,\cos t+\log \tan \frac{t}{2}\right)$$
+            Entonces solamente aplicamos la ecuación de una superficie de revolución, la cual es:
+            \begin{align*}
+                \mathbf{x}(u,v)&=\left(x(u)\cos v, x(u)\sin v, y(v)\right)\\
+                &= \left(\sin u\cos v, \sin u \sin v, \cos v+\log \tan \frac{v}{2}\right)
+            \end{align*}
+            
+        \end{sol}
+        \item Muestre que la curvatura gaussiana de esta superficie en todo punto regular vale $K=-1$.
+        \begin{sol}
+            Sea 
+            \begin{enumerate}
+                \item Primeras derivadas parciales:
+                \begin{align*}
+                    \mathbf{x}_u &= \left(\cos(u)\cos(v),\cos(u)\sin(v),0\right)\\
+                \mathbf{x}_v &= \left(-\sin(u)\sin(v),\sin(u)\cos(v),\frac{1}{2}\csc\left(\frac{v}{2}\right)\sec\left(\frac{v}{2}\right)-\sin(v)\right)
+                \end{align*}
+                \item Segundas derivadas parciales:
+                \begin{align*}
+                    \mathbf{x}_{uu} &= \left(\sin(u)(-\cos(v)),-\sin(u)\sin(v),0\right)\\
+                \mathbf{x}_{uv} &= \left(-\cos(u)\sin(v),\cos(u)\cos(v),0\right)\\
+                \mathbf{x}_{vv} &= \left(\sin(u)(-\cos(v)),-\sin(u)\sin(v),-\cos(v)-\frac{1}{4}\csc^2\left(\frac{v}{2}\right)+\frac{1}{4}\sec^2\left(\frac{v}{2}\right)\right)
+                \end{align*}
+                \item Calcular fórmulas fundamentales de la superficie:
+                \begin{align*}
+                    E &= \langle\mathbf{x}_u, \mathbf{x}_u\rangle= \cos^2(u)\cos^2(v)+\cos^2(u)\sin^2(v)\\
+                    F &= \langle\mathbf{x}_u, \mathbf{x}_v\rangle= 0 \\
+                    G &= \langle\mathbf{x}_v, \mathbf{x}_v\rangle=\sin^2(u)\sin^2(v)+\sin^2(u)\cos^2(v)+\left(\frac{1}{2}\csc\left(\frac{v}{2}\right)\sec\left(\frac{v}{2}\right)-\sin(v)\right)^2
+                \end{align*}
+                En donde:
+                \begin{align*}
+                    \mathbf{N} &= \frac{\mathbf{x}_u \times \mathbf{x}_v}{\|\mathbf{x}_u \times \mathbf{x}_v\|}\\
+                    &= \frac{(\cos(u)\cos^2(v),-\cos(u)\cos^2(v)\cot(v),\sin(u)\cos(u))}{\sqrt{\left|\cos(u)\cos^2(v)\right|^2+\left|\cos(u)\cos^2(v)\cot(v)\right|^2+|\cos(u)\sin(u)|^2}}\\
+                    &= \frac{(\cos(u)\cos^2(v),-\cos(u)\cos^2(v)\cot(v),\sin(u)\cos(u))}{\sqrt{\cos^2(u)\left(\sin^2(u)+\cos^2(v)\cot^2(v)\right)}}\\
+                    &= \frac{(\cos^2(v),-\cos^2(v)\cot(v),\sin(u))}{\sqrt{\left(\sin^2(u)+\cos^2(v)\cot^2(v)\right)}}\\
+                \end{align*}
+                
+                Tal que: 
+                \begin{align*}
+                    e &= \langle\mathbf{x}_{uu}, \mathbf{N}\rangle=0\\
+                    f &= \langle\mathbf{x}_{uv}, \mathbf{N}\rangle= -\frac{\cos(u)\cos(v)\cot(v)}{\sqrt{\left(\sin^2(u)+\cos^2(v)\cot^2(v)\right)}}\\
+                    g &= \langle\mathbf{x}_{vv}, \mathbf{N}\rangle= -\frac{\sin(u)(\cos(v)+\cot(v)\csc(v))}{\sqrt{\left(\sin^2(u)+\cos^2(v)\cot^2(v)\right)}}
+                \end{align*}
+                \item Fórmula de Gauss para calcular la curvatura gaussiana $K$:
+                \begin{align*}
+                    K &= \frac{eg - f^2}{EG - F^2}\\
+                    &= \frac{-\frac{\cos^2(u)\cos^2(v)\cot^2(v)}{\sin^2(u)+\cos^2(v)\cot^2(v)}}{\frac{1}{8}\cos^2(u)\csc^2(v)(\cos(2(u-v))+\cos(2(u+v))-2\cos(2u)+2\cos(2v)+\cos(4v)+5)}
+                    \intertext{Usando Mathematica:}
+                    &= -1
+                \end{align*}
+               
+            \end{enumerate}
+
+        \end{sol}
+    \end{enumerate}
+
+
+\end{problema}
+
+
+\begin{problema}
+    4. Sea $\mathbf{x}(u, v)$ un segmento de una superficie regular (orientable) $S$. Una superficie paralela a $S$ es una superficie parametrizada por
+
+$$\mathbf{y}(u, v)=\mathbf{x}(u, v)+a N(u, v)$$
+
+    donde $a \in \mathbb{R}$ y $N$ es el campo normal unitario a $\mathbf{x}$.
+
+    \begin{enumerate}
+        \item Muestre que $\mathbf{y}_{u} \times \mathbf{y}_{v}=\left(1-2 H a+K a^{2}\right) \mathbf{x}_{u} \times \mathbf{x}_{v}$, donde $H$ y $K$ son las curvaturas media y gaussiana de $\mathbf{x}$.
+        \begin{sol}
+            Consideramos: 
+            \begin{enumerate}
+                \item Derivadas parciales: 
+                \begin{align*}
+                    \mathbf{y}_{u} &= \mathbf{x}_{u} + a N_{u}\\
+                    \mathbf{y}_{v} &= \mathbf{x}_{v} + a N_{v}
+                \end{align*}
+                \item Consideramos los coeficientes de la primera y segunda forma fundamental. De la misma forma, las definiciones de $H$ y $K$: 
+                \begin{align*}
+                    E = \langle\mathbf{x}_u, \mathbf{x}_u\rangle, F = \langle\mathbf{x}_u, \mathbf{x}_v\rangle, G = \langle\mathbf{x}_v, \mathbf{x}_v\rangle\\ e = -\langle N_u, \mathbf{x}_u\rangle, f = -\langle N_u, \mathbf{x}_v\rangle, g = -\langle N_v, \mathbf{x}_v\rangle
+                \end{align*}
+                y las curvaturas: $$H = \frac{eG - 2fF + gE}{2(EG - F^2)}$$
+                
+                $$K = \frac{eg - f^2}{EG - F^2}$$
+                \item Ecuaciones de Weingarten, 
+                \begin{align*}
+                    N_u &= \frac{fF-eG}{EG-F^2}\mathbf{x}_u +\frac{eF-fE}{EG-F^2}  \mathbf{x}_v\\
+                    N_v &= \frac{gF-fG}{EG-F^2} \mathbf{x}_u  + \frac{fF-gE}{EG-F^2}\mathbf{x}_v
+                \end{align*}
+                \item $\mathbf{y}_{u} \times \mathbf{y}_{v}$. 
+                \begin{align*}
+                    \mathbf{y}_{u} \times \mathbf{y}_{v} &=  (\mathbf{x}_{u} + a N_{u}) \times (\mathbf{x}_{v} + a N_{v})\\
+                    &=\mathbf{x}_{u} \times \mathbf{x}_{v} + a(\mathbf{x}_{u} \times N_{v} + N_{u} \times \mathbf{x}_{v}) + a^2 (N_{u} \times N_{v})\\
+                    &= \mathbf{x}_{u} \times \mathbf{x}_{v} + a\left(\mathbf{x}_{u} \times \left(\frac{gF-fG}{EG-F^2} \mathbf{x}_u  + \frac{fF-gE}{EG-F^2}\mathbf{x}_v\right)\right. +\\ 
+                    &\quad + \left.\left(\frac{fF-eG}{EG-F^2}\mathbf{x}_u +\frac{eF-fE}{EG-F^2}  \mathbf{x}_v\right) \times \mathbf{x}_{v}\right)+\\
+                    &\quad + a^2 \left(\left(\frac{fF-eG}{EG-F^2}\mathbf{x}_u +\frac{eF-fE}{EG-F^2}  \mathbf{x}_v\right) \times \left(\frac{gF-fG}{EG-F^2} \mathbf{x}_u  + \frac{fF-gE}{EG-F^2}\mathbf{x}_v\right)\right)\\
+                    &= \mathbf{x}_{u} \times \mathbf{x}_{v} + a\left( \left( \frac{fF-gE}{EG-F^2}\right)\mathbf{x}_{u} \times\mathbf{x}_v+\left(\frac{fF-eG}{EG-F^2} \right)\mathbf{x}_u \times \mathbf{x}_{v}\right)+\\
+                    &\quad +a^2 \left(\left(\frac{fF-eG}{EG-F^2}\right)\left(\frac{fF-gE}{EG-F^2}\right)\mathbf{x}_u\times \mathbf{x}_v+\left(\frac{eF-fE}{EG-F^2}\right)\left(\frac{gF-fG}{EG-F^2}\right)\mathbf{x}_v\times \mathbf{x}_u\right)\\
+                    &= \mathbf{x}_{u} \times \mathbf{x}_{v} + a\left( \left( \frac{2fG-gE-eG}{EG-F^2}\right)\mathbf{x}_{u} \times\mathbf{x}_v\right)+\\
+                    &\quad + a^2\left(\frac{(fG-eG)(fG-gE)-(eF-fE)(gF-fG)}{(EG-F^2)^2}\mathbf{x}_{u} \times\mathbf{x}\right)\\
+                    &= \mathbf{x}_{u} \times \mathbf{x}_{v} + a\left( \left( \frac{2fG-gE-eG}{EG-F^2}\right)\mathbf{x}_{u} \times\mathbf{x}_v\right)+\\
+                    &\quad + a^2\left(\frac{(eg-f^2)(EG-F^2)}{(EG-F^2)^2}\mathbf{x}_{u} \times\mathbf{x}\right)\\
+                    &= \left(1-2 H a+K a^{2}\right) \mathbf{x}_{u} \times \mathbf{x}_{v}
+                \end{align*}
+            \end{enumerate}
+
+           
+        \end{sol}
+        \item Pruebe que en los puntos regulares, las curvaturas media y gaussiana de y son
+        
+        $$
+        H_{\mathbf{y}}=\frac{K}{1-2 H a+K a^{2}}, \quad K_{\mathbf{y}}=\frac{H-K a}{1-2 H a+K a^{2}}
+        $$
+        \begin{sol}
+            Debemos encontrar los coeficientes de la primera y segunda forma fundamental. 
+            \begin{align*}
+                E_{\mathbf{y}} = \langle\mathbf{y}_u, \mathbf{y}_u\rangle, F_{\mathbf{y}} = \langle\mathbf{y}_u, \mathbf{y}_v\rangle, G_{\mathbf{y}} = \langle\mathbf{y}_v, \mathbf{y}_v\rangle\\
+                e_{\mathbf{y}} = \langle N, \mathbf{y}_{uu} \rangle , f_{\mathbf{y}} = \langle N, \mathbf{y}_{uv} \rangle, g_{\mathbf{y}} = \langle N, \mathbf{y}_{vv} \rangle 
+            \end{align*}
+            
+            Calculemos $E_{\mathbf{y}}$, $F_{\mathbf{y}}$ y $G_{\mathbf{y}}$:
+            \begin{align*}
+                E_{\mathbf{y}} &= \langle\mathbf{y}_u, \mathbf{y}_u\rangle = \langle\mathbf{x}_u + a N_u, \mathbf{x}_u + a N_u\rangle\\
+                & = \langle\mathbf{x}_u, \mathbf{x}_u\rangle + 2a\langle\mathbf{x}_u, N_u\rangle + a^2\langle N_u, N_u\rangle = E + 2ae + a^2\\
+                F_{\mathbf{y}} &= \langle\mathbf{y}_u, \mathbf{y}_v\rangle = \langle\mathbf{x}_u + a N_u, \mathbf{x}_v + a N_v\rangle\\
+                & = \langle\mathbf{x}_u, \mathbf{x}_v\rangle + a\langle\mathbf{x}_u, N_v\rangle + a\langle N_u, \mathbf{x}_v\rangle + a^2\langle N_u, N_v\rangle\\
+                & = F + af + ae + 0 = F + af + ae\\
+                G_{\mathbf{y}} &= \langle\mathbf{y}_v, \mathbf{y}_v\rangle = \langle\mathbf{x}_v + a N_v, \mathbf{x}_v + a N_v\rangle\\
+                & = \langle\mathbf{x}_v, \mathbf{x}_v\rangle + 2a\langle\mathbf{x}_v, N_v\rangle + a^2\langle N_v, N_v\rangle = G + 2ag + a^2
+            \end{align*}
+            
+
+Las segundas formas fundamentales de $\mathbf{y}(u, v)$. Las derivadas parciales de $\mathbf{y}$ respecto a $u$ y $v$. Para $\mathbf{y}_u$, tenemos:
+\begin{align*}
+    \mathbf{y}_{uu} &= \mathbf{x}_{uu} + a N_{uu}\\
+    \mathbf{y}_{uv} &= \mathbf{x}_{uv} + a N_{uv}
+\end{align*}
+y para $\mathbf{y}_v$:
+\begin{align*}
+    \mathbf{y}_{vu} &= \mathbf{x}_{vu} + a N_{vu}\\
+    \mathbf{y}_{vv} &= \mathbf{x}_{vv} + a N_{vv}
+\end{align*}
+
+Ahora vamos a calcular los coeficientes de la segunda forma fundamental de $\mathbf{y}(u, v)$:
+
+\begin{align*}
+    e_{\mathbf{y}} &= \langle N, \mathbf{y}_{uu} \rangle = \langle N, \mathbf{x}_{uu} + a N_{uu} \rangle \\
+    &= \langle N, \mathbf{x}_{uu} \rangle + a \langle N, N_{uu} \rangle \\
+    &= e + a\langle N, N_{uu} \rangle \\
+    &= e\\
+    f_{\mathbf{y}} &= \langle N, \mathbf{y}_{uv} \rangle = \langle N, \mathbf{x}_{uv} + a N_{uv} \rangle \\
+    &= \langle N, \mathbf{x}_{uv} \rangle + a \langle N, N_{uv} \rangle \\
+    &= f + a\langle N, N_{uv} \rangle \\
+    &= f\\
+    g_{\mathbf{y}} &= \langle N, \mathbf{y}_{vv} \rangle = \langle N, \mathbf{x}_{vv} + a N_{vv} \rangle \\
+    &= \langle N, \mathbf{x}_{vv} \rangle + a \langle N, N_{vv} \rangle \\
+    &= g + a\langle N, N_{vv} \rangle \\
+    &= g
+\end{align*}
+
+Entonces: 
+\begin{align*}
+    H_{\mathbf{y}} &= \frac{e_{\mathbf{y}} G_{\mathbf{y}} - 2 f_{\mathbf{y}} F_{\mathbf{y}} + g_{\mathbf{y}} E_{\mathbf{y}}}{2( E_{\mathbf{y}} G_{\mathbf{y}} - F_{\mathbf{y}}^2)} \\
+    &= \frac{e (G+2ag+a^2) - 2 f (F+af+ae) +g (E+2ae+a^2) }{2((E+2ae+a^2) (G+2ag+a^2) - (F+af+ae)^2)} \\
+    &= \frac{K}{1-2 H a+K a^{2}}
+\end{align*}
+\begin{align*}
+    K_{\mathbf{y}} &= \frac{e_{\mathbf{y}} g_{\mathbf{y}} - f_{\mathbf{y}}^2}{E_{\mathbf{y}} G_{\mathbf{y}} - F_{\mathbf{y}}^2}\\
+    &= \frac{e g - f^2}{(E+2ae+a^2) (G+2ag+a^2) - (F+af+ae)^2}\\
+    &=\frac{H-Ka}{1-2 H a+K a^{2}}
+\end{align*}
+
+
+        \end{sol}
+        
+
+    \end{enumerate}
+
+
+\end{problema}
+
+
+\begin{problema}
+    Consideramos la parametrización usual del toro $\mathbb{T}^{2}$, y definimos un mapa $\Phi: \mathbb{R}^{2} \rightarrow \mathbb{T}^{2}$ dado por
+
+$$
+\Phi(u, v)=((R+r \cos u) \cos v,(R+r \cos ) \sin v, r \sin u), \quad R>r>0
+$$
+
+Sea $u=a t, v=b t$ una recta en $\mathbb{R}^{2}$ pasando por $(0,0) \in \mathbb{R}^{2}$, y considere la curva sobre el toro data por $\alpha(t)=\Phi(a t, b t)$. Muestre que
+
+\begin{enumerate}
+    \item $\Phi$ es un difeomorfismo local.
+    \begin{sol}
+        Para demostrar que $\Phi$ es un difeomorfismo local, vamos  a usar la siguiente proposición del Do Carmo:
+        \begin{cajita}
+            Si $S_1$ y $S_2$ son superficies regulares $\phi:U\subset S_1\to S_2$ es un mapeo diferenciable de un abierto $U\subset S_1$ tal que $d\phi_p$ de $\phi$ en $p$ en $U$ es un isomorfismo. Entonces $\phi$ es un difeomorfismo local en $p$. 
+        \end{cajita}
+
+        \begin{enumerate}
+            \item Tenemos $\Phi$ es diferenciable. Observamos que todas las componentes de $\Phi(u, v)$ son funciones diferenciables de $u$ y $v$. Entonces, podemos concluir que $\Phi$ es diferenciable. 
+            \item Ahora, procedemos a calcular la matriz Jacobiana de $\Phi$, la cual hay que probar que es un isomorfismo. 
+        
+            $$
+            J_\Phi(u, v) =
+            \begin{bmatrix}
+            \frac{\partial\Phi_1}{\partial u} & \frac{\partial\Phi_1}{\partial v} \\
+            \frac{\partial\Phi_2}{\partial u} & \frac{\partial\Phi_2}{\partial v} \\
+            \frac{\partial\Phi_3}{\partial u} & \frac{\partial\Phi_3}{\partial v}
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+            -r\sin{u}\cos{v} & -(R+r\cos{u})\sin{v} \\
+            -r\sin{u}\sin{v} & (R+r\cos{u})\cos{v} \\
+            r\cos{u} & 0
+            \end{bmatrix}
+            $$
+            Por el teorema de rango-nulidad, podemos afirmar que el jacobiano es un isomorfismo. 
+            \end{enumerate}
+            Por lo tanto, se cumple la proposición. 
+        
+        
+        
+        
+      
+        
+    \end{sol}
+    \item La curva $\alpha(t)$ es una curva regular; $\alpha(t)$ es una curva cerrada si, y sólo si, $\frac{b}{a}$ es un número racional.
+    \begin{sol}
+        
+        La curva $\alpha(t)$ es una curva cerrada $\iff$ existe un $T > 0$ tal que $\alpha(t + T) = \alpha(t)$ para todo $t \in \mathbb{R}$.  $\iff$ Sea $u = at$ y $v = bt$ los cuales son múltiplos de $2\pi$, tal que $a(t + T) = at + 2\pi m$ y $b(t + T) = bt + 2\pi n$, donde $m,n\in \mathbb{Z}$. $\iff$
+
+$$
+aT = 2\pi m, \quad bT = 2\pi n.
+$$
+
+Dividiendo la segunda ecuación por la primera:
+
+$$
+\frac{b}{a} = \frac{n}{m}.
+$$
+
+El cual es un numero irracional.
+    \end{sol}
+    \item Pruebe o de evidencia empírica de lo siguiente: Si $\frac{b}{a}$ es irracional, la curva $\alpha(t)$ es densa en $\mathbb{T}^{2}$.
+    \begin{sol}
+        Cuando la relación $\frac{b}{a}$ es irracional, significa que no hay una manera como \textit{sincronizada} en la que los parámetros $u$ y $v$ se repitan en la función $\Phi(u, v)$. Digamos que estamos dando vueltas alrededor del toro en dos direcciones diferentes, una en la dirección \textit{interna} y la otra alrededor de la dirección \textit{externa}, la velocidad sería $\frac{b}{a}$. Si la relación es irracional, nunca habrá un número entero de vueltas en ambas direcciones al mismo tiempo. Esto hace que la curva no se cierre sobre sí misma, sino que sigue recorriendo y llenando el espacio del toro. Entonces, cuando la relación $\frac{b}{a}$ es irracional, podemos decir de manera empírica que la curva se mueve por todo el toro, llenándolo densamente.
+    \end{sol}
+\end{enumerate}
+
+\begin{sol}
+   
+\end{sol}
+
+
+\end{problema}
+
+\begin{problema}
+    Mostrar la ecuación de Gauss. Si $S$ es una superficie con parametrización ortogonal, $F=0$, entonces
+
+$$
+K=-\frac{1}{\sqrt{E G}}\left[\frac{\partial}{\partial v}\left(\frac{E_{v}}{\sqrt{E G}}\right)+\frac{\partial}{\partial u}\left(\frac{G_{u}}{\sqrt{E G}}\right)\right]
+$$
+
+\begin{dem}
+    Para esta prueba, se tomó como referencia el libro de Kuhnel. Considérese: 
+    \begin{itemize}
+        \item $S$ es una superficie parametrizada ortogonalmente, lo que implica que los coeficientes métricos $E = \langle \mathbf{x}_u, \mathbf{x}_u \rangle$, $F = \langle \mathbf{x}_u, \mathbf{x}_v \rangle$, y $G = \langle \mathbf{x}_v, \mathbf{x}_v \rangle$ cumplen que $F = 0$.
+        \item $\mathbf{x} = \mathbf{x}(u, v)$ es la parametrización de la superficie.
+        \item $K$ es la curvatura gaussiana.
+        \item $I = (g_{ij})$ y $II = (h_{ij})$ son las formas fundamentales primera y segunda, respectivamente.
+        \item $\Gamma_{ij}^k$ son los símbolos de Christoffel de las primeras especies.
+        
+    \end{itemize}
+
+La fórmula de Gauss nos dice que:
+
+$$
+K = \frac{\operatorname{Det}(II)}{\operatorname{Det}(I)} = \frac{\operatorname{Det}(h_{ij})}{\operatorname{Det}(g_{ij})}.
+$$
+
+Dado que la parametrización es ortogonal, la matriz de la primera forma fundamental es diagonal:
+
+$$
+I = \begin{pmatrix} E & 0 \\ 0 & G \end{pmatrix},
+$$
+
+y su determinante es $\operatorname{Det}(I) = EG$. Utilizando las fórmulas de Christoffel $\Gamma_{ij}^k$, se tiene:
+
+$$
+E_u = 2\Gamma_{11}^1 E + 2\Gamma_{12}^1 F, \quad E_v = 2\Gamma_{12}^1 E + 2\Gamma_{22}^1 F,
+$$
+
+$$
+F_u = 2\Gamma_{11}^2 E + 2\Gamma_{12}^2 F, \quad F_v = 2\Gamma_{12}^2 E + 2\Gamma_{22}^2 F,
+$$
+
+$$
+G_u = 2\Gamma_{11}^2 F + 2\Gamma_{12}^2 G, \quad G_v = 2\Gamma_{12}^2 F + 2\Gamma_{22}^2 G.
+$$
+
+Dado que $F(u,v) = 0$ en una parametrización ortogonal, podemos simplificar las ecuaciones anteriores como:
+
+$$
+E_u = 2\Gamma_{11}^1 E, \quad E_v = 2\Gamma_{12}^1 E,
+$$
+
+$$
+G_u = 2\Gamma_{12}^2 G, \quad G_v = 2\Gamma_{22}^2 G.
+$$
+
+Primero, calculamos $\det(II)$ usando las fórmulas de Christoffel y los coeficientes métricos simplificados:
+
+$$
+\begin{aligned}
+\det(II) &= \sum_s\left(\left(\Gamma_{11}^s\right)_v-\left(\Gamma_{12}^s\right)_u+\sum_r\left(\Gamma_{11}^r \Gamma_{r 2}^s-\Gamma_{12}^r \Gamma_{r 1}^s\right)\right) g_{s 2} \\
+&= \left(-\frac{1}{2}\left(\frac{E_v}{G}\right)_v-\frac{1}{2}\left(\frac{G_u}{G}\right)_u+\frac{1}{2} \frac{E_u}{E} \frac{1}{2} \frac{G_u}{G}-\frac{1}{2} \frac{E_v}{G} \frac{1}{2} \frac{G_v}{G}\right. \\
+&\left.-\frac{1}{2} \frac{E_v}{E}\left(-\frac{1}{2} \frac{E_v}{G}\right)-\frac{1}{2} \frac{G_u}{G} \frac{1}{2} \frac{G_u}{G}\right) G.
+\end{aligned}
+$$
+
+Ahora, calculamos la curvatura gaussiana $K$ usando la fórmula $K = \frac{\det(II)}{\det(I)}$:
+
+$$
+\begin{aligned}
+K &= \frac{\det(II)}{\det(I)} \\
+&= -\frac{1}{2 E G}\left(E_{vv}+G_{uu}-\frac{E_v G_v}{G}-\frac{G_u^2}{G}-\frac{E_u G_u}{2 E}+\frac{E_v G_v}{2 G}-\frac{E_v^2}{2 E}+\frac{G_u^2}{2 G}\right) \\
+&= -\frac{1}{2 E G \sqrt{E G}}\left(\sqrt{E G} \cdot E_{vv}-E_v(\sqrt{E G})_v+\sqrt{E G} \cdot G_{uu}-G_u(\sqrt{E G})_u\right) \\
+&= -\frac{1}{\sqrt{E G}}\left[\frac{\partial}{\partial v}\left(\frac{E_{v}}{\sqrt{E G}}\right)+\frac{\partial}{\partial u}\left(\frac{G_{u}}{\sqrt{E G}}\right)\right].
+\end{aligned}
+$$
+
+
+
+\end{dem}
+\end{problema}
+
+
+%---------------------------
+%\bibliographystyle{apa}
+%\bibliography{referencias.bib}
+
+\end{document}

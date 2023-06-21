@@ -1,0 +1,153 @@
+\input{Configuraciones/paquetes}
+
+%--------------------------
+
+\begin{document}
+\input{Configuraciones/nombres}
+%--------------------------
+
+
+
+\begin{problema}
+    Tenemos: 
+    \begin{enumerate}
+        \item Pruebe que toda superficie regular compacta $S$ posee un punto elíptico.
+        \begin{dem}
+            A probar: Dada la superficie $S$, debemos encontrar un punto tal que $\det(dN_p)>0$. Considerando la demostración de Do Carmo, tenemos por hipótesis, $S$ es una superficie compacta regular $\implies$ Por la compacidad de $S\implies S$ es acotada. $\implies$ Existen esferas en $\mathbb{R}^3$, centradas en un punto fijo $O \in \mathbb{R}^3$, de tal manera que $S$ se encuentra en el interior de la región limitada por cualquiera de estas esferas. $\implies$ Consideremos el conjunto de todas estas esferas. Dejemos que $r$ sea el ínfimo de sus radios, y que $\Sigma$ sea una esfera de radio $r$ centrada en $O$.
+            $\implies$ Por definición de ínfimo y dado que $S$ está contenida en todas las esferas de mayor radio, se sigue que $\Sigma$ y $S$ deben tener al menos un punto en común, digamos $p$. $\implies$ La construcción de $\Sigma$ implica que el plano tangente a $\Sigma$ en $p$ intersecta $S$ solo en el punto común $p$, en un entorno de $p$. Por lo tanto, $\Sigma$ y $S$ son tangentes en $p$. $\implies$ Al comparar secciones normales en $p$, se deduce que cualquier curvatura normal de $S$ en $p$ es mayor o igual a la curvatura correspondiente de $\Sigma$ en $p$.$\implies$ La definición de $\Sigma$ como una esfera de radio $r$ implica que $K_{\Sigma}(p) > 0$ para todos los $p$. Entonces tenemos, $K_S(p) \geq K_{\Sigma}(p)$ y $K_{\Sigma}(p) > 0\implies K_S(p) > 0$. $\implies$ Dado que $K_S(p) > 0$ en el punto $p$, por definición, $p$ es un punto elíptico de $S$.
+        \end{dem}
+        \item Muestre que toda superficie regular compacta $S$, con característica $\chi(S) 
+        \leq 0$ posee un punto hiperbólico.
+        \begin{dem}
+            A probar: $S$ tiene un punto hiperbólico $\iff \det(dN_p)<0\iff K<0$. Por hipótesis, $S$ es una superficie regular compacto con $\chi(S)\leq 0\implies$ Por Gauss-Bonnet para superficies compactas,
+            $$\int_S KdS=2\pi \chi(S)$$
+            Pero en este caso, tenemos que $\chi(S)\leq 0$, lo que implica que 
+            $$\int_S KdS\leq 0$$
+            Pero este caso, solo se puede dar si $K<0$. Por lo tanto, $S$ tiene un punto hiperbólico. 
+        \end{dem}
+    \end{enumerate}
+\end{problema}
+
+\begin{problema}Compruebe que no existe superficie $\mathbf{x}(u, v)$ tal que $E=G=1, F=0$ y que $e=1, g=-1, f=0$.
+    \begin{sol}
+        Por reducción al absurdo, sabemos que: 
+        $$K = \frac{eg - f^2}{EG - F^2}= \frac{1 \cdot (-1) - 0}{1 - 0} = -1$$
+        Pero, en la tarea anterior habíamos demostrado que si $F=0$, entonces
+            $$K=-\frac{1}{\sqrt{2EG}}\left(\left(\frac{E_v}{\sqrt{EG}}\right)_v+\left(\frac{G_u}{\sqrt{EG}}\right)_u\right)=-\frac{1}{\sqrt{2}}\left(0+0\right)=0$$
+            Una contradicción. Por lo tanto, no existe dicha superficie. 
+    \end{sol}
+\end{problema}
+
+\begin{problema} Justifique por qué las superficies siguientes no son localmente isométricas dos a dos:
+    \begin{enumerate}
+        \item la esfera $S^2$,
+        
+        \item el cilindro $S^1 \times \mathbb{R}$
+        
+        \item la silla $z=x^2-y^2$.
+       
+    \end{enumerate}
+    \begin{sol}
+        Para esto, hace falta verificar el teorema de Egrenium 
+        \begin{cajita}
+            \begin{teorema}[Egrenium]
+                La curvatura gaussiana $K$ de una superficie es invariante por isometrías locales.
+            \end{teorema}
+        \end{cajita}
+        Entonces, debemos calcular $K$ para cada una de las superficies dadas: 
+        \begin{enumerate}
+            \item la esfera $S^2$
+            \begin{itemize}
+                \item $\mathbf{x}(u,v)=(a\cos u \sin v,a\sin u\sin v, a\cos v)$
+                \item $E=a\sin^2v, F=0,G=a^2$
+                \item $e=a\sin^2v,f=0,g=a$
+                \item $K=1/a^2$
+            \end{itemize}
+            
+            \item el cilindro $S^1 \times \mathbb{R}$
+            \begin{itemize}
+                \item $\mathbf{x}(u,v)=(a\cos v, a\sin v,u)$
+                \item $E=1, F=0,G=a^2$
+                \item $e=0,f=0,g=a$
+                \item $K=0$ 
+            \end{itemize}
+            \item la silla $z=x^2-y^2$.
+            \begin{itemize}
+                \item $\mathbf{x}(u,v)=(u,v,u^2-v^2)$
+                \item $E=1+4u^2, F=-4uv,G=1+4v^2$
+                \item $e=\frac{2}{\sqrt{4u^2+4v^2+1}},f=0,g=-\frac{2}{\sqrt{4u^2+4v^2+1}}$
+                \item $K=\frac{-4}{(4u^2+4v^2+1)^2}$ 
+            \end{itemize}
+        \end{enumerate}
+        Considerando que ninguna de las $K$ coincide, entonces por Egrenium, las superficies no son localmente isométricas dos a dos. 
+    \end{sol}
+\end{problema}
+\begin{problema}
+    Tenemos 
+    \begin{enumerate}
+        \item Dar la expresión para la ecuación de las geodésicas sobre el toro $\mathbb{T}^2$, con la parametrización usual
+        $$
+        \mathbf{x}(u, v)=((R+r \cos v) \cos u,(R+r \cos v) \sin u, r \sin v), \quad R>r>0, u, v \in(0,2 \pi) .
+        $$
+        \begin{sol}
+            En el Do Carmo se hace la deducción de la ecuación de una geodésica para una superficie de revolución de la forma 
+            $$x=f(v)\cos u\quad y=f(v)\sin u\quad z=g(v)$$
+            En donde la ecuación de sus geodésicas es: 
+            \begin{align*}
+                \frac{du}{dv}&=\frac{1}{c}f\sqrt{\frac{f^2-c^2}{(f')^2+(g')^2}}
+                \intertext{Reemplazando:}
+                &=\frac{1}{c}(R+r\cos v)\sqrt{\frac{(R+r\cos v)^2-c^2}{(-r\sin v)^2+(r\cos v)^2}}\\
+                &= \frac{1}{c}(R+r\cos v)\sqrt{\frac{(R+r\cos v)^2-c^2}{r^2}}\\
+            \end{align*}
+            
+        \end{sol}
+        \item Considere las curvas $\alpha(t)=\mathbf{x}(a, b t)$ y $\beta(t)=\mathbf{x}(a t, b)$, con $a, b \in \mathbb{R}, t \in \mathbb{R}$. Determinar para qué valores de $a, b$ estas curvas son geodésicas.
+        \begin{sol}
+            Tenemos \(\alpha(t) = \mathbf{x}(a, bt)\), la cual es una línea vertical si \(b \neq 0\), y la segunda, \(\beta(t) = \mathbf{x}(at, b)\), es una línea horizantal. Además, tenemos que 
+
+            $$\frac{d^2 x^i}{dt^2} = 0$$
+
+            Entonces, para cualquier valor de \(a\) y \(b\), las curvas \(\alpha(t)\) y \(\beta(t)\) son geodésicas.
+        \end{sol}
+    \end{enumerate}
+    
+
+
+Obs! No son las únicas geodésicas sobre el toro. El siguiente documento ilustra todas las familias de las geodésicas sobre $\mathbb{T}^2$. \href{http://ww.rdrop.com/ half/math/torus/torus.geodesics.pdf}{http://ww.rdrop.com/ half/math/torus/torus.geodesics.pdf}
+
+\end{problema}
+
+\begin{problema} Leer el punto 7, al final de la sección 4.5 del libro de Do Carmo (pp. 283-286). Entender el material, y probar el Teorema del Índice de Poincaré:
+La suma de los índices de un campo vectorial diferenciable $X$ con puntos singulares sobre una superficie compacta $S$, es igual a la característica de Euler de $S$, esto es
+$$
+\sum_{\mathbf{p} \in S} I(X(\mathbf{p}))=\chi(S)
+$$
+\begin{dem}
+    Esta demostración requiere una serie de pasos que se detallan en Do Carmo, en resumen, se utiliza lo siguiente: 
+
+    \begin{enumerate}
+        \item Se define el índice de un campo vectorial en un punto singular aislado, usando una parametrización ortogonal en ese punto y una curva positivamente orientada que lo rodea. Este índice es un número entero $I$, determinado a partir de la integral de la tasa de cambio del ángulo desde $\mathbf{x}_u$ hasta $v(t)$ alrededor de esta curva.
+
+        \item Luego se demuestra que este índice $I$ es independiente de la elección de la parametrización, mostrando que es igual a la integral de la curvatura gaussiana $K$ sobre la región limitada por la curva, menos la mitad de cierto cambio de ángulo.
+        
+        \item Además, se demuestra que este índice $I$ no depende de la elección de la curva $\alpha$ que rodea el punto singular. Esto se hace considerando una deformación de una curva de este tipo en otra, y notando que el índice, al ser un número entero, no puede cambiar bajo una deformación continua.
+        
+        \item Luego señala que para puntos no singulares, el índice es cero.
+        
+        \item Para una superficie compacta orientada $S$ con un campo vectorial diferenciable $v$ que solo tiene puntos singulares aislados. Se observa que solo hay un número finito de estos puntos.
+        
+        \item Se introduce una triangulación de $S$ de tal manera que cada triángulo contiene a lo sumo un punto singular y su frontera no contiene ninguno. El teorema luego aplica una fórmula relacionando la integral de $K$ y la suma de los índices en cada triángulo.
+        
+        \item Al sumar estas fórmulas sobre todos los triángulos, y usando el teorema de Gauss-Bonnet, llega a la conclusión de que la suma de los índices de los puntos singulares es igual a la característica de Euler-Poincaré de $S$.
+        $$
+\sum_{\mathbf{p} \in S} I(X(\mathbf{p}))=\chi(S)
+$$
+    \end{enumerate}    
+\end{dem}
+
+\end{problema}
+%---------------------------
+%\bibliographystyle{apa}
+%\bibliography{referencias.bib}
+
+\end{document}
